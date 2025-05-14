@@ -2,45 +2,30 @@
 <html lang="en">
 <head>
 <style>
-.dropbtn {
-  background-color: #3498DB;
+//colapsible
+.collapsible {
+  background-color: #777;
   color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
   cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
 }
 
-.dropbtn:hover, .dropbtn:focus {
-  background-color: #2980B9;
+.active, .collapsible:hover {
+  background-color: #555;
 }
 
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-content {
+.content {
+  padding: 0 18px;
   display: none;
-  position: absolute;
+  overflow: hidden;
   background-color: #f1f1f1;
-  min-width: 160px;
-  overflow: auto;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
 }
-
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown a:hover {background-color: #ddd;}
-
-.show {display: block;}
-}
+//table
 table, th, td {
   border: 1px solid black;
   border-collapse: collapse;
@@ -52,10 +37,9 @@ table, th, td {
   <p>makeing guides to pvz ripoffs since 2025</p>
   <p>currently documenting plants vs goblins 4</p>
   <p>for a full list of pvz ripoffs click <a href="https://mouldyair.github.io/stain/jgblnlist">here.</a></p>
-  <h3>plants vs goblins</h3>
-<div class="dropdown">
-  <button onclick="myFunction()" class="dropbtn">Plants vs goblins 4</button>
-  <div id="myDropdown" class="dropdown-content">
+<h3>plants vs goblins</h3>
+<button type="button" class="collapsible">plants vs goblins 4</button>
+<div class="content">
 <h2>Goblins</h2>
 
 <p>a list of the different goblins you will encounter</p>
@@ -86,29 +70,6 @@ table, th, td {
   </tr>
 </table>
 </div>
-</div>
-<script>
-/* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
-function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
-}
-
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-}
-</script>
 <p>Disclaimer: i have no affiliation with popcap, EA, or any other companies or people whos game has been mentioned on this page, i am simply trying to document games that are simmilar to PvZ. i am NOT accusing anyone of IP theft.<br>if you are involved in the development of any games listed here and would like to discuss me changing the descriptions, feel free to contact me.</p>
-<p>thank you to <a href="https://www.w3schools.com/">W3 schools</a> for some of the code used for this page</p>
 </body>
 </html>
