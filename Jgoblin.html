@@ -2,6 +2,24 @@
 <html lang="en">
 <head>
 <style>
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
 table, th, td {
   border: 1px solid black;
   border-collapse: collapse;
@@ -13,6 +31,9 @@ table, th, td {
   <p>makeing guides to pvz ripoffs since 2025</p>
   <p>currently documenting plants vs goblins 4</p>
   <p>for a full list of pvz ripoffs click <a href="https://mouldyair.github.io/stain/jgblnlist">here.</a></p>
+<div class="dropdown">
+  <span>Mouse over me</span>
+  <div class="dropdown-content">
 <h3>plants vs goblins</h3>
   <h5>plants vs goblins 4</h5>
 <h2>Goblins</h2>
@@ -44,6 +65,8 @@ table, th, td {
     <th>unlocked</th>
   </tr>
 </table>
+</div>
+</div>
 
 <p>Disclaimer: i have no affiliation with popcap, EA, or any other companies or people whos game has been mentioned on this page, i am simply trying to document games that are simmilar to PvZ. i am NOT accusing anyone of IP theft.<br>if you are involved in the development of any games listed here and would like to discuss me changing the descriptions, feel free to contact me.</p>
 </body>
