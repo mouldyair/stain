@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+<title>Stain</title>
+<style>
+//colapsible
+.collapsible {
+  background-color: #777;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+.active, .collapsible:hover {
+  background-color: #555;
+}
+
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+//table
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+</style>
+  <h1>Grugland</h1>
+</head>
+<body>
+    <p>Grugland is probably my oldest project, and one of my favourites.</p>
+    <button type="button" class="collapsible">History of Grugland</button>
+    <div class="content">
+    <p>i first decided i wanted to learn game development in early 2020, so i started comming up with ideas for a game with my friends.</p> 
+    <p>it was mostly just disconnected mechanical ideas with little to no plot or characters, at the time it didnt even have a name</p>
+    <p>i guess the best way to describe this early idea in terms of genre was something along the lines of a MMORPG-metroidvania</p>
+    <p>i eventually set it aside to focus on other things, mostly forgeting about it.</p>
+    <p>in 2022 i started learning how to draw properly, slowly developing my artstyle, it was arround this time i made the first character who would end up in grugland</p>
+    <p>in 2024 me and a friend who we'll call "NOR" started designing dumb characters together, the first of which was my beloved Goor stain, and later creating a little gremlin named "Grug"</p>
+    <p>Nor jokingly talked about making a game for these characters. i quickly started working on said game, using many ideas from the game i designed in 2020, except i actually made them semi-decent this time.</p>
+    <p>sadly, due to my files getting corrupted, and me realising that i had no clue how to make the game play well, i cancelled development of grugland in early 2025</p>
+    </div>
+    <button type="button" class="collapsible">Characters</button>
+    <div class="content">
+      <table style="width:100%">
+      <tr>
+        <th>Name</th>
+        <th>pronouns</th>
+        <th>image</th>
+        <th>personality</th>
+      </tr>
+      <tr>
+        <th>Goor stain</th>
+        <th>haven't decided</th>
+        <th>image goes here</th>
+        <th>as the personification of chemical warfare, Goor stain likes killing people</th>
+      </tr>
+      <tr>
+        <th>Grug</th>
+        <th>he/him</th>
+        <th>image goes here</th>
+        <th>sarcastic, over confident and a bit lazy at times</th>
+      </tr>
+      </table>
+    </div>
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+</script>
+</body>
+</html>
