@@ -30,5 +30,31 @@
 </head>
 <body>
 <h4>a little place to store updates on what im doing, or hosting Q&A's.</h4>
+
+<button type="button" class="collapsible">22/05/2025 1:18 PM</button>
+<div class="content">
+
+<p>first blog post. idk what to put here so i'll just rant about stuff. i have been thinking about learning how to make music.</p>
+<p>obviously i need to be able to make decent music if i ever return to developing Grugland. its funny, even though ive stoped developing grugland, everything seems to lead back to it.</p>
+<p>i mean, i cancelled gruglands predecessors, yet i keep coming back to it, i think this is the third time i have cancelled a game that i would considder to be a part of Grugland.</p>
+<p>this post probably makes no sense, but im to tiered to proof read</p>
+</div><br>
+//end of post history
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+</script>
 </body>
 </html>
