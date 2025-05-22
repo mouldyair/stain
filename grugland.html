@@ -34,7 +34,7 @@ table, th, td {
 </style>
   <h1>Grugland</h1>
 </head>
-  <body>
+<body>
     <p>Grugland is probably my oldest project, and one of my favourites.</p>
     <button type="button" class="collapsible">History of Grugland</button>
     <div class="content">
@@ -70,5 +70,21 @@ table, th, td {
       </tr>
       </table>
     </div>
-  </body>
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+</script>
+</body>
 </html>
