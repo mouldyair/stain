@@ -2,14 +2,43 @@
 <html>
 <head>
 <title>stain clicker</title>
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+</style>
 </head>
 <body>
 <p id="staincount">0</p>
 <button onclick="goorclick()">click</button>
-<button onclick="buyA()">autoclicker</button>
-<button onclick="buyB()">building B</button>
-<button onclick="buyC()">building C</button>
-<button onclick="buyD()">building D</button>
+<table style="width:100%">
+<tr>
+<th>building</th>
+<th>cost</th>
+<th>owned</th>
+</tr>
+<tr>
+<td><button onclick="buyA()">autoclicker</button></td>
+<td>100</td>
+<td ID=BAnum>0</td>
+</tr>
+<tr>
+<td><button onclick="buyB()">stain shop</button></td>
+<td>1000</td>
+<td ID=BBnum>0</td>
+</tr>
+<tr>
+<td><button onclick="buyC()">propaganda</button></td>
+<td>10000</td>
+<td ID=BCnum>0</td>
+</tr>
+<tr>
+<td><button onclick="buyD()">chemichal waste</button></td>
+<td>100</td>
+<td ID=BDnum>0</td>
+</tr>
+</table>
 <button onclick="forcesave()">SAVE</button>
 <script type="text/javascript" src="https://cookieconsent.popupsmart.com/src/js/popper.js"></script>
 <script> window.start.init({Palette:"palette1",Mode:"banner bottom",Theme:"block",Message:"this website uses cookies to store save data for the game",LinkText:" Learn More!",Time:"0",})</script>
@@ -55,6 +84,7 @@ function buyA() {
     stains -= 100;
     buildA += 1;
     document.getElementById("staincount").innerHTML = stains;
+    document.getElementById("BAnum").innerHTML = buildA;
   }
 } //^buy building
 setInterval(prodA, 60000);
@@ -70,6 +100,7 @@ function buyB() {
     stains -= 1000;
     buildB += 1;
     document.getElementById("staincount").innerHTML = stains;
+    document.getElementById("BBnum").innerHTML = buildB;
   }
 } //^buy building
 setInterval(prodB, 5999);
@@ -84,6 +115,7 @@ function buyC() {
     stains -= 10000;
     buildC += 1;
     document.getElementById("staincount").innerHTML = stains;
+    document.getElementById("BCnum").innerHTML = buildC;
   }
 } //^buy building
 setInterval(prodC, 598);
@@ -98,6 +130,7 @@ function buyD() {
     stains -= 100000;
     buildD += 1;
     document.getElementById("staincount").innerHTML = stains;
+    document.getElementById("BDnum").innerHTML = buildD;
   }
 } //^buy building
 setInterval(prodD, 59);
