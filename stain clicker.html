@@ -10,6 +10,7 @@
 <button onclick="buyB()">building B</button>
 <button onclick="buyC()">building C</button>
 <button onclick="buyD()">building D</button>
+<button onclick="forcesave()">SAVE</button>
 <script type="text/javascript" src="https://cookieconsent.popupsmart.com/src/js/popper.js"></script>
 <script> window.start.init({Palette:"palette1",Mode:"banner bottom",Theme:"block",Message:"this website uses cookies to store save data for the game",LinkText:" Learn More!",Time:"0",})</script>
 <script>
@@ -23,6 +24,17 @@ let buildF = getNumberFromCookie("buildF", 0);
 let buildG = getNumberFromCookie("buildG", 0);
 let buildH = getNumberFromCookie("buildH", 0);
 setInterval(autosave, 60000);
+function autosave() {
+  document.cookie = "stains=" + stains + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "buildA=" + buildA + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "buildB=" + buildB + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "buildC=" + buildC + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "buildD=" + buildD + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "buildE=" + buildE + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "buildF=" + buildF + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "buildG=" + buildG + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "buildH=" + buildH + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+}
 function autosave() {
   document.cookie = "stains=" + stains + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
   document.cookie = "buildA=" + buildA + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
@@ -119,6 +131,5 @@ function getNumberFromCookie(cookieName, defaultValue) {
     }
 }
 </script>
-<p>version: beta 1</p>
 </body>
 </html>
