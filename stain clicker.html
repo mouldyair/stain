@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>stain clicker</title>
+</head>
+<body>
+<p id="staincount">0</p>
+<button onclick="goorclick()">click</button>
+<button onclick="buyA()">autoclicker</button>
+<button onclick="buyB()">building B</button>
+<button onclick="buyC()">building C</button>
+<button onclick="buyD()">building D</button>
+<script type="text/javascript" src="https://cookieconsent.popupsmart.com/src/js/popper.js"></script>
+<script> window.start.init({Palette:"palette1",Mode:"banner bottom",Theme:"block",Message:"this website uses cookies to store save data for the game",LinkText:" Learn More!",Time:"0",})</script>
+<script>
+let stains = getNumberFromCookie("stains", 0);
+let buildA = getNumberFromCookie("buildA", 0);
+let buildB = getNumberFromCookie("buildB", 0);
+let buildC = getNumberFromCookie("buildC", 0);
+let buildD = getNumberFromCookie("buildD", 0);
+let buildE = getNumberFromCookie("buildE", 0);
+let buildF = getNumberFromCookie("buildF", 0);
+let buildG = getNumberFromCookie("buildG", 0);
+let buildH = getNumberFromCookie("buildH", 0);
+setInterval(autosave, 60000);
+function autosave() {
+  document.cookie = "stains=" + stains + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "buildA=" + buildA + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "buildB=" + buildB + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "buildC=" + buildC + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "buildD=" + buildD + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "buildE=" + buildE + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "buildF=" + buildF + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "buildG=" + buildG + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "buildH=" + buildH + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+}
+function goorclick() {
+  stains += 1; 
+  document.getElementById("staincount").innerHTML = stains;
+} //^get stains on click    
+function buyA() {
+  if (stains-100 >= 0) {
+    stains -= 100;
+    buildA += 1;
+    document.getElementById("staincount").innerHTML = stains;
+  }
+} //^buy building
+setInterval(prodA, 60000);
+function prodA() {
+  for (let a = buildA; a > 0; a--) {
+    stains += (1);
+  }
+  document.getElementById("staincount").innerHTML = stains;
+} //^building production
+
+function buyB() {
+  if (stains-1000 >= 0) {
+    stains -= 1000;
+    buildB += 1;
+    document.getElementById("staincount").innerHTML = stains;
+  }
+} //^buy building
+setInterval(prodB, 5999);
+function prodB() {
+  for (let b = buildB; b > 0; b--) {
+    stains += (1);
+  }
+  document.getElementById("staincount").innerHTML = stains;
+} //^building production
+function buyC() {
+  if (stains-10000 >= 0) {
+    stains -= 10000;
+    buildC += 1;
+    document.getElementById("staincount").innerHTML = stains;
+  }
+} //^buy building
+setInterval(prodC, 598);
+function prodC() {
+  for (let C = buildC; C > 0; C--) {
+    stains += (1);
+  }
+  document.getElementById("staincount").innerHTML = stains;
+} //^building production
+function buyD() {
+  if (stains-100000 >= 0) {
+    stains -= 100000;
+    buildD += 1;
+    document.getElementById("staincount").innerHTML = stains;
+  }
+} //^buy building
+setInterval(prodD, 59);
+function prodD() {
+  for (let d = buildD; d > 0; d--) {
+    stains += (1);
+  }
+  document.getElementById("staincount").innerHTML = stains;
+} //^building production
+function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i <ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+function getNumberFromCookie(cookieName, defaultValue) {
+  const cookieValue = getCookie(cookieName);
+    if (cookieValue) {
+        return parseInt(cookieValue);
+    } else {
+        return defaultValue
+    }
+}
+</script>
+<p>version: beta 1</p>
+</body>
+</html>
