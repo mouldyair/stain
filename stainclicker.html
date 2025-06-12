@@ -64,6 +64,7 @@
 <script type="text/javascript" src="https://cookieconsent.popupsmart.com/src/js/popper.js"></script>
 <script> window.start.init({Palette:"palette1",Mode:"banner bottom",Theme:"block",Message:"this website uses cookies to store save data for the game",LinkText:" Learn More!",Time:"0",})</script>
 <script> //UI setup
+
 let stains = getNumberFromCookie("stains", 0);
 let buildA = getNumberFromCookie("buildA", 0);
 let buildB = getNumberFromCookie("buildB", 0);
@@ -82,7 +83,7 @@ document.getElementById("BFnum").innerHTML = buildF;
 document.getElementById("BGnum").innerHTML = buildG;
 document.getElementById("BHnum").innerHTML = buildH;
 
-setInterval(updateui, 50)
+setInterval(updateui, 50);
 function updateui() {
   document.getElementById("staincount").innerHTML = stains;
   document.getElementById("sps").innerHTML = "sps≈" + SPS;
@@ -105,9 +106,9 @@ function save() {
 }
  //building and click functions
 function goorclick() {
-  stains += 1; 
+  stains += 1;
   document.getElementById("staincount").innerHTML = stains;
-} //^get stains on click    
+} //^get stains on click
 function buyA() {
   if (stains-100 >= 0) {
     stains -= 100;
@@ -134,14 +135,14 @@ function prodB() {
   for (let b = buildB; b > 0; b--) {
     stains += (1);
   }
-} 
+}
 function buyC() {
   if (stains-10000 >= 0) {
     stains -= 10000;
     buildC += 1;
     let SPS = (buildA * 0.016666)+(buildB * 0.166694)+(buildC * 1.672240)+(buildD * 16.949152)+(buildE * 169.49152)+(buildF * 1694.9152)+(buildG * 16949.152)+(buildH * 169491.52);
   }
-} 
+}
 setInterval(prodC, 598);
 function prodC() {
   for (let C = buildC; C > 0; C--) {
@@ -237,8 +238,7 @@ function getNumberFromCookie(cookieName, defaultValue) {
         return defaultValue
     }
 }
-  
 </script>
-<p>version: beta 13</p>
+<p>version: beta 14</p>
 </body>
 </html>
