@@ -11,9 +11,15 @@
 </head>
 <body>
 <p id="staincount">0</p>
-<p id="sps">0</p>
+<p id="sps">0</p> 
 <img src="images/grugland/goor stain.png" width="200" height="200" onclick="goorclick()">
+<p id=XPBAR>0</p><p id=LVDISPLAY>0</p>
 <table style="width:100%">
+<tr>
+<td><button onclick="LVUP()">level up </button></td>
+<td id="LVCOST">1000 stains</td>
+<td id="LVXPCOST">100 XP</td>
+</tr>
 <tr>
 <th>building</th>
 <th>cost</th>
@@ -74,6 +80,8 @@ let buildE = getNumberFromCookie("buildE", 0);
 let buildF = getNumberFromCookie("buildF", 0);
 let buildG = getNumberFromCookie("buildG", 0);
 let buildH = getNumberFromCookie("buildH", 0);
+let XP = getNumberFromCookie("XP", 0);
+let LV = getNumberFromCookie("LV", 0);
 document.getElementById("BAnum").innerHTML = buildA;
 document.getElementById("BBnum").innerHTML = buildB;
 document.getElementById("BCnum").innerHTML = buildC;
@@ -97,8 +105,23 @@ function save() {
   document.cookie = "buildF=" + buildF + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
   document.cookie = "buildG=" + buildG + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
   document.cookie = "buildH=" + buildH + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "XP=" + XP + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "LV=" + LV + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
 }
  //building and click functions
+function LVUP() {
+if (XP =>((LV*LV*LV*10) +100)) {
+  if (stains => ((LV*LV*LV*10) +1000)) {
+    if (LV < 100 ) {
+      stains -= ((LV*LV*LV*10) +1000));
+      XP = 0;
+      LV++;
+    } else {
+      window.alert("Your already max level");
+    }  
+  }
+}
+}  
 function goorclick() {
   stains += 1;
   document.getElementById("staincount").innerHTML = stains;
@@ -114,6 +137,7 @@ setInterval(prodA, 60000);
 function prodA() {
   for (let a = buildA; a > 0; a--) {
     stains += (1);
+    XP += (1);
   }
 } //^building production
 
@@ -128,6 +152,7 @@ setInterval(prodB, 5999);
 function prodB() {
   for (let b = buildB; b > 0; b--) {
     stains += (1);
+    XP += (1);
   }
 }
 function buyC() {
@@ -141,6 +166,7 @@ setInterval(prodC, 598);
 function prodC() {
   for (let C = buildC; C > 0; C--) {
     stains += (1);
+    XP += (1);
   }
 } //^building production
 function buyD() {
@@ -154,6 +180,7 @@ setInterval(prodD, 59);
 function prodD() {
   for (let d = buildD; d > 0; d--) {
     stains += (1);
+    XP += (1);
   }
 } //^building production
 function buyE() {
@@ -167,6 +194,7 @@ setInterval(prodE, 58);
 function prodE() {
   for (let e = buildE; e > 0; e--) {
     stains += (10);
+    XP += (10);
   }
 }
 function buyF() {
@@ -180,6 +208,7 @@ setInterval(prodF, 57);
 function prodF() {
   for (let f = buildF; f > 0; f--) {
     stains += (100);
+    XP += (100);
   }
 }
 function buyG() {
@@ -193,6 +222,7 @@ setInterval(prodG, 56);
 function prodG() {
   for (let g = buildG; g > 0; g--) {
     stains += (1000);
+    XP += (1000);
   }
 }
 function buyH() {
@@ -206,6 +236,7 @@ setInterval(prodH, 55);
 function prodH() {
   for (let h = buildH; h > 0; h--) {
     stains += (10000);
+    XP += (10000);
   }
 }
 setInterval(updateui, 50);
@@ -216,6 +247,10 @@ function updateui() {
   document.getElementById("BBnum").innerHTML = buildB;
   document.getElementById("BCnum").innerHTML = buildC;
   document.getElementById("BDnum").innerHTML = buildD;
+  document.getElementById("LVCOST").innerHTML = ((LV*LV*LV*10) +1000) + "stains";
+  document.getElementById("LVXPCOST").innerHTML = ((LV*LV*LV*10) +100) + "XP";
+  document.getElementById("XPBAR").innerHTML =  XP + "XP";
+  document.getElementById("LVDISPLAY").innerHTML = "LV" + LV;
 }
  //cookies
 function getCookie(cname) {
@@ -242,6 +277,6 @@ function getNumberFromCookie(cookieName, defaultValue) {
     }
 }
 </script>
-<p>version: beta 18</p>
+<p>version: beta 19</p>
 </body>
 </html>
