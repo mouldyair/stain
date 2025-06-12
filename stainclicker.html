@@ -11,6 +11,7 @@ table, th, td {
 </head>
 <body>
 <p id="staincount">0</p>
+<p id="sps">0</p>
 <img src="images/grugland/goor stain.png" width="200" height="200" onclick="goorclick()">
 <table style="width:100%">
 <tr>
@@ -52,6 +53,7 @@ let buildE = getNumberFromCookie("buildE", 0);
 let buildF = getNumberFromCookie("buildF", 0);
 let buildG = getNumberFromCookie("buildG", 0);
 let buildH = getNumberFromCookie("buildH", 0);
+let SPS = (buildA * 0.016666)+(buildB * 0.166694)+(buildC * 1.672240)+(buildD * 16.949152)
 document.getElementById("BAnum").innerHTML = buildA;
 document.getElementById("BBnum").innerHTML = buildB;
 document.getElementById("BCnum").innerHTML = buildC;
@@ -89,6 +91,7 @@ function buyA() {
     buildA += 1;
     document.getElementById("staincount").innerHTML = stains;
     document.getElementById("BAnum").innerHTML = buildA;
+    let SPS = (buildA * 0.016666)+(buildB * 0.166694)+(buildC * 1.672240)+(buildD * 16.949152)
   }
 } //^buy building
 setInterval(prodA, 60000);
@@ -105,6 +108,8 @@ function buyB() {
     buildB += 1;
     document.getElementById("staincount").innerHTML = stains;
     document.getElementById("BBnum").innerHTML = buildB;
+    let SPS = (buildA * 0.016666)+(buildB * 0.166694)+(buildC * 1.672240)+(buildD * 16.949152)
+    document.getElementById("sps").innerHTML = SPS;
   }
 } //^buy building
 setInterval(prodB, 5999);
@@ -120,6 +125,8 @@ function buyC() {
     buildC += 1;
     document.getElementById("staincount").innerHTML = stains;
     document.getElementById("BCnum").innerHTML = buildC;
+    let SPS = (buildA * 0.016666)+(buildB * 0.166694)+(buildC * 1.672240)+(buildD * 16.949152)
+    document.getElementById("sps").innerHTML = SPS;
   }
 } //^buy building
 setInterval(prodC, 598);
@@ -135,6 +142,8 @@ function buyD() {
     buildD += 1;
     document.getElementById("staincount").innerHTML = stains;
     document.getElementById("BDnum").innerHTML = buildD;
+    let SPS = (buildA * 0.016666)+(buildB * 0.166694)+(buildC * 1.672240)+(buildD * 16.949152)
+    document.getElementById("sps").innerHTML = SPS;
   }
 } //^buy building
 setInterval(prodD, 59);
@@ -168,6 +177,6 @@ function getNumberFromCookie(cookieName, defaultValue) {
     }
 }
 </script>
-<p>version: beta 7</p>
+<p>version: beta 8</p>
 </body>
 </html>
