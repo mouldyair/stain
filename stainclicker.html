@@ -1,13 +1,13 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>stain clicker</title>
-<style>
-table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-}
-</style>
+  <title>stain clicker</title>
+  <style>
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+  </style>
 </head>
 <body>
 <p id="staincount">0</p>
@@ -39,11 +39,31 @@ table, th, td {
 <td>100000</td>
 <td ID=BDnum>0</td>
 </tr>
+<tr>
+<td><button onclick="buyE()">mini goor</button></td>
+<td>1000000</td>
+<td ID=BEnum>0</td>
+</tr>
+<tr>
+<td><button onclick="buyF()">PLACEHOLDER</button></td>
+<td>10000000</td>
+<td ID=BFnum>0</td>
+</tr>
+<tr>
+<td><button onclick="buyG()">PLACEHOLDER</button></td>
+<td>100000000</td>
+<td ID=BGnum>0</td>
+<tr>
+<td><button onclick="buyH()">PLACEHOLDER</button></td>
+<td>1000000000</td>
+<td ID=BHnum>0</td>
+</tr>
+</tr>
 </table>
-<button onclick="forcesave()">SAVE</button>
+<button onclick="save()">SAVE</button>
 <script type="text/javascript" src="https://cookieconsent.popupsmart.com/src/js/popper.js"></script>
 <script> window.start.init({Palette:"palette1",Mode:"banner bottom",Theme:"block",Message:"this website uses cookies to store save data for the game",LinkText:" Learn More!",Time:"0",})</script>
-<script>
+<script> //UI setup
 let stains = getNumberFromCookie("stains", 0);
 let buildA = getNumberFromCookie("buildA", 0);
 let buildB = getNumberFromCookie("buildB", 0);
@@ -53,14 +73,28 @@ let buildE = getNumberFromCookie("buildE", 0);
 let buildF = getNumberFromCookie("buildF", 0);
 let buildG = getNumberFromCookie("buildG", 0);
 let buildH = getNumberFromCookie("buildH", 0);
-let SPS = (buildA * 0.016666)+(buildB * 0.166694)+(buildC * 1.672240)+(buildD * 16.949152)
-document.getElementById("sps").innerHTML = "sps≈" + SPS;
 document.getElementById("BAnum").innerHTML = buildA;
 document.getElementById("BBnum").innerHTML = buildB;
 document.getElementById("BCnum").innerHTML = buildC;
 document.getElementById("BDnum").innerHTML = buildD;
-setInterval(autosave, 60000);
-function autosave() {
+document.getElementById("BEnum").innerHTML = buildE;
+document.getElementById("BFnum").innerHTML = buildF;
+document.getElementById("BGnum").innerHTML = buildG;
+document.getElementById("BHnum").innerHTML = buildH;
+</script>
+<script>
+setInterval(updateui, 50)
+function updateui() {
+  document.getElementById("staincount").innerHTML = stains;
+  document.getElementById("sps").innerHTML = "sps≈" + SPS;
+  document.getElementById("BAnum").innerHTML = buildA;
+  document.getElementById("BBnum").innerHTML = buildB;
+  document.getElementById("BCnum").innerHTML = buildC;
+  document.getElementById("BDnum").innerHTML = buildD;
+</script>
+<script> //save
+setInterval(save, 60000);
+function save() {
   document.cookie = "stains=" + stains + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
   document.cookie = "buildA=" + buildA + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
   document.cookie = "buildB=" + buildB + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
@@ -71,17 +105,8 @@ function autosave() {
   document.cookie = "buildG=" + buildG + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
   document.cookie = "buildH=" + buildH + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
 }
-function forcesave() {
-  document.cookie = "stains=" + stains + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
-  document.cookie = "buildA=" + buildA + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
-  document.cookie = "buildB=" + buildB + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
-  document.cookie = "buildC=" + buildC + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
-  document.cookie = "buildD=" + buildD + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
-  document.cookie = "buildE=" + buildE + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
-  document.cookie = "buildF=" + buildF + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
-  document.cookie = "buildG=" + buildG + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
-  document.cookie = "buildH=" + buildH + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
-}
+</script>
+<script> //building and click functions
 function goorclick() {
   stains += 1; 
   document.getElementById("staincount").innerHTML = stains;
@@ -90,9 +115,7 @@ function buyA() {
   if (stains-100 >= 0) {
     stains -= 100;
     buildA += 1;
-    document.getElementById("staincount").innerHTML = stains;
-    document.getElementById("BAnum").innerHTML = buildA;
-    let SPS = (buildA * 0.016666)+(buildB * 0.166694)+(buildC * 1.672240)+(buildD * 16.949152)
+    let SPS = (buildA * 0.016666)+(buildB * 0.166694)+(buildC * 1.672240)+(buildD * 16.949152)+(buildE * 169.49152)+(buildF * 1694.9152)+(buildG * 16949.152)+(buildH * 169491.52)
   }
 } //^buy building
 setInterval(prodA, 60000);
@@ -100,17 +123,13 @@ function prodA() {
   for (let a = buildA; a > 0; a--) {
     stains += (1);
   }
-  document.getElementById("staincount").innerHTML = stains;
 } //^building production
 
 function buyB() {
   if (stains-1000 >= 0) {
     stains -= 1000;
     buildB += 1;
-    document.getElementById("staincount").innerHTML = stains;
-    document.getElementById("BBnum").innerHTML = buildB;
-    let SPS = (buildA * 0.016666)+(buildB * 0.166694)+(buildC * 1.672240)+(buildD * 16.949152)
-    document.getElementById("sps").innerHTML = "sps≈" + SPS;
+    let SPS = (buildA * 0.016666)+(buildB * 0.166694)+(buildC * 1.672240)+(buildD * 16.949152)+(buildE * 169.49152)+(buildF * 1694.9152)+(buildG * 16949.152)+(buildH * 169491.52)
   }
 } //^buy building
 setInterval(prodB, 5999);
@@ -118,33 +137,25 @@ function prodB() {
   for (let b = buildB; b > 0; b--) {
     stains += (1);
   }
-  document.getElementById("staincount").innerHTML = stains;
-} //^building production
+} 
 function buyC() {
   if (stains-10000 >= 0) {
     stains -= 10000;
     buildC += 1;
-    document.getElementById("staincount").innerHTML = stains;
-    document.getElementById("BCnum").innerHTML = buildC;
-    let SPS = (buildA * 0.016666)+(buildB * 0.166694)+(buildC * 1.672240)+(buildD * 16.949152)
-    document.getElementById("sps").innerHTML = "sps≈" + SPS;
+    let SPS = (buildA * 0.016666)+(buildB * 0.166694)+(buildC * 1.672240)+(buildD * 16.949152)+(buildE * 169.49152)+(buildF * 1694.9152)+(buildG * 16949.152)+(buildH * 169491.52)
   }
-} //^buy building
+} 
 setInterval(prodC, 598);
 function prodC() {
   for (let C = buildC; C > 0; C--) {
     stains += (1);
   }
-  document.getElementById("staincount").innerHTML = stains;
 } //^building production
 function buyD() {
   if (stains-100000 >= 0) {
     stains -= 100000;
     buildD += 1;
-    document.getElementById("staincount").innerHTML = stains;
-    document.getElementById("BDnum").innerHTML = buildD;
-    let SPS = (buildA * 0.016666)+(buildB * 0.166694)+(buildC * 1.672240)+(buildD * 16.949152)
-    document.getElementById("sps").innerHTML = "sps≈" + SPS;
+    let SPS = (buildA * 0.016666)+(buildB * 0.166694)+(buildC * 1.672240)+(buildD * 16.949152)+(buildE * 169.49152)+(buildF * 1694.9152)+(buildG * 16949.152)+(buildH * 169491.52)
   }
 } //^buy building
 setInterval(prodD, 59);
@@ -152,8 +163,61 @@ function prodD() {
   for (let d = buildD; d > 0; d--) {
     stains += (1);
   }
-  document.getElementById("staincount").innerHTML = stains;
 } //^building production
+function buyE() {
+  if (stains-1000000 >= 0) {
+    stains -= 1000000;
+    buildE += 1;
+    let SPS = (buildA * 0.016666)+(buildB * 0.166694)+(buildC * 1.672240)+(buildD * 16.949152)+(buildE * 169.49152)+(buildF * 1694.9152)+(buildG * 16949.152)+(buildH * 169491.52)
+  }
+} //^buy building
+setInterval(prodE, 58);
+function prodE() {
+  for (let e = buildE; e > 0; e--) {
+    stains += (10);
+  }
+}
+function buyF() {
+  if (stains-10000000 >= 0) {
+    stains -= 10000000;
+    buildF += 1;
+    let SPS = (buildA * 0.016666)+(buildB * 0.166694)+(buildC * 1.672240)+(buildD * 16.949152)+(buildE * 169.49152)+(buildF * 1694.9152)+(buildG * 16949.152)+(buildH * 169491.52)
+  }
+} //^buy building
+setInterval(prodF, 57);
+function prodF() {
+  for (let f = buildF; f > 0; f--) {
+    stains += (100);
+  }
+}
+function buyG() {
+  if (stains-100000000 >= 0) {
+    stains -= 100000000;
+    buildE += 1;
+    let SPS = (buildA * 0.016666)+(buildB * 0.166694)+(buildC * 1.672240)+(buildD * 16.949152)+(buildE * 169.49152)+(buildF * 1694.9152)+(buildG * 16949.152)+(buildH * 169491.52)
+  }
+} //^buy building
+setInterval(prodG, 56);
+function prodG() {
+  for (let g = buildG; g > 0; g--) {
+    stains += (1000);
+  }
+}
+function buyH() {
+  if (stains-1000000000 >= 0) {
+    stains -= 1000000000;
+    buildH += 1;
+    let SPS = (buildA * 0.016666)+(buildB * 0.166694)+(buildC * 1.672240)+(buildD * 16.949152)+(buildE * 169.49152)+(buildF * 1694.9152)+(buildG * 16949.152)+(buildH * 169491.52)
+  }
+} //^buy building
+setInterval(prodH, 55);
+function prodH() {
+  for (let h = buildH; h > 0; h--) {
+    stains += (10000);
+  }
+}
+</script>
+<script> //cookies
 function getCookie(cname) {
   let name = cname + "=";
   let decodedCookie = decodeURIComponent(document.cookie);
@@ -178,6 +242,6 @@ function getNumberFromCookie(cookieName, defaultValue) {
     }
 }
 </script>
-<p>version: beta 9</p>
+<p>version: beta 10</p>
 </body>
 </html>
