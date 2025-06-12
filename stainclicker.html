@@ -81,8 +81,7 @@ document.getElementById("BEnum").innerHTML = buildE;
 document.getElementById("BFnum").innerHTML = buildF;
 document.getElementById("BGnum").innerHTML = buildG;
 document.getElementById("BHnum").innerHTML = buildH;
-</script>
-<script>
+
 setInterval(updateui, 50)
 function updateui() {
   document.getElementById("staincount").innerHTML = stains;
@@ -91,8 +90,7 @@ function updateui() {
   document.getElementById("BBnum").innerHTML = buildB;
   document.getElementById("BCnum").innerHTML = buildC;
   document.getElementById("BDnum").innerHTML = buildD;
-</script>
-<script> //save
+ //save
 setInterval(save, 60000);
 function save() {
   document.cookie = "stains=" + stains + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
@@ -105,8 +103,7 @@ function save() {
   document.cookie = "buildG=" + buildG + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
   document.cookie = "buildH=" + buildH + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
 }
-</script>
-<script> //building and click functions
+ //building and click functions
 function goorclick() {
   stains += 1; 
   document.getElementById("staincount").innerHTML = stains;
@@ -216,8 +213,7 @@ function prodH() {
     stains += (10000);
   }
 }
-</script>
-<script> //cookies
+ //cookies
 function getCookie(cname) {
   let name = cname + "=";
   let decodedCookie = decodeURIComponent(document.cookie);
@@ -242,6 +238,6 @@ function getNumberFromCookie(cookieName, defaultValue) {
     }
 }
 </script>
-<p>version: beta 10</p>
+<p>version: beta 11</p>
 </body>
 </html>
