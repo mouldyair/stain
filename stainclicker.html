@@ -83,15 +83,7 @@ document.getElementById("BFnum").innerHTML = buildF;
 document.getElementById("BGnum").innerHTML = buildG;
 document.getElementById("BHnum").innerHTML = buildH;
 
-setInterval(updateui, 50);
-function updateui() {
-  document.getElementById("staincount").innerHTML = stains;
-  document.getElementById("sps").innerHTML = "sps≈" + SPS;
-  document.getElementById("BAnum").innerHTML = buildA;
-  document.getElementById("BBnum").innerHTML = buildB;
-  document.getElementById("BCnum").innerHTML = buildC;
-  document.getElementById("BDnum").innerHTML = buildD;
-}
+
  //save
 setInterval(save, 60000);
 function save() {
@@ -215,6 +207,15 @@ function prodH() {
     stains += (10000);
   }
 }
+setInterval(updateui, 50);
+function updateui() {
+  document.getElementById("staincount").innerHTML = stains;
+  document.getElementById("sps").innerHTML = "sps≈" + SPS;
+  document.getElementById("BAnum").innerHTML = buildA;
+  document.getElementById("BBnum").innerHTML = buildB;
+  document.getElementById("BCnum").innerHTML = buildC;
+  document.getElementById("BDnum").innerHTML = buildD;
+}
  //cookies
 function getCookie(cname) {
   let name = cname + "=";
@@ -240,6 +241,6 @@ function getNumberFromCookie(cookieName, defaultValue) {
     }
 }
 </script>
-<p>version: beta 15</p>
+<p>version: beta 16</p>
 </body>
 </html>
