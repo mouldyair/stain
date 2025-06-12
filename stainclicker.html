@@ -52,6 +52,10 @@ let buildE = getNumberFromCookie("buildE", 0);
 let buildF = getNumberFromCookie("buildF", 0);
 let buildG = getNumberFromCookie("buildG", 0);
 let buildH = getNumberFromCookie("buildH", 0);
+document.getElementById("BAnum").innerHTML = buildA;
+document.getElementById("BBnum").innerHTML = buildB;
+document.getElementById("BCnum").innerHTML = buildC;
+document.getElementById("BDnum").innerHTML = buildD;
 setInterval(autosave, 60000);
 function autosave() {
   document.cookie = "stains=" + stains + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
