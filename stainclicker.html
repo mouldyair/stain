@@ -54,6 +54,7 @@ let buildF = getNumberFromCookie("buildF", 0);
 let buildG = getNumberFromCookie("buildG", 0);
 let buildH = getNumberFromCookie("buildH", 0);
 let SPS = (buildA * 0.016666)+(buildB * 0.166694)+(buildC * 1.672240)+(buildD * 16.949152)
+document.getElementById("sps").innerHTML = "sps≈" + SPS;
 document.getElementById("BAnum").innerHTML = buildA;
 document.getElementById("BBnum").innerHTML = buildB;
 document.getElementById("BCnum").innerHTML = buildC;
@@ -109,7 +110,7 @@ function buyB() {
     document.getElementById("staincount").innerHTML = stains;
     document.getElementById("BBnum").innerHTML = buildB;
     let SPS = (buildA * 0.016666)+(buildB * 0.166694)+(buildC * 1.672240)+(buildD * 16.949152)
-    document.getElementById("sps").innerHTML = SPS;
+    document.getElementById("sps").innerHTML = "sps≈" + SPS;
   }
 } //^buy building
 setInterval(prodB, 5999);
@@ -126,7 +127,7 @@ function buyC() {
     document.getElementById("staincount").innerHTML = stains;
     document.getElementById("BCnum").innerHTML = buildC;
     let SPS = (buildA * 0.016666)+(buildB * 0.166694)+(buildC * 1.672240)+(buildD * 16.949152)
-    document.getElementById("sps").innerHTML = SPS;
+    document.getElementById("sps").innerHTML = "sps≈" + SPS;
   }
 } //^buy building
 setInterval(prodC, 598);
@@ -143,7 +144,7 @@ function buyD() {
     document.getElementById("staincount").innerHTML = stains;
     document.getElementById("BDnum").innerHTML = buildD;
     let SPS = (buildA * 0.016666)+(buildB * 0.166694)+(buildC * 1.672240)+(buildD * 16.949152)
-    document.getElementById("sps").innerHTML = SPS;
+    document.getElementById("sps").innerHTML = "sps≈" + SPS;
   }
 } //^buy building
 setInterval(prodD, 59);
@@ -177,6 +178,6 @@ function getNumberFromCookie(cookieName, defaultValue) {
     }
 }
 </script>
-<p>version: beta 8</p>
+<p>version: beta 9</p>
 </body>
 </html>
