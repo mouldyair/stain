@@ -110,10 +110,10 @@ function save() {
 }
  //building and click functions
 function LVUP() {
-if (XP =>((LV*LV*LV*10) +100)) {
-  if (stains => ((LV*LV*LV*10) +1000)) {
+if (XP =>((LV*LV*LV*15) +100)) {
+  if (stains => ((LV*LV*LV*15) +1500)) {
     if (LV < 100 ) {
-      stains -= ((LV*LV*LV*10) +1000);
+      stains -= ((LV*LV*LV*15) +1500);
       XP = 0;
       LV++;
     } else {
@@ -124,6 +124,11 @@ if (XP =>((LV*LV*LV*10) +100)) {
 }  
 function goorclick() {
   stains += (LV*LV)+1;
+  if (XP - LV >= 0) {
+    XP -= (LV)
+  } else {
+    XP = 0
+  }
   document.getElementById("staincount").innerHTML = stains;
 } //^get stains on click
 function buyA() {
@@ -277,6 +282,6 @@ function getNumberFromCookie(cookieName, defaultValue) {
     }
 }
 </script>
-<p>version: beta 21</p>
+<p>version: beta 22</p>
 </body>
 </html>
