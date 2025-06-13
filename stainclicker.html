@@ -110,8 +110,8 @@ function save() {
 }
  //building and click functions
 function LVUP() {
-if (XP =>((LV*LV*LV*15) +100)) {
-  if (stains => ((LV*LV*LV*15) +1500)) {
+if (XP - ((LV*LV*LV*15) +100) >= 0) {
+  if (stains - ((LV*LV*LV*15) +1500) >= 0) {
     if (LV < 100 ) {
       stains -= ((LV*LV*LV*15) +1500);
       XP = 0;
@@ -252,9 +252,9 @@ function updateui() {
   document.getElementById("BBnum").innerHTML = buildB;
   document.getElementById("BCnum").innerHTML = buildC;
   document.getElementById("BDnum").innerHTML = buildD;
-  document.getElementById("LVCOST").innerHTML = ((LV*LV*LV*10) +1000) + "stains";
-  document.getElementById("LVXPCOST").innerHTML = ((LV*LV*LV*10) +100) + "XP";
-  document.getElementById("XPBAR").innerHTML =  XP + "XP";
+  document.getElementById("LVCOST").innerHTML = ((LV*LV*LV*15) +1500) + " stains";
+  document.getElementById("LVXPCOST").innerHTML = ((LV*LV*LV*15) +100) + " XP";
+  document.getElementById("XPBAR").innerHTML =  XP + " XP";
   document.getElementById("LVDISPLAY").innerHTML = "LV" + LV;
 }
  //cookies
@@ -282,6 +282,6 @@ function getNumberFromCookie(cookieName, defaultValue) {
     }
 }
 </script>
-<p>version: beta 22</p>
+<p>version: beta 23</p>
 </body>
 </html>
