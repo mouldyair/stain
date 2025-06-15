@@ -12,6 +12,7 @@
 <body>
 <p id="staincount">0</p>
 <p id="sps">0</p> 
+<p id="spc">0</p>
 <img src="images/grugland/goor stain.png" width="200" height="200" onclick="goorclick()">
 <p id=XPBAR>0</p><p id=LVDISPLAY>0</p>
 <table style="width:100%">
@@ -82,6 +83,7 @@ let buildG = getNumberFromCookie("buildG", 0);
 let buildH = getNumberFromCookie("buildH", 0);
 let XP = getNumberFromCookie("XP", 0);
 let LV = getNumberFromCookie("LV", 0);
+let SPC = math.roun(LV*LV*0.9)+1;
 document.getElementById("BAnum").innerHTML = buildA;
 document.getElementById("BBnum").innerHTML = buildB;
 document.getElementById("BCnum").innerHTML = buildC;
@@ -116,6 +118,7 @@ if (XP - ((LV*LV*LV*15) +100) >= 0) {
       stains -= ((LV*LV*LV*15) +1500);
       XP = 0;
       LV++;
+      SPC = math.roun(LV*LV*0.9)+1;
     } else {
       window.alert("Your already max level");
     }  
@@ -256,6 +259,7 @@ function updateui() {
   document.getElementById("LVXPCOST").innerHTML = ((LV*LV*LV*15) +100) + " XP";
   document.getElementById("XPBAR").innerHTML =  XP + " XP";
   document.getElementById("LVDISPLAY").innerHTML = "LV" + LV;
+  document.getElementbyid("spc").innerHTML = "SPC = " + SPC
 }
  //cookies
 function getCookie(cname) {
@@ -282,6 +286,6 @@ function getNumberFromCookie(cookieName, defaultValue) {
     }
 }
 </script>
-<p>version: beta 25</p>
+<p>version: beta 26</p>
 </body>
 </html>
