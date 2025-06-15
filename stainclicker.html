@@ -128,9 +128,9 @@ if (XP - ((LV*LV*LV*15) +100) >= 0) {
 function goorclick() {
   stains += math.round(LV*LV*0.9)+1;
   if (XP - (LV*2) >= 0) {
-    XP -= (LV*2)
+    XP -= (LV*2);
   } else {
-    XP = 0
+    XP = 0;
   }
   document.getElementById("staincount").innerHTML = stains;
 } //^get stains on click
@@ -259,7 +259,7 @@ function updateui() {
   document.getElementById("LVXPCOST").innerHTML = ((LV*LV*LV*15) +100) + " XP";
   document.getElementById("XPBAR").innerHTML =  XP + " XP";
   document.getElementById("LVDISPLAY").innerHTML = "LV" + LV;
-  document.getElementbyid("spc").innerHTML = "SPC = " + SPC
+  document.getElementbyid("spc").innerHTML = "SPC = " + SPC;
 }
  //cookies
 function getCookie(cname) {
@@ -286,6 +286,6 @@ function getNumberFromCookie(cookieName, defaultValue) {
     }
 }
 </script>
-<p>version: beta 26</p>
+<p>version: beta 27</p>
 </body>
 </html>
