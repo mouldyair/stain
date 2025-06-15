@@ -123,7 +123,7 @@ if (XP - ((LV*LV*LV*15) +100) >= 0) {
 }
 }  
 function goorclick() {
-  stains += (LV*LV)+1;
+  stains += math.round(LV*LV*0.9)+1;
   if (XP - (LV*2) >= 0) {
     XP -= (LV*2)
   } else {
@@ -282,6 +282,6 @@ function getNumberFromCookie(cookieName, defaultValue) {
     }
 }
 </script>
-<p>version: beta 24</p>
+<p>version: beta 25</p>
 </body>
 </html>
