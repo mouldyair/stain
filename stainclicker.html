@@ -7,6 +7,38 @@
       border: 1px solid black;
       border-collapse: collapse;
     }
+    div {
+      width:30%;  
+      display:inline-block;
+    }
+    //colapsible
+    .collapsible {
+      background-color: #777;
+      color: white;
+      cursor: pointer;
+      padding: 18px;
+      width: 100%;
+      border: none;
+      text-align: left;
+      outline: none;
+      font-size: 15px;
+    }
+
+    .active, .collapsible:hover {
+      background-color: #555;
+    }
+
+    .content {
+      padding: 0 18px;
+      display: none;
+      overflow: hidden;
+      background-color: #f1f1f1;
+    }
+    //table
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
   </style>
 </head>
 <body>
@@ -15,6 +47,10 @@
 <p id="spc">0</p>
 <img src="images/grugland/goor stain.png" width="200" height="200" onclick="goorclick()">
 <p id=XPBAR>0</p><p id=LVDISPLAY>0</p>
+<button type="button" class="collapsible">buildings and LV</button>
+
+  <!----- START OF PAGE ONE ----->
+<div class="content">
 <table style="width:100%">
 <tr>
 <td><button onclick="LVUP()">level up </button></td>
@@ -67,7 +103,18 @@
 </tr>
 </tr>
 </table>
-<button onclick="save()">SAVE</button>
+</div>
+<button type="button" class="collapsible">comming soon</button>
+<div class="content">
+<p>comming soon</p>
+</div>
+<button onclick="save()">SAVE</button> 
+
+
+<!----------------SCRIPTS BELLOW----------------- -->
+  
+
+
 <script type="text/javascript" src="https://cookieconsent.popupsmart.com/src/js/popper.js"></script>
 <script> window.start.init({Palette:"palette1",Mode:"banner bottom",Theme:"block",Message:"this website uses cookies to store save data for the game",LinkText:" Learn More!",Time:"0",})</script>
 <script> //UI setup
@@ -285,7 +332,21 @@ function getNumberFromCookie(cookieName, defaultValue) {
         return defaultValue
     }
 }
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
 </script>
-<p>version: beta 31</p>
+<p>version: beta 32</p>
 </body>
 </html>
