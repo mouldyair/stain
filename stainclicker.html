@@ -7,9 +7,9 @@
       border: 1px solid black;
       border-collapse: collapse;
     }
-    div {
-      width:30%;  
-      display:inline-block;
+    .grid-container {
+      display: grid;
+      grid-template-columns: 33% 33% 33%;
     }
     //colapsible
     .collapsible {
@@ -102,6 +102,7 @@
 </tr>
 </table>
 </div>
+<div class="grid-container">
 <div>
 <button onclick="ascend()">ASCEND</button>
 <table>
@@ -118,6 +119,7 @@
 <td>comming soon</td>
 </tr>
 </table>
+</div>
 </div>
 <button onclick="save()">SAVE</button> 
 
@@ -387,6 +389,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-<p>version: beta 36</p>
+<p>version: beta 37</p>
 </body>
 </html>
