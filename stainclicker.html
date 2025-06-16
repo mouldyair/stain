@@ -103,7 +103,21 @@
 </table>
 </div>
 <div>
-<p>comming soon</p>
+<button onclick="ascend()">ASCEND</button>
+<table>
+<tr>
+<th>ascension</th>
+<th>cost</th>
+<th>XP cost</th>
+<th>unlocks</th>
+</tr>
+<tr>
+<td>1</td>
+<td>15000000 stains</td>
+<td>10000000 XP</td>
+<td>comming soon</td>
+</tr>
+</table>
 </div>
 <button onclick="save()">SAVE</button> 
 
@@ -127,6 +141,7 @@ let buildG = getNumberFromCookie("buildG", 0);
 let buildH = getNumberFromCookie("buildH", 0);
 let XP = getNumberFromCookie("XP", 0);
 let LV = getNumberFromCookie("LV", 0);
+let asc = getNumberFromCookie("asc", 0)
 let SPC = Math.round(LV*LV*0.9)+1;
 document.getElementById("BAnum").innerHTML = buildA;
 document.getElementById("BBnum").innerHTML = buildB;
@@ -153,6 +168,7 @@ function save() {
   document.cookie = "buildH=" + buildH + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
   document.cookie = "XP=" + XP + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
   document.cookie = "LV=" + LV + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "asc=" + asc + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
 }
  //building and click functions
 function LVUP() {
@@ -168,6 +184,29 @@ if (XP - ((LV*LV*LV*15) +100) >= 0) {
     }
   }
 }
+}
+function ascend() {
+  if (LV = 100) {
+    if (stains >= (15000000 * asc)) {
+      if (XP >= (10000000 * asc)) {
+        stains = 0;
+        XP = 0;
+        LV = 0;
+        buildA = 0;
+        buildB = 0;
+        buildC = 0;
+        buildD = 0;
+        buildE = 0;
+        buildF = 0;
+        buildG = 0;
+        buildH = 0;
+        asc++
+        save();
+      }
+    }
+  } else {
+    window.alert("you need to be level 100");
+  }
 }
 function goorclick() {
   stains += Math.round(LV*LV*0.9)+1;
@@ -304,6 +343,10 @@ function updateui() {
   document.getElementById("XPBAR").innerHTML =  XP + " XP";
   document.getElementById("LVDISPLAY").innerHTML = "LV" + LV;
   document.getElementById("spc").innerHTML = "SPC = " + SPC;
+  document.getElementById("BEnum").innerHTML = buildE;
+  document.getElementById("BFnum").innerHTML = buildF;
+  document.getElementById("BGnum").innerHTML = buildG;
+  document.getElementById("BHnum").innerHTML = buildH;
 }
  //cookies
 function getCookie(cname) {
@@ -344,6 +387,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-<p>version: beta 34</p>
+<p>version: beta 35</p>
 </body>
 </html>
