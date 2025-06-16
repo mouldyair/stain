@@ -83,7 +83,7 @@ let buildG = getNumberFromCookie("buildG", 0);
 let buildH = getNumberFromCookie("buildH", 0);
 let XP = getNumberFromCookie("XP", 0);
 let LV = getNumberFromCookie("LV", 0);
-let SPC = math.round(LV*LV*0.9)+1;
+let SPC = Math.round(LV*LV*0.9)+1;
 document.getElementById("BAnum").innerHTML = buildA;
 document.getElementById("BBnum").innerHTML = buildB;
 document.getElementById("BCnum").innerHTML = buildC;
@@ -118,7 +118,7 @@ if (XP - ((LV*LV*LV*15) +100) >= 0) {
       stains -= ((LV*LV*LV*15) +1500);
       XP = 0;
       LV++;
-      SPC = math.round(LV*LV*0.9)+1;
+      SPC = Math.round(LV*LV*0.9)+1;
     } else {
       window.alert("Your already max level");
     }
@@ -126,7 +126,7 @@ if (XP - ((LV*LV*LV*15) +100) >= 0) {
 }
 }
 function goorclick() {
-  stains += math.round(LV*LV*0.9)+1;
+  stains += Math.round(LV*LV*0.9)+1;
   if (XP - (LV*2) >= 0) {
     XP -= (LV*2)
   } else {
@@ -259,7 +259,7 @@ function updateui() {
   document.getElementById("LVXPCOST").innerHTML = ((LV*LV*LV*15) +100) + " XP";
   document.getElementById("XPBAR").innerHTML =  XP + " XP";
   document.getElementById("LVDISPLAY").innerHTML = "LV" + LV;
-  document.getElementbyid("spc").innerHTML = "SPC = " + SPC;
+  document.getElementById("spc").innerHTML = "SPC = " + SPC;
 }
  //cookies
 function getCookie(cname) {
@@ -286,6 +286,6 @@ function getNumberFromCookie(cookieName, defaultValue) {
     }
 }
 </script>
-<p>version: beta 30</p>
+<p>version: beta 31</p>
 </body>
 </html>
