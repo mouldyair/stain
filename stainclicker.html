@@ -213,6 +213,8 @@ function ascend() {
         buildF = 0;
         buildG = 0;
         buildH = 0;
+        Crystals = 0;
+        crstl_prod = 0;
         asc++
         save();
       }
@@ -344,8 +346,10 @@ function prodH() {
   }
 }
 function done_crstl_prod() {
-  crstl_prod = 0;
-  Crystals++;
+  if (crstl_prod > 0) {
+    crstl_prod = 0;
+    Crystals++;
+  }
 }
 function start_crstl_prod() {
   if (stains >= (100000 + (SPC*100))) {
@@ -417,6 +421,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-<p>version: beta 40</p>
+<p>version: beta 41</p>
 </body>
 </html>
