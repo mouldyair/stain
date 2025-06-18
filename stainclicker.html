@@ -42,7 +42,8 @@
   </style>
 </head>
 <body>
-<p id="staincount">0</p>
+<p id="staincount" style="margin: 0; display: inline;">0</p>
+<p id="crstldisplay" style="margin: 0; display: inline;">0</p>
 <p id="sps">0</p> 
 <p id="spc">0</p>
 <img src="images/grugland/goor stain.png" width="200" height="200" onclick="goorclick()">
@@ -116,9 +117,14 @@
 <td>1</td>
 <td>15000000 stains</td>
 <td>10000000 XP</td>
-<td>comming soon</td>
+<td>crystalisation device</td>
 </tr>
 </table>
+</div>
+<div>
+<p>crystalisation device</p>
+<p ID=crdevicecost>0</p>
+<button onclick="start_crstl_prod()">start device</button>
 </div>
 </div>
 <button onclick="save()">SAVE</button> 
@@ -144,6 +150,7 @@ let buildH = getNumberFromCookie("buildH", 0);
 let XP = getNumberFromCookie("XP", 0);
 let LV = getNumberFromCookie("LV", 0);
 let asc = getNumberFromCookie("asc", 0)
+let Crystals = getNumberFromCookie("crstl", 0)
 let SPC = Math.round(LV*LV*0.9)+1;
 document.getElementById("BAnum").innerHTML = buildA;
 document.getElementById("BBnum").innerHTML = buildB;
@@ -153,6 +160,8 @@ document.getElementById("BEnum").innerHTML = buildE;
 document.getElementById("BFnum").innerHTML = buildF;
 document.getElementById("BGnum").innerHTML = buildG;
 document.getElementById("BHnum").innerHTML = buildH;
+document.getElementById("crdevicecost").innerHTML = "Cost:" + (100000 + (spc*100)) + "stains"
+document.getElementById("crstldisplay").innerHTML = Crystals + " crystalized stains";
 let SPS = (buildA * 0.016666)+(buildB * 0.166694)+(buildC * 1.672240)+(buildD * 16.949152)+(buildE * 169.49152)+(buildF * 1694.9152)+(buildG * 16949.152)+(buildH * 169491.52);
 
 
@@ -171,6 +180,7 @@ function save() {
   document.cookie = "XP=" + XP + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
   document.cookie = "LV=" + LV + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
   document.cookie = "asc=" + asc + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "crstl=" + Crystals + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
 }
  //building and click functions
 function LVUP() {
@@ -332,9 +342,24 @@ function prodH() {
     XP += (10000);
   }
 }
+function done_crstl_prod() {
+  crstl_prod = 0;
+  Crystals++;
+}
+function start_crstl_prod() {
+  if (stains >= (100000 + (spc*100))) {
+    if (asc >= 1) {
+      if (crstl_prod > 0) {
+        stains -= (100000 + (spc*1000));
+        setTimeout(crstl(), 3600000);
+        crstl_prod = 1;
+      }
+    }
+  }
+}
 setInterval(updateui, 50);
 function updateui() {
-  document.getElementById("staincount").innerHTML = stains;
+  document.getElementById("staincount").innerHTML = stains + " stains";
   document.getElementById("sps").innerHTML = "sps≈" + SPS;
   document.getElementById("BAnum").innerHTML = buildA;
   document.getElementById("BBnum").innerHTML = buildB;
@@ -349,6 +374,8 @@ function updateui() {
   document.getElementById("BFnum").innerHTML = buildF;
   document.getElementById("BGnum").innerHTML = buildG;
   document.getElementById("BHnum").innerHTML = buildH;
+  document.getElementById("crdevicecost").innerHTML = "Cost:" + (100000 + (spc*100)) + "stains";
+  document.getElementById("crstldisplay").innerHTML = Crystals + " crystalized stains";
 }
  //cookies
 function getCookie(cname) {
@@ -389,6 +416,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-<p>version: beta 38</p>
+<p>version: beta 39</p>
 </body>
 </html>
