@@ -152,6 +152,7 @@ let LV = getNumberFromCookie("LV", 0);
 let asc = getNumberFromCookie("asc", 0)
 let Crystals = getNumberFromCookie("crstl", 0)
 let SPC = Math.round(LV*LV*0.9)+1;
+let crstl_prod = 0;
 document.getElementById("BAnum").innerHTML = buildA;
 document.getElementById("BBnum").innerHTML = buildB;
 document.getElementById("BCnum").innerHTML = buildC;
@@ -160,7 +161,7 @@ document.getElementById("BEnum").innerHTML = buildE;
 document.getElementById("BFnum").innerHTML = buildF;
 document.getElementById("BGnum").innerHTML = buildG;
 document.getElementById("BHnum").innerHTML = buildH;
-document.getElementById("crdevicecost").innerHTML = "Cost:" + (100000 + (spc*100)) + "stains"
+document.getElementById("crdevicecost").innerHTML = "Cost:" + (100000 + (SPC*100)) + "stains";
 document.getElementById("crstldisplay").innerHTML = Crystals + " crystalized stains";
 let SPS = (buildA * 0.016666)+(buildB * 0.166694)+(buildC * 1.672240)+(buildD * 16.949152)+(buildE * 169.49152)+(buildF * 1694.9152)+(buildG * 16949.152)+(buildH * 169491.52);
 
@@ -347,10 +348,10 @@ function done_crstl_prod() {
   Crystals++;
 }
 function start_crstl_prod() {
-  if (stains >= (100000 + (spc*100))) {
+  if (stains >= (100000 + (SPC*100))) {
     if (asc >= 1) {
       if (crstl_prod > 0) {
-        stains -= (100000 + (spc*1000));
+        stains -= (100000 + (SPC*1000));
         setTimeout(crstl(), 3600000);
         crstl_prod = 1;
       }
@@ -374,7 +375,7 @@ function updateui() {
   document.getElementById("BFnum").innerHTML = buildF;
   document.getElementById("BGnum").innerHTML = buildG;
   document.getElementById("BHnum").innerHTML = buildH;
-  document.getElementById("crdevicecost").innerHTML = "Cost:" + (100000 + (spc*100)) + "stains";
+  document.getElementById("crdevicecost").innerHTML = "Cost:" + (100000 + (SPC*100)) + "stains";
   document.getElementById("crstldisplay").innerHTML = Crystals + " crystalized stains";
 }
  //cookies
@@ -416,6 +417,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-<p>version: beta 39</p>
+<p>version: beta 40</p>
 </body>
 </html>
