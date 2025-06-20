@@ -119,6 +119,12 @@
 <td>10000000 XP</td>
 <td>crystalisation device</td>
 </tr>
+<tr>
+<td>2</td>
+<td>3000000 stains</td>
+<td>20000000 XP</td>
+<td>comming soon</td>
+</tr>
 </table>
 </div>
 <div>
@@ -200,8 +206,8 @@ if (XP - ((LV*LV*LV*15) +100) >= 0) {
 }
 function ascend() {
   if (LV >= 100) {
-    if (stains >= (15000000 * asc)) {
-      if (XP >= (10000000 * asc)) {
+    if (stains >= (15000000 * asc * asc) + 15000000) {
+      if (XP >= (10000000 * asc * asc) + 10000000) {
         stains = 0;
         XP = 0;
         LV = 0;
@@ -213,7 +219,6 @@ function ascend() {
         buildF = 0;
         buildG = 0;
         buildH = 0;
-        Crystals = 0;
         crstl_prod = 0;
         asc++
         save();
@@ -422,6 +427,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-<p>version: beta 46</p>
+<p>version: beta 47</p>
 </body>
 </html>
