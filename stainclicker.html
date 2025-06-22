@@ -371,7 +371,9 @@ function start_crstl_prod() {
 setInterval(updateui, 50);
 function updateui() {
   document.getElementById("staincount").innerHTML = stains + " stains";
+  SPS = (buildA * 0.016666)+(buildB * 0.166694)+(buildC * 1.672240)+(buildD * 16.949152)+(buildE * 169.49152)+(buildF * 1694.9152)+(buildG * 16949.152)+(buildH * 169491.52);
   document.getElementById("sps").innerHTML = "sps≈" + SPS;
+  SPC = Math.round(LV*LV*0.9)+1;
   document.getElementById("BAnum").innerHTML = buildA;
   document.getElementById("BBnum").innerHTML = buildB;
   document.getElementById("BCnum").innerHTML = buildC;
@@ -427,6 +429,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-<p>version: beta 47</p>
+<p>version: beta 48</p>
 </body>
 </html>
