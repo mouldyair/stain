@@ -47,7 +47,9 @@
 <p id="sps">0</p> 
 <p id="spc">0</p>
 <img src="images/grugland/goor stain.png" width="200" height="200" onclick="goorclick()">
-<p id=XPBAR>0</p><p id=LVDISPLAY>0</p>
+<p id=XPBAR>0</p>
+<p id=LVDISPLAY style="margin: 0; display: inline;">0</p>
+<p id=ascdis style="margin: 0; display: inline;">0</p>
   <!----- START OF PAGE ONE ----->
 <div>
 <table style="width:100%">
@@ -387,6 +389,7 @@ function updateui() {
   document.getElementById("BFnum").innerHTML = buildF;
   document.getElementById("BGnum").innerHTML = buildG;
   document.getElementById("BHnum").innerHTML = buildH;
+  document.getElementById("ascdis").innerHTML = "ASC= " + asc;
   document.getElementById("crdevicecost").innerHTML = "Cost:" + (100000 + (SPC*100)) + "stains";
   document.getElementById("crstldisplay").innerHTML = Crystals + " crystalized stains";
 }
@@ -429,6 +432,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-<p>version: beta 48</p>
+<p>version: beta 49</p>
 </body>
 </html>
