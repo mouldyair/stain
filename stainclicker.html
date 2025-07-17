@@ -363,7 +363,7 @@ function start_crstl_prod() {
     if (asc > 0) {
       if (crstl_prod < 1) {
         // <0
-        stains -= (100000 + (SPC*1000));
+        stains -= (100000 + (SPC*100));
         setTimeout(done_crstl_prod(), 3600000);
         crstl_prod = 1;
       }
@@ -432,6 +432,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-<p>version: beta 49</p>
+<p>version: beta 50</p>
 </body>
 </html>
