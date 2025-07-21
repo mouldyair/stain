@@ -394,8 +394,9 @@ function updateui() {
   document.getElementById("BGnum").innerHTML = buildG;
   document.getElementById("BHnum").innerHTML = buildH;
   document.getElementById("ascdis").innerHTML = "ASC= " + asc;
-  document.getElementById("crdevicecost").innerHTML = "Cost:" + (100000 + (SPC*100)) + "stains";
+  document.getElementById("crdevicecost").innerHTML = "Cost:" + (100000 + (SPC*100)) + "sta;ins";
   document.getElementById("crstldisplay").innerHTML = Crystals + " crystalized stains";
+  done_crstl_prod();
 }
  //cookies
 function getCookie(cname) {
@@ -436,6 +437,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-<p>version: beta 51</p>
+<p>version: beta 52</p>
 </body>
 </html>
