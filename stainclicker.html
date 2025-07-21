@@ -238,6 +238,9 @@ function goorclick() {
     XP = 0
   }
   document.getElementById("staincount").innerHTML = stains + " stains";
+  if (crstl_device_act > 0) {
+    crstl_prod ++;
+  }
 } //^get stains on click
 function buyA() {
   if (stains-100 >= 0) {
@@ -353,19 +356,20 @@ function prodH() {
   }
 }
 function done_crstl_prod() {
-  if (crstl_prod > 0) {
+  if (crstl_prod > (500 - asc)) {
     crstl_prod = 0;
+    crstl_device_act = 0;
     Crystals++;
   }
 }
 function start_crstl_prod() {
   if (stains >= (100000 + (SPC*100))) {
     if (asc > 0) {
-      if (crstl_prod < 1) {
-        // <0
+      if (crstl_device_act < 1) {
+        // 
         stains -= (100000 + (SPC*100));
-        setTimeout(done_crstl_prod(), 3600000);
-        crstl_prod = 1;
+        crstl_device_act = 1;
+        crstl_prod = 0;
       }
     }
   }
@@ -432,6 +436,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-<p>version: beta 50</p>
+<p>version: beta 51</p>
 </body>
 </html>
