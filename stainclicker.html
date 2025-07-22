@@ -478,19 +478,20 @@ function updateui() {
               turn = 1;
               RPG_FOE_ACT();
             }
-          }
+            break;
           case "fire" :
             if (RPG_MANA > 34) {
               RPG_MANA -= 35;
               RPG_FOEHP -= (10 + (RPG_MAG * 3));
               turn = 1;
               RPG_FOE_ACT();
-          }
+            }
+            break;
           case "focus" :
             RPG_MANA += (5 + RPG_MAG);
             turn = 1;
             RPG_FOE_ACT();
-          }
+            break;
         }
       }
     }
@@ -588,6 +589,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-<p>version: beta 63</p>
+<p>version: beta 64</p>
 </body>
 </html>
