@@ -134,6 +134,21 @@
 <p ID=crdevicecost>0</p>
 <button onclick="start_crstl_prod()">start device</button>
 </div>
+<div>
+<div>
+<p id='RPG_FLOOR_DIS'> </p>
+<p id='RPG_FOE_DIS'>ENEMY</p>
+<p id=RPG_FOEHP_DIS> X HP</p>
+<p id='HP_DIS'>your HP</p>
+<button onclick='RPG_ACT_FIGHT()'>ATTACK</button>
+<button onclick='RPG_ACT_MAGIC()'>MAGIC</button>
+</div>
+<button onclick='RPG_LV_ATK()'>upgrade atack</button>
+<button onclick='RPG_LV_DEF()'>upgrade defence</button>
+<button onclick='RPG_LV_HP()'>upgrade max health</button>
+<button onclick='RPG_LV_MAG()'>upgrade magic</button>
+</div>
+<p id=RPG_STATDIS>your stats: HP ATK DEF MAG</p>
 </div>
 <button onclick="save()">SAVE</button> 
 
@@ -412,9 +427,9 @@ function updateui() {
   document.getElementById("crdevicecost").innerHTML = "Cost:" + (100000 + (SPC*100)) + "sta;ins";
   document.getElementById("crstldisplay").innerHTML = Crystals + " crystalized stains";
   done_crstl_prod();
+  RPG_UPDATE();
 }
 //-------------------------------------------------------------------------RPG MINIGAME SCRIPT_______________________________--------------
-  setInterval(RPG_UPDATE, 40);
   function RPG_UPDATE() {
     if (RPG_HP > RPG_HPMAX) {
       RPG_HP = RPG_HPMAX;
@@ -427,6 +442,7 @@ function updateui() {
     document.getElementById("RPG_FOE_DIS").innerHTML = RPG_FOE;
     document.getElementById("RPG_FOEHP_DIS").innerHTML = RPG_FOEHP + "HP";
     document.getElementById("HP_DIS").innerHTML = RPG_HP + "/" + RPG_HPMAX;
+    document.getElementById("RPG_STATDIS").innerHTML = "your stats: "RPG_HPMAX + "HP " + RPG_ATK + "ATK " + RPG_DEF + "DEF " + RPG_MAG + "MAG";
   }
   function RPG_FOE_ACT() {
     RPG_HP -= RPG_FOEATK;
@@ -472,6 +488,38 @@ function updateui() {
       RPG_FOEATK = 999;
     }
   }
+  function RPG_LV_ATK() {
+    if (Crystals > 0) {
+      if (asc > 1) {
+        Crystals --;
+        RPG_ATK ++;
+      }
+    }
+  }
+  function RPG_LV_DEF() {
+    if (Crystals > 0) {
+      if (asc > 1) {
+        Crystals --;
+        RPG_DEF ++;
+      }
+    }
+  }
+  function RPG_LV_MAG() {
+    if (Crystals > 0) {
+      if (asc > 1) {
+        Crystals --;
+        RPG_MAG ++;
+      }
+    }
+  }
+  function RPG_LV_HP() {
+    if (Crystals > 0) {
+      if (asc > 1) {
+        Crystals --;
+        RPG_HPMAX ++;
+      }
+    }
+  }
  //cookies
 function getCookie(cname) {
   let name = cname + "=";
@@ -511,6 +559,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-<p>version: beta 55</p>
+<p>version: beta 56</p>
 </body>
 </html>
