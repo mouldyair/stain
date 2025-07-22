@@ -22,6 +22,7 @@
   let RPG_FOE = "JIM";
   let RPG_FOEHP = 1;
   let RPG_FOEATK = 1;
+  setinterval(RPG_UPDATE, 40);
   function RPG_UPDATE() {
     if (RPG_HP > RPG_HPMAX) {
       RPG_HP = RPG_HPMAX;
