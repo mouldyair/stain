@@ -445,7 +445,7 @@ function updateui() {
     document.getElementById("RPG_STATDIS").innerHTML = "your stats: " + RPG_HPMAX + "HP " + RPG_ATK + "ATK " + RPG_DEF + "DEF " + RPG_MAG + "MAG";
   }
   function RPG_FOE_ACT() {
-    RPG_HP -= RPG_FOEATK;
+    RPG_HP -= (RPG_FOEATK - RPG_DEF);
     turn = 0;
   }
   function RPG_ACT_FIGHT() {
@@ -559,6 +559,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-<p>version: beta 59</p>
+<p>version: beta 60</p>
 </body>
 </html>
