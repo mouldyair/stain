@@ -140,6 +140,7 @@
 <p id='RPG_FOE_DIS'>ENEMY</p>
 <p id=RPG_FOEHP_DIS> X HP</p>
 <p id='HP_DIS'>your HP</p>
+<p id='MANA_DIS'>your mana</p>
 <button onclick='RPG_ACT_FIGHT()'>ATTACK</button>
 <button onclick='RPG_ACT_MAGIC()'>MAGIC</button>
 </div>
@@ -199,6 +200,7 @@ let RPG_FLOOR = 0;
 let RPG_FOE = "JIM";
 let RPG_FOEHP = 1;
 let RPG_FOEATK = 0;
+let RPG_MANA = 100;
 
  //save
 setInterval(save, 60000);
@@ -441,12 +443,17 @@ function updateui() {
     document.getElementById("RPG_FLOOR_DIS").innerHTML = "FLOOR " + RPG_FLOOR;
     document.getElementById("RPG_FOE_DIS").innerHTML = RPG_FOE;
     document.getElementById("RPG_FOEHP_DIS").innerHTML = RPG_FOEHP + "HP";
-    document.getElementById("HP_DIS").innerHTML = RPG_HP + "/" + RPG_HPMAX;
+    document.getElementById("HP_DIS").innerHTML = "HP: " + RPG_HP + "/" + RPG_HPMAX;
     document.getElementById("RPG_STATDIS").innerHTML = "your stats: " + RPG_HPMAX + "HP " + RPG_ATK + "ATK " + RPG_DEF + "DEF " + RPG_MAG + "MAG";
+    document.getElementById("MANA_DIS").innerHTML = "MANA: " + RPG_MANA + "/" + 100;
   }
   function RPG_FOE_ACT() {
     RPG_HP -= (RPG_FOEATK - RPG_DEF);
     turn = 0;
+    RPG_MANA += 5;
+    if (RPG_MANA > 100) {
+      RPG_MANA = 100;
+    }
   }
   function RPG_ACT_FIGHT() {
     if (turn < 1) {
