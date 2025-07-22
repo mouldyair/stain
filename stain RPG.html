@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<HTML>
+<body>
+<div>
+<p id='RPG_FLOOR_DIS'> </p>
+<p id='RPG_FOE_DIS'>ENEMY</p>
+<p id=RPG_FOEHP_DIS> X HP</p>
+<p id='HP_DIS'>your HP</p>
+<button onclick='RPG_ACT_FIGHT()'>ATTACK</button>
+<button onclick='RPG_ACT_MAGIC()'>MAGIC</button>
+</div>
+</body>
+<script>
+  let turn = 0;
+  let stains = 0;
+  let RPG_HPMAX =10;
+  let RPG_HP = 10;
+  let RPG_ATK = 1;
+  let RPG_DEF = 0;
+  let RPG_MAG = 0;
+  let RPG_FLOOR = 0;
+  let RPG_FOE = "JIM";
+  let RPG_FOEHP = 1;
+  let RPG_FOEATK = 1;
+  function RPG_UPDATE() {
+    if (RPG_HP > RPG_HPMAX) {
+      RPG_HP = RPG_HPMAX;
+    } else if (RPG_HP < 1){
+      RPG_GAMEOVER();
+    } else if (RPG_FOEHP < 1){
+      RPG_NEWFLOOR();
+    }
+    document.getElementById("RPG_FLOOR_DIS").innerHTML = "FLOOR " + RPG_FLOOR;
+    document.getElementById("RPG_FOE_DIS").innerHTML = RPG_FOE;
+    document.getElementById("RPG_FOEHP_DIS").innerHTML = RPG_FOEHP + "HP";
+    document.getElementById("HP_DIS").innerHTML = RPG_HP + "/" + RPG_HPMAX;
+  }
+  function RPG_FOE_ACT() {
+    RPG_HP =- RPG_FOEATK;
+    turn = 0;
+  }
+  function RPG_ACT_FIGHT() {
+    if (turn < 1) {
+    RPG_FOEHP -= RPG_ATK;
+    turn = 1;
+    RPG_FOE_ACT();
+    }
+  }
+  function RPG_ACT_MAGIC() {
+    if (turn < 1) {
+    window.alert("YOU DONT KNOW ANY SPELLS");
+    turn = 1;
+    RPG_FOE_ACT();
+    }
+  }
+  function RPG_GAMEOVER() {
+    window.alert("you died :(")
+    RPG_HP = RPG_HPMAX;
+    RPG_FLOOR = 0;
+    RPG_NEWFLOOR();
+  }
+  function RPG_NEWFLOOR() {
+    stains += (100 * RPG_FLOOR)
+    RPG_FLOOR ++;
+    RPG_NEWFOE(RPG_FLOOR);
+  }
+  function RPG_NEWFOE(FLR) {
+    if (FLR < 10) {
+      RPG_FOE = "BASIC ENEMY 1";
+      RPG_FOEHP = 5;
+      RPG_FOEATK = 1;
+    } else {
+      RPG_FOE = "BASIC ENEMY 2";
+      RPG_FOEHP = 999;
+      RPG_FOEATK = 999;
+    }
+  }
