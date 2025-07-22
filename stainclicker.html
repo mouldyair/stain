@@ -473,7 +473,7 @@ function updateui() {
     RPG_NEWFLOOR();
   }
   function RPG_NEWFLOOR() {
-    stains += (100 * RPG_FLOOR);
+    stains += (10 * RPG_FLOOR);
     RPG_FLOOR ++;
     RPG_NEWFOE(RPG_FLOOR);
   }
@@ -516,7 +516,7 @@ function updateui() {
     if (Crystals > 0) {
       if (asc > 1) {
         Crystals --;
-        RPG_HPMAX ++;
+        RPG_HPMAX += 5;
       }
     }
   }
@@ -559,6 +559,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-<p>version: beta 58</p>
+<p>version: beta 59</p>
 </body>
 </html>
