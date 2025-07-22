@@ -413,6 +413,65 @@ function updateui() {
   document.getElementById("crstldisplay").innerHTML = Crystals + " crystalized stains";
   done_crstl_prod();
 }
+//-------------------------------------------------------------------------RPG MINIGAME SCRIPT_______________________________--------------
+  setInterval(RPG_UPDATE, 40);
+  function RPG_UPDATE() {
+    if (RPG_HP > RPG_HPMAX) {
+      RPG_HP = RPG_HPMAX;
+    } else if (RPG_HP < 1){
+      RPG_GAMEOVER();
+    } else if (RPG_FOEHP < 1){
+      RPG_NEWFLOOR();
+    }
+    document.getElementById("RPG_FLOOR_DIS").innerHTML = "FLOOR " + RPG_FLOOR;
+    document.getElementById("RPG_FOE_DIS").innerHTML = RPG_FOE;
+    document.getElementById("RPG_FOEHP_DIS").innerHTML = RPG_FOEHP + "HP";
+    document.getElementById("HP_DIS").innerHTML = RPG_HP + "/" + RPG_HPMAX;
+  }
+  function RPG_FOE_ACT() {
+    RPG_HP -= RPG_FOEATK;
+    turn = 0;
+  }
+  function RPG_ACT_FIGHT() {
+    if (turn < 1) {
+      if (asc > 1) {
+      RPG_FOEHP -= RPG_ATK;
+      turn = 1;
+      RPG_FOE_ACT();
+      }
+    }
+  }
+  function RPG_ACT_MAGIC() {
+    if (turn < 1) {
+      if (asc > 1) {
+      window.alert("YOU DONT KNOW ANY SPELLS");
+      turn = 1;
+      RPG_FOE_ACT();
+      }
+    }
+  }
+  function RPG_GAMEOVER() {
+    window.alert("you died :(")
+    RPG_HP = RPG_HPMAX;
+    RPG_FLOOR = 0;
+    RPG_NEWFLOOR();
+  }
+  function RPG_NEWFLOOR() {
+    stains += (100 * RPG_FLOOR);
+    RPG_FLOOR ++;
+    RPG_NEWFOE(RPG_FLOOR);
+  }
+  function RPG_NEWFOE(FLR) {
+    if (FLR < 10) {
+      RPG_FOE = "BASIC ENEMY 1";
+      RPG_FOEHP = 5;
+      RPG_FOEATK = 1;
+    } else {
+      RPG_FOE = "BASIC ENEMY 2";
+      RPG_FOEHP = 999;
+      RPG_FOEATK = 999;
+    }
+  }
  //cookies
 function getCookie(cname) {
   let name = cname + "=";
@@ -452,6 +511,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-<p>version: beta 54</p>
+<p>version: beta 55</p>
 </body>
 </html>
