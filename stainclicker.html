@@ -141,8 +141,11 @@
 <p id=RPG_FOEHP_DIS> X HP</p>
 <p id='HP_DIS'>your HP</p>
 <p id='MANA_DIS'>your mana</p>
-<button onclick='RPG_ACT_FIGHT()'>ATTACK</button>
-<button onclick='RPG_ACT_MAGIC()'>MAGIC</button>
+<button onclick='RPG_ACT_FIGHT()'>ATTACK</button><br>
+<p>SPELLS</p>
+<button onclick='RPG_ACT_MAGIC(heal)'>heal</button>
+<button onclick='RPG_ACT_MAGIC(fire)'>fire</button>
+<button onclick='RPG_ACT_MAGIC(focus)'>focus</button><br>
 </div>
 <button onclick='RPG_LV_ATK()'>upgrade atack</button>
 <button onclick='RPG_LV_DEF()'>upgrade defence</button>
@@ -464,12 +467,31 @@ function updateui() {
       }
     }
   }
-  function RPG_ACT_MAGIC() {
+  function RPG_ACT_MAGIC(spell) {
     if (turn < 1) {
       if (asc > 1) {
-      window.alert("YOU DONT KNOW ANY SPELLS");
-      turn = 1;
-      RPG_FOE_ACT();
+        switch (spell) {
+          case "heal" {
+            if (RPG_MANA > 29) {
+              RPG_MANA -= 30;
+              RPG_HP += (20 + (RPG_MAG * 6));
+              turn = 1;
+              RPG_FOE_ACT();
+            }
+          }
+          case "fire" {
+            if (RPG_MANA > 34) {
+              RPG_MANA -= 35;
+              RPG_FOEHP -= (10 + (RPG_MAG * 3));
+              turn = 1;
+              RPG_FOE_ACT();
+          }
+          case "focus" {
+            RPG_MANA += (5 + RPG_MAG);
+            turn = 1;
+            RPG_FOE_ACT();
+          }
+        }
       }
     }
   }
@@ -566,6 +588,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-<p>version: beta 60</p>
+<p>version: beta 62</p>
 </body>
 </html>
