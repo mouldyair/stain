@@ -173,7 +173,17 @@ document.getElementById("BHnum").innerHTML = buildH;
 document.getElementById("crdevicecost").innerHTML = "Cost:" + (100000 + (SPC*100)) + "stains";
 document.getElementById("crstldisplay").innerHTML = Crystals + " crystalized stains";
 let SPS = (buildA * 0.016666)+(buildB * 0.166694)+(buildC * 1.672240)+(buildD * 16.949152)+(buildE * 169.49152)+(buildF * 1694.9152)+(buildG * 16949.152)+(buildH * 169491.52);
-
+//RPG SETUP
+let turn = 0;
+let RPG_HPMAX = getNumberFromCookie("RPG_HPMAX", 10);
+let RPG_HP = getNumberFromCookie("RPG_HPMAX", 10);
+let RPG_ATK = getNumberFromCookie("RPG_ATK", 1);
+let RPG_DEF = getNumberFromCookie("RPG_DEF", 0);
+let RPG_MAG = getNumberFromCookie("RPG_MAG", 0);
+let RPG_FLOOR = 0;
+let RPG_FOE = "JIM";
+let RPG_FOEHP = 1;
+let RPG_FOEATK = 0;
 
  //save
 setInterval(save, 60000);
@@ -191,6 +201,10 @@ function save() {
   document.cookie = "LV=" + LV + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
   document.cookie = "asc=" + asc + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
   document.cookie = "crstl=" + Crystals + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "RPG_ATK=" + RPG_ATK + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "RPG_HPMAX=" + RPG_HPMAX + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "RPG_DEF=" + RPG_DEF + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "RPG_MAG=" + RPG_MAG + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
 }
  //building and click functions
 function LVUP() {
@@ -438,6 +452,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-<p>version: beta 53</p>
+<p>version: beta 54</p>
 </body>
 </html>
