@@ -22,6 +22,7 @@
   let RPG_FOE = "JIM";
   let RPG_FOEHP = 1;
   let RPG_FOEATK = 1;
+  //aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
   setInterval(RPG_UPDATE, 40);
   function RPG_UPDATE() {
     if (RPG_HP > RPG_HPMAX) {
@@ -42,16 +43,20 @@
   }
   function RPG_ACT_FIGHT() {
     if (turn < 1) {
-    RPG_FOEHP -= RPG_ATK;
-    turn = 1;
-    RPG_FOE_ACT();
+      if (asc > 1) {
+      RPG_FOEHP -= RPG_ATK;
+      turn = 1;
+      RPG_FOE_ACT();
+      }
     }
   }
   function RPG_ACT_MAGIC() {
     if (turn < 1) {
-    window.alert("YOU DONT KNOW ANY SPELLS");
-    turn = 1;
-    RPG_FOE_ACT();
+      if (asc > 1) {
+      window.alert("YOU DONT KNOW ANY SPELLS");
+      turn = 1;
+      RPG_FOE_ACT();
+      }
     }
   }
   function RPG_GAMEOVER() {
