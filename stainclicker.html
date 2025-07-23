@@ -204,6 +204,7 @@ let RPG_FOE = "JIM";
 let RPG_FOEHP = 1;
 let RPG_FOEATK = 0;
 let RPG_MANA = 100;
+let RPG_FLOORBEST = getNumberFromCookie("RPG_FLOORBEST", 0);
 
  //save
 setInterval(save, 60000);
@@ -225,6 +226,7 @@ function save() {
   document.cookie = "RPG_HPMAX=" + RPG_HPMAX + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
   document.cookie = "RPG_DEF=" + RPG_DEF + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
   document.cookie = "RPG_MAG=" + RPG_MAG + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "RPG_FLOORBEST=" + RPG_FLOORBEST + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
 }
  //building and click functions
 function LVUP() {
@@ -436,6 +438,9 @@ function updateui() {
 }
 //-------------------------------------------------------------------------RPG MINIGAME SCRIPT_______________________________--------------
   function RPG_UPDATE() {
+    if (RPG_FLOOR > RPG_FLOORBEST) {
+      RPG_FLOORBEST = RPG_FLOOR;
+    }
     if (RPG_HP > RPG_HPMAX) {
       RPG_HP = RPG_HPMAX;
     } else if (RPG_HP < 1){
@@ -589,6 +594,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-<p>version: beta 65</p>
+<p>version: beta 66</p>
 </body>
 </html>
