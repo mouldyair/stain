@@ -3,6 +3,14 @@
 <head>
   <title>stain clicker</title>
   <style>
+    div.absiframe {
+      position: absolute;
+      top: 80px;
+      right: 80px;
+      width: 200px;
+      height: 100px;
+      border: 3px solid #73AD21;
+    }
     table, th, td {
       border: 1px solid black;
       border-collapse: collapse;
@@ -153,6 +161,9 @@
 <button onclick='RPG_LV_MAG()'>upgrade magic</button>
 </div>
 <p id=RPG_STATDIS>your stats: HP ATK DEF MAG</p>
+</div>
+<div class=absiframe>
+<iframe src="https://www.google.com" style="height:200px;width:300px" title="Iframe Example"></iframe>
 </div>
 <button onclick="save()">SAVE</button> 
 
@@ -594,6 +605,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-<p>version: beta 66</p>
+<p>version: beta 67</p>
 </body>
 </html>
