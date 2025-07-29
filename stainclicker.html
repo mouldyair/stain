@@ -170,6 +170,11 @@ document.addEventListener('keydown', function(event) {
     goorclick();
   }
 });
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'q') {
+    goorclick();
+  }
+});
 let stains = getNumberFromCookie("stains", 0);
 let buildA = getNumberFromCookie("buildA", 0);
 let buildB = getNumberFromCookie("buildB", 0);
@@ -599,6 +604,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-<p>version: beta 68</p>
+<p>version: beta 69</p>
 </body>
 </html>
