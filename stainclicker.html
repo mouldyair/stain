@@ -175,6 +175,16 @@ document.addEventListener('keyup', function(event) {
     goorclick();
   }
 });
+document.addEventListener('keyup', function(event) {
+  if (event.key === 1) {
+    buyA();
+  }
+});
+document.addEventListener('keyup', function(event) {
+  if (event.key === 2) {
+    buyB();
+  }
+});
 let stains = getNumberFromCookie("stains", 0);
 let buildA = getNumberFromCookie("buildA", 0);
 let buildB = getNumberFromCookie("buildB", 0);
@@ -604,6 +614,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-<p>version: beta 70</p>
+<p>version: beta 71</p>
 </body>
 </html>
