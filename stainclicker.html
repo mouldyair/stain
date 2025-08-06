@@ -568,7 +568,7 @@ function updateui() {
     }
   }
   function RPG_GAMEOVER() {
-    window.alert("you died :(")
+    window.alert("you died");
     RPG_HP = RPG_HPMAX;
     RPG_FLOOR = 0;
     RPG_NEWFLOOR();
@@ -615,6 +615,7 @@ function updateui() {
           RPG_FOEHP = 12;
           RPG_FOEATK = 5;
           break;
+      }
     } else if (FLR < 50){
       switch (FLRSEED) {
         case 1 :
@@ -632,6 +633,7 @@ function updateui() {
           RPG_FOEHP = 18;
           RPG_FOEATK = 15;
           break;
+      }
     } else if (FLR == 50) {
       switch (FLRSEED) {
         case 1 :
@@ -649,12 +651,12 @@ function updateui() {
           RPG_FOEHP = 999;
           RPG_FOEATK = 10;
           break;
+      }
     } else {
       RPG_FOE = "RUN ENDER";
       RPG_FOEHP = 999999;
       RPG_FOEATK = 999999;
     }
-      
   }
   function RPG_LV_ATK() {
     if (Crystals > 0) {
@@ -727,6 +729,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-<p>version: beta 75</p>
+<p>version: beta 76</p>
 </body>
 </html>
