@@ -266,7 +266,12 @@ let RPG_FOEHP = 1;
 let RPG_FOEATK = 0;
 let RPG_MANA = 100;
 let RPG_FLOORBEST = getNumberFromCookie("RPG_FLOORBEST", 0);
+let FLRSEED = 0
 
+  
+function getRndInteger(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
  //save
 setInterval(save, 60000);
 function save() {
@@ -574,15 +579,82 @@ function updateui() {
     RPG_NEWFOE(RPG_FLOOR);
   }
   function RPG_NEWFOE(FLR) {
-    if (FLR < 10) {
-      RPG_FOE = "BASIC ENEMY 1";
-      RPG_FOEHP = 5;
-      RPG_FOEATK = 1;
+    FLRSEED = getRndInteger(1,4);
+    if (FLR < 15) {
+      switch (FLRSEED) {
+        case 1 :
+          RPG_FOE = "gremlin";
+          RPG_FOEHP = 5;
+          RPG_FOEATK = 1;
+          break;
+        case 2 :
+          RPG_FOE = "worm";
+          RPG_FOEHP = 4;
+          RPG_FOEATK = 3;
+          break;
+        case 3 :
+          RPG_FOE = "sludge";
+          RPG_FOEHP = 6;
+          RPG_FOEATK = 2;
+          break;
+      }
+    } else if (FLR <30){
+      switch (FLRSEED) {
+        case 1 :
+          RPG_FOE = "thief";
+          RPG_FOEHP = 10;
+          RPG_FOEATK = 6;
+          break;
+        case 2 :
+          RPG_FOE = "large worm";
+          RPG_FOEHP = 8;
+          RPG_FOEATK = 8;
+          break;
+        case 3 :
+          RPG_FOE = "large sludge";
+          RPG_FOEHP = 12;
+          RPG_FOEATK = 5;
+          break;
+    } else if (FLR < 50){
+      switch (FLRSEED) {
+        case 1 :
+          RPG_FOE = "desert horror";
+          RPG_FOEHP = 30;
+          RPG_FOEATK = 10;
+          break;
+        case 2 :
+          RPG_FOE = "Glob";
+          RPG_FOEHP = 20;
+          RPG_FOEATK = 27;
+          break;
+        case 3 :
+          RPG_FOE = "vile sludge";
+          RPG_FOEHP = 18;
+          RPG_FOEATK = 15;
+          break;
+    } else if (FLR == 50) {
+      switch (FLRSEED) {
+        case 1 :
+          RPG_FOE = "Oops!";
+          RPG_FOEHP = 75;
+          RPG_FOEATK = 15;
+          break;
+        case 2 :
+          RPG_FOE = "Licky Louse";
+          RPG_FOEHP = 44;
+          RPG_FOEATK = 18;
+          break;
+        case 3 :
+          RPG_FOE = "rock";
+          RPG_FOEHP = 999;
+          RPG_FOEATK = 10;
+          break;
     } else {
-      RPG_FOE = "BASIC ENEMY 2";
-      RPG_FOEHP = 999;
-      RPG_FOEATK = 999;
+      RPG_FOE = "RUN ENDER";
+      RPG_FOEHP = 999999;
+      RPG_FOEATK = 999999;
     }
+      
   }
   function RPG_LV_ATK() {
     if (Crystals > 0) {
@@ -655,6 +727,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-<p>version: beta 73</p>
+<p>version: beta 74</p>
 </body>
 </html>
