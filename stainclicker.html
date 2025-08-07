@@ -668,12 +668,12 @@ function updateui() {
           break;
         case 2 :
           RPG_FOE = "Glob";
-          RPG_FOEHP = 40;
+          RPG_FOEHP = 41;
           RPG_FOEATK = 54;
           break;
         case 3 :
           RPG_FOE = "vile sludge";
-          RPG_FOEHP = 36;
+          RPG_FOEHP = 50;
           RPG_FOEATK = 30;
           break;
       }
@@ -681,24 +681,24 @@ function updateui() {
       switch (FLRSEED) {
         case 1 :
           RPG_FOE = "Oops!";
-          RPG_FOEHP = 150;
-          RPG_FOEATK = 45;
+          RPG_FOEHP = 180;
+          RPG_FOEATK = 48;
           break;
         case 2 :
           RPG_FOE = "Licky Louse";
           RPG_FOEHP = 140;
-          RPG_FOEATK = 72;
+          RPG_FOEATK = 73;
           break;
         case 3 :
           RPG_FOE = "rock";
           RPG_FOEHP = 999;
-          RPG_FOEATK = 30;
+          RPG_FOEATK = 40;
           break;
       }
     } else {
       RPG_FOE = "RUN ENDER";
-      RPG_FOEHP = 999999;
-      RPG_FOEATK = 999999;
+      RPG_FOEHP = 99999999999999999999;
+      RPG_FOEATK = 999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999;
     }
   }
   function RPG_LV_ATK() {
@@ -772,6 +772,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-<p>version: beta 81</p>
+<p>version: beta 82</p>
 </body>
 </html>
