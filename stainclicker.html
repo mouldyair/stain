@@ -174,6 +174,41 @@
 <p id=RPG_STATDIS>your stats: HP ATK DEF MAG</p>
 </div>
 </div>
+<button type="button" class="collapsible">achievements</button>
+    <div class="content">
+      <table>
+        <tr>
+          <th>achievment</th>
+          <th>obtained</th>
+          <th>how to unlock</th>
+          <th>reward</th>
+        </tr>
+        <tr>
+          <td>ascension</td>
+          <td id="ach_asc">unobtained</td>
+          <td>ascend once</td>
+          <td>coming soon</td>
+        </tr>
+        <tr>
+          <td>explorer</td>
+          <td id="ach_flr50">unobtained</td>
+          <td>beat floor 50</td>
+          <td>coming soon</td>
+        </tr>
+        <tr>
+          <td>AFK'd</td>
+          <td id="ach_ovrlvl">unobtained</td>
+          <td>level up with 10* required XP</td>
+          <td>coming soon</td>
+        </tr>
+        <tr>
+          <td>Lucky</td>
+          <td id="ach_luck">unobtained</td>
+          <td>stay up all night</td>
+          <td>coming soon</td>
+        </tr>
+      </table>
+    </div>
 <button onclick="save()">SAVE</button> 
 
 
@@ -307,6 +342,12 @@ let RPG_MANA = 100;
 let RPG_FLOORBEST = getNumberFromCookie("RPG_FLOORBEST", 0);
 let FLRSEED = 0;
 let Clickcount = getNumberFromCookie("Clickcount", 0);
+let ACHID_TEST = 0;
+let ACHID_ASC = getNumberFromCookie("ACHID_ASC", 0);
+let ACHID_FLR50 = getNumberFromCookie("ACHID_ASC", 0);
+let ACHID_OVRLV = getNumberFromCookie("ACHID_OVRLV", 0);
+let ACHID_LUCK = getNumberFromCookie("ACHID_LUCK", 0);
+
   
 function getRndInteger(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
@@ -333,10 +374,17 @@ function save() {
   document.cookie = "RPG_MAG=" + RPG_MAG + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
   document.cookie = "RPG_FLOORBEST=" + RPG_FLOORBEST + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
   document.cookie = "Clickcount=" + Clickcount + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "ACHID_LUCK=" + ACHID_LUCK + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "ACHID_ASC=" + ACHID_ASC + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "ACHID_OVRLV=" + ACHID_OVRLV + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "ACHID_FLR50=" + ACHID_FLR50 + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
 }
  //building and click functions
 function LVUP() {
 if (XP - ((LV*LV*LV*15) +100) >= 0) {
+  if (XP - (((LV*LV*LV*15) +100)*10) >= 0) {
+    ACHID_OVRLV = 1;
+  }
   if (stains - ((LV*LV*LV*15) +1500) >= 0) {
     if (LV < 100 ) {
       stains -= ((LV*LV*LV*15) +1500);
@@ -544,6 +592,7 @@ function updateui() {
   document.getElementById("crstldisplay").innerHTML = Crystals + " crystalized stains";
   done_crstl_prod();
   RPG_UPDATE();
+  achieve();
 }
 //-------------------------------------------------------------------------RPG MINIGAME SCRIPT_______________________________--------------
   function RPG_UPDATE() {
@@ -733,6 +782,35 @@ function updateui() {
       }
     }
   }
+  //----------------------------------------------------------------------------------------------ACHIEVEMENTS----------------------------------------------
+function achieve() {
+  if (ACHID_FLR50 < 1) {
+    if (RPG_LOORBEST > 50) {
+      ACHID_FLR50 = 1;
+    }
+  } else {
+    document.getElementById("ach_flr50").innerHTML = "Unlocked";
+  }
+  if (ACHID_ASC < 1) {
+    if (asc > 0) {
+      ACHID_ASC = 1;
+    }
+  } else {
+    document.getElementById("ach_asc").innerHTML = "Unlocked";
+  }
+  if (ACHID_LUCK < 1) {
+    luck = getRndInteger(1,1000000);
+    if (luck > 999999){
+      ACHID_LUCK = 1;
+    }
+  } else {
+    document.getElementById("ach_luck").innerHTML = "Unlocked";
+  }
+  if (ACHID_OVRLV > 0) {
+    document.getElementById("ach_ovrlv").innerHTML = "Unlocked";
+  }
+
+}
  //cookies
 function getCookie(cname) {
   let name = cname + "=";
@@ -772,6 +850,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-<p>version: beta 82</p>
+<p>version: beta 83</p>
 </body>
 </html>
