@@ -187,25 +187,25 @@
           <td>ascension</td>
           <td id="ach_asc">unobtained</td>
           <td>ascend once</td>
-          <td>coming soon</td>
+          <td>1XP per sec</td>
         </tr>
         <tr>
           <td>explorer</td>
           <td id="ach_flr50">unobtained</td>
           <td>beat floor 50</td>
-          <td>coming soon</td>
+          <td>1 stain per sec</td>
         </tr>
         <tr>
           <td>AFK'd</td>
           <td id="ach_ovrlvl">unobtained</td>
           <td>level up with 10* required XP</td>
-          <td>coming soon</td>
+          <td>1XP per sec</td>
         </tr>
         <tr>
           <td>Lucky</td>
           <td id="ach_luck">unobtained</td>
           <td>stay up all night</td>
-          <td>coming soon</td>
+          <td>Gamble</td>
         </tr>
       </table>
     </div>
@@ -809,6 +809,25 @@ function achieve() {
   if (ACHID_OVRLV > 0) {
     document.getElementById("ach_ovrlv").innerHTML = "Unlocked";
   }
+  setInterval(achieve_reward, 1000);
+  function achieve_reward() {
+    if (ACHID_ASC > 0) {
+      XP++;
+    }
+    if (ACHID_FLR50 > 0) {
+      stains++;
+    }
+    if ((ACHID_OVRLV > 0) {
+      XP++;
+    }
+    if ((ACHID_LUCK > 0) {
+      luck = getRndInteger(1,1000000);
+      if (luck > 999999){
+        stains += ((SPC * 777) + 777);
+        XP += ((SPC * 777) + 777);
+      }
+    }
+  }
 
 }
  //cookies
@@ -850,6 +869,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-<p>version: beta 84</p>
+<p>version: beta 85</p>
 </body>
 </html>
