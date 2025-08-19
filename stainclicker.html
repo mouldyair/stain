@@ -207,6 +207,30 @@
           <td>stay up all night</td>
           <td>Gamble</td>
         </tr>
+        <tr>
+          <td>stainer</td>
+          <td id="ach_click10k">unobtained</td>
+          <td>click 10K times</td>
+          <td>1 stain per sec</td>
+        </tr>
+        <tr>
+          <td>addict</td>
+          <td id="ach_click100k">unobtained</td>
+          <td>click 100K times</td>
+          <td>2 stains per sec</td>
+        </tr>
+        <tr>
+          <td>stop playing</td>
+          <td id="ach_click1M">unobtained</td>
+          <td>click 1M times</td>
+          <td>4 stain per sec</td>
+        </tr>
+        <tr>
+          <td>does it hurt?</td>
+          <td id="ach_click10M">unobtained</td>
+          <td>click 10M times</td>
+          <td>8 stain per sec</td>
+        </tr>
       </table>
     </div>
 <button onclick="save()">SAVE</button> 
@@ -347,7 +371,10 @@ let ACHID_ASC = getNumberFromCookie("ACHID_ASC", 0);
 let ACHID_FLR50 = getNumberFromCookie("ACHID_ASC", 0);
 let ACHID_OVRLV = getNumberFromCookie("ACHID_OVRLV", 0);
 let ACHID_LUCK = getNumberFromCookie("ACHID_LUCK", 0);
-
+let ACHID_CLICK10K = 0;
+let ACHID_CLICK100K = 0;
+let ACHID_CLICK1M = 0;
+let ACHID_CLICK10M = 0;
 function getRndInteger(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
@@ -808,6 +835,34 @@ function achieve() {
   if (ACHID_OVRLV > 0) {
     document.getElementById("ach_ovrlv").innerHTML = "Unlocked";
   }
+  if (ACHID_CLICK10k < 1) {
+    if (Clickcount > 9999) {
+      ACHID_CLICK10k = 1;
+    }
+  } else {
+    document.getElementById("ach_click10k").innerHTML = "Unlocked";
+  }
+  if (ACHID_CLICK100k < 1) {
+    if (Clickcount > 99999) {
+      ACHID_CLICK100k = 1;
+    }
+  } else {
+    document.getElementById("ach_click100k").innerHTML = "Unlocked";
+  }
+  if (ACHID_CLICK1M < 1) {
+    if (Clickcount > 999999) {
+      ACHID_CLICK1M = 1;
+    }
+  } else {
+    document.getElementById("ach_click1M").innerHTML = "Unlocked";
+  }
+  if (ACHID_CLICK10M < 1) {
+    if (Clickcount > 9999999) {
+      ACHID_CLICK10M = 1;
+    }
+  } else {
+    document.getElementById("ach_click10M").innerHTML = "Unlocked";
+  }
 }
 setInterval(achieve_reward, 1000);
 function achieve_reward() {
@@ -815,6 +870,29 @@ function achieve_reward() {
     XP++;
   }
   if (ACHID_FLR50 > 0) {
+    stains++;
+  }
+  if (ACHID_CLICK10K > 0) {
+    stains++;
+  }
+  if (ACHID_CLICK100K > 0) {
+    stains++;
+    stains++;
+  }
+  if (ACHID_CLICK1M > 0) {
+    stains++;
+    stains++;
+    stains++;
+    stains++;
+  }
+  if (ACHID_CLICK10M > 0) {
+    stains++;
+    stains++;
+    stains++;
+    stains++;
+    stains++;
+    stains++;
+    stains++;
     stains++;
   }
   if (ACHID_OVRLV > 0) {
@@ -867,6 +945,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-<p>version: beta 89</p>
+<p>version: beta 90</p>
 </body>
 </html>
