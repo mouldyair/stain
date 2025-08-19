@@ -311,8 +311,8 @@ let buildG = getNumberFromCookie("buildG", 0);
 let buildH = getNumberFromCookie("buildH", 0);
 let XP = getNumberFromCookie("XP", 0);
 let LV = getNumberFromCookie("LV", 0);
-let asc = getNumberFromCookie("asc", 0)
-let Crystals = getNumberFromCookie("crstl", 0)
+let asc = getNumberFromCookie("asc", 0);
+let Crystals = getNumberFromCookie("crstl", 0);
 let SPC = Math.round(LV*LV*0.9)+1;
 let crstl_prod = 0;
 let crstl_device_act = 0;
@@ -348,7 +348,6 @@ let ACHID_FLR50 = getNumberFromCookie("ACHID_ASC", 0);
 let ACHID_OVRLV = getNumberFromCookie("ACHID_OVRLV", 0);
 let ACHID_LUCK = getNumberFromCookie("ACHID_LUCK", 0);
 
-  
 function getRndInteger(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
@@ -414,7 +413,7 @@ function ascend() {
         buildH = 0;
         crstl_prod = 0;
         Clickcount = 0;
-        asc++
+        asc++;
         save();
       }
     }
@@ -869,6 +868,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-<p>version: beta 85</p>
+<p>version: beta 86</p>
 </body>
 </html>
