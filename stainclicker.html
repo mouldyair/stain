@@ -808,26 +808,25 @@ function achieve() {
   if (ACHID_OVRLV > 0) {
     document.getElementById("ach_ovrlv").innerHTML = "Unlocked";
   }
-  setInterval(achieve_reward, 1000);
-  function achieve_reward() {
-    if (ACHID_ASC > 0) {
-      XP++;
-    }
-    if (ACHID_FLR50 > 0) {
-      stains++;
-    }
-    if (ACHID_OVRLV > 0) {
-      XP++;
-    }
-    if (ACHID_LUCK > 0) {
-      luck = getRndInteger(1,10000);
-      if (luck > 9999) {
-        stains += ((SPC * 777) + 777);
-        XP += ((SPC * 777) + 777);
-      }
+}
+setInterval(achieve_reward, 1000);
+function achieve_reward() {
+  if (ACHID_ASC > 0) {
+    XP++;
+  }
+  if (ACHID_FLR50 > 0) {
+    stains++;
+  }
+  if (ACHID_OVRLV > 0) {
+    XP++;
+  }
+  if (ACHID_LUCK > 0) {
+    luck = getRndInteger(1,10000);
+    if (luck > 9999) {
+      stains += ((SPC * 777) + 777);
+      XP += ((SPC * 777) + 777);
     }
   }
-
 }
  //cookies
 function getCookie(cname) {
@@ -868,6 +867,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-<p>version: beta 88</p>
+<p>version: beta 89</p>
 </body>
 </html>
