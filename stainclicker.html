@@ -181,6 +181,43 @@
     <p id=KEYGDDIS>Gold keys: 0</p>
     <p>comming soon</p>
   </div>
+<button type="button" class="collapsible">Inventory</button>
+  <div class="content">
+    <table>
+      <tr>
+        <th>item</th>
+        <th>count</th>
+      </tr>
+      <tr>
+        <td>Bronze key bits</td>
+        <td id=KEYBITBRDIS>0</td>
+      </tr>
+      <tr>
+        <td>Silver key bits</td>
+        <td id=KEYBITSLDIS>0</td>
+      </tr>
+      <tr>
+        <td>Gold key bits</td>
+        <td id=KEYBITGDDIS>0</td>
+      </tr>
+      <tr>
+        <td>Bronze Relic shard</td>
+        <td id=RELSHRDIS_BR>0</td>
+      </tr>
+      <tr>
+        <td>Silver Relic shard</td>
+        <td id=RELSHRDIS_SL>0</td>
+      </tr>
+      <tr>
+        <td>Gold Relic shard</td>
+        <td id=RELSHRDIS_GD>0</td>
+      </tr>
+    </table>
+    
+
+
+    <p>comming soon</p>
+  </div>
 </div>
 </div>
 <button type="button" class="collapsible">achievements</button>
@@ -387,6 +424,12 @@ let ACHID_CLICK10M = 0;
 let KEY_BRONZE = getNumberFromCookie("KEY_BRONZE", 0);
 let KEY_SILVER = getNumberFromCookie("KEY_SILVER", 0);
 let KEY_GOLD = getNumberFromCookie("KEY_GOLD", 0);
+let KEYBIT_BRONZE = getNumberFromCookie("KEYBIT_BRONZE", 0);
+let KEYBIT_SILVER = getNumberFromCookie("KEYBIT_SILVER", 0);
+let KEYBIT_GOLD = getNumberFromCookie("KEYBIT_GOLD", 0);
+let RELSHR_BRONZE = getNumberFromCookie("RELSHR_BRONZE", 0);
+let RELSHR_SILVER = getNumberFromCookie("RELSHR_SILVER", 0);
+let RELSHR_GOLD = getNumberFromCookie("RELSHR_GOLD", 0);
 function getRndInteger(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
@@ -419,6 +462,12 @@ function save() {
   document.cookie = "KEY_BRONZE=" + KEY_BRONZE + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
   document.cookie = "KEY_SILVER=" + KEY_SILVER + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
   document.cookie = "KEY_GOLD=" + KEY_GOLD + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "KEYBIT_BRONZE=" + KEYBIT_BRONZE + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "KEYBIT_SILVER=" + KEYBIT_SILVER + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "KEYBIT_GOLD=" + KEYBIT_GOLD + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "RELSHR_BRONZE=" + RELSHR_BRONZE + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "RELSHR_SILVER=" + RELSHR_SILVER + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "RELSHR_GOLD=" + RELSHR_GOLD + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
 }
  //building and click functions
 function LVUP() {
@@ -633,6 +682,13 @@ function updateui() {
   document.getElementById("KEYBRDIS").innerHTML = "Bronze keys: " + KEY_BRONZE;
   document.getElementById("KEYSLDIS").innerHTML = "Silver keys: " + KEY_SILVER;
   document.getElementById("KEYGDDIS").innerHTML = "Gold keys: " + KEY_GOLD;
+  document.getElementById("RELSHRDIS_GD").innerHTML =  RELSHR_GOLD;
+  document.getElementById("RELSHRDIS_SL").innerHTML =  RELSHR_SILVER;
+  document.getElementById("RELSHRDIS_BR").innerHTML =  RELSHR_BRONZE;
+  document.getElementById("KEYBITBRDIS").innerHTML = "Bronze keys: " + KEYBIT_BRONZE;
+  document.getElementById("KEYBITSLDIS").innerHTML = "Silver keys: " + KEYBIT_SILVER;
+  document.getElementById("KEYBITGDDIS").innerHTML = "Gold keys: " + KEYBIT_GOLD;
+  
   done_crstl_prod();
   RPG_UPDATE();
   achieve();
@@ -981,6 +1037,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-<p>version: beta 97</p>
+<p>version: beta 98</p>
 </body>
 </html>
