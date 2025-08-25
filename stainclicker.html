@@ -174,8 +174,13 @@
 <p id=RPG_STATDIS>your stats: HP ATK DEF MAG</p>
 </div>
 <div>
-<p>Chests</p>
-<p>comming soon</p>
+<button type="button" class="collapsible">Chests</button>
+  <div class="content">
+    <p id=KEYBRDIS>Bronze keys: 0</p>
+    <p id=KEYSLDIS>Silver keys: 0</p>
+    <p id=KEYGDDIS>Gold keys: 0</p>
+    <p>comming soon</p>
+  </div>
 </div>
 </div>
 <button type="button" class="collapsible">achievements</button>
@@ -625,6 +630,9 @@ function updateui() {
   document.getElementById("ascdis").innerHTML = "ASC= " + asc;
   document.getElementById("crdevicecost").innerHTML = "Cost:" + (100000 + (SPC*100)) + "stains";
   document.getElementById("crstldisplay").innerHTML = Crystals + " crystalized stains";
+  document.getElementById("KEYBRDIS").innerHTML = "Bronze keys: " + KEY_BRONZE;
+  document.getElementById("KEYSLDIS").innerHTML = "Silver keys: " + KEY_SILVER;
+  document.getElementById("KEYGDDIS").innerHTML = "Gold keys: " + KEY_GOLD;
   done_crstl_prod();
   RPG_UPDATE();
   achieve();
@@ -973,6 +981,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-<p>version: beta 96</p>
+<p>version: beta 97</p>
 </body>
 </html>
