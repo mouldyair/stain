@@ -173,6 +173,10 @@
 <button onclick='RPG_LV_MAG()'>upgrade magic</button>
 <p id=RPG_STATDIS>your stats: HP ATK DEF MAG</p>
 </div>
+<div>
+<p>Chests</p>
+<p>comming soon</p>
+</div>
 </div>
 <button type="button" class="collapsible">achievements</button>
     <div class="content">
@@ -375,6 +379,9 @@ let ACHID_CLICK10K = 0;
 let ACHID_CLICK100K = 0;
 let ACHID_CLICK1M = 0;
 let ACHID_CLICK10M = 0;
+let KEY_BRONZE = getNumberFromCookie("KEY_BRONZE", 0);
+let KEY_SILVER = getNumberFromCookie("KEY_SILVER", 0);
+let KEY_GOLD = getNumberFromCookie("KEY_GOLD", 0);
 function getRndInteger(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
@@ -404,6 +411,9 @@ function save() {
   document.cookie = "ACHID_ASC=" + ACHID_ASC + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
   document.cookie = "ACHID_OVRLV=" + ACHID_OVRLV + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
   document.cookie = "ACHID_FLR50=" + ACHID_FLR50 + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "KEY_BRONZE=" + KEY_BRONZE + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "KEY_SILVER=" + KEY_SILVER + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "KEY_GOLD=" + KEY_GOLD + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
 }
  //building and click functions
 function LVUP() {
@@ -692,6 +702,25 @@ function updateui() {
   }
   function RPG_NEWFLOOR() {
     stains += (10 * RPG_FLOOR);
+    if RPG_FLOOR == 50 {
+      KEY_BRONZE ++;
+    } else if RPG_FLOOR == 100 {
+      KEY_BRONZE ++;
+    } else if RPG_FLOOR == 150 {
+      KEY_BRONZE ++;
+    } else if RPG_FLOOR == 200 {
+      KEY_SILVER ++;
+    } else if RPG_FLOOR == 250 {
+      KEY_SILVER ++;
+    } else if RPG_FLOOR == 300 {
+      KEY_SILVER ++;
+    } else if RPG_FLOOR == 350 {
+      KEY_GOLD ++;
+    } else if RPG_FLOOR == 400 {
+      KEY_GOLD ++;
+    } else if RPG_FLOOR == 450 {
+      KEY_GOLD ++;
+    }
     RPG_FLOOR ++;
     RPG_NEWFOE(RPG_FLOOR);
   }
@@ -944,6 +973,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-<p>version: beta 94</p>
+<p>version: beta 95</p>
 </body>
 </html>
