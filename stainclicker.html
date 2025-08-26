@@ -176,10 +176,31 @@
 <div>
 <button type="button" class="collapsible">Chests</button>
   <div class="content">
-    <p id=KEYBRDIS>Bronze keys: 0</p>
-    <p id=KEYSLDIS>Silver keys: 0</p>
-    <p id=KEYGDDIS>Gold keys: 0</p>
-    <p>comming soon</p>
+    <table>
+      <tr>
+       <th>Key</th>
+       <th>count</th>
+       <th>craft</th>
+      </tr>
+      <tr>
+        <td>Bronze keys</td>
+        <td id=KEYBRDIS>0</td>
+        <td><button onclick="CRAFTKEY_BRONZE()">CRAFT</button></td>
+      </tr>
+      <tr>
+        <td>Silver keys</td>
+        <td id=KEYSLDIS>0</td>
+        <td><button onclick="CRAFTKEY_SILVER()">CRAFT</button></td>
+      </tr>
+      <tr>
+        <td>Gold keys</td>
+        <td id=KEYGDDIS>0</td>
+        <td><button onclick="CRAFTKEY_GOLD()">CRAFT</button></td>
+      </tr>
+    </table>
+    <button onclick="OPENCHEST_BRONZE()">open bronze chest</button>
+    <button onclick="OPENCHEST_SILVER()">open silver chest</button>
+    <button onclick="OPENCHEST_GOLD()">open gold chest</button>
   </div>
 <button type="button" class="collapsible">Inventory</button>
   <div class="content">
@@ -430,6 +451,8 @@ let KEYBIT_GOLD = getNumberFromCookie("KEYBIT_GOLD", 0);
 let RELSHR_BRONZE = getNumberFromCookie("RELSHR_BRONZE", 0);
 let RELSHR_SILVER = getNumberFromCookie("RELSHR_SILVER", 0);
 let RELSHR_GOLD = getNumberFromCookie("RELSHR_GOLD", 0);
+let CHEST_REWARD_TEXT = "You got: "
+let CHEST_LUCK = 0;
 function getRndInteger(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
@@ -900,6 +923,141 @@ function updateui() {
       }
     }
   }
+  function CRAFTKEY_GOLD() {
+    if (KEYBIT_GOLD > 9) {
+      KEYBIT_GOLD = KEYBIT_GOLD - 10;
+      KEY_GOLD ++;
+    }
+  }
+  function CRAFTKEY_SILVER() {
+    if (KEYBIT_SILVER > 9) {
+      KEYBIT_SILVER = KEYBIT_SILVER - 10;
+      KEY_SILVER ++;
+    }
+  }
+  function CRAFTKEY_BRONZE() {
+    if (KEYBIT_BRONZE > 9) {
+      KEYBIT_BRONZE = KEYBIT_BRONZE - 10;
+      KEY_BRONZE ++;
+    }
+  }
+  function OPENCHEST_BRONZE() {
+    if (KEY_BRONZE > 0) {
+      KEY_BRONZE--;
+      stains += 5000;
+      CHEST_REWARD_TEXT = "you got: 5000 stains and";
+      CHEST_LUCK = getRndInteger(0,5);
+      if (CHEST_LUCK == 1) {
+        stains += 1000;
+        CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " 1000 more stains";
+      } else if (CHEST_LUCK == 2) {
+        XP += 1000;
+        CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " 1000 XP";
+      } else if (CHEST_LUCK == 3) {
+        KEYBIT_BRONZE++;
+        CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " a bronze key bit!";
+      } else if (CHEST_LUCK == 4) {
+        KEYBIT_SILVER++;
+        CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " a silver key bit!";
+      } else if (CHEST_LUCK == 5) {
+        RELSHR_BRONZE++;
+        CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " a bronze relic shard!";
+      }
+      window.alert(CHEST_REWARD_TEXT);
+    }
+      
+    }
+    function OPENCHEST_SILVER() {
+    if (KEY_SILVER > 0) {
+      KEY_SILVER--;
+      stains += 150000;
+      CHEST_REWARD_TEXT = "you got: 150000 stains and";
+      CHEST_LUCK = getRndInteger(0,5);
+      if (CHEST_LUCK == 1) {
+        stains += 15000;
+        CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " 15000 more stains";
+      } else if (CHEST_LUCK == 2) {
+        XP += 15000;
+        CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " 15000 XP";
+      } else if (CHEST_LUCK == 3) {
+        KEY_BRONZE++;
+        CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " a bronze key";
+      } else if (CHEST_LUCK == 4) {
+        KEYBIT_GOLD++;
+        CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " a gold key bit";
+      } else if (CHEST_LUCK == 5) {
+        RELSHR_SILVER++;
+        CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " a silver relic shard";
+      }
+      CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " and";
+      CHEST_LUCK = getRndInteger(0,5);
+      if (CHEST_LUCK == 1) {
+        stains += 15000;
+        CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " 15000 more stains";
+      } else if (CHEST_LUCK == 2) {
+        XP += 15000;
+        CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " 15000 XP";
+      } else if (CHEST_LUCK == 3) {
+        KEY_BRONZE++;
+        CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " a bronze key!";
+      } else if (CHEST_LUCK == 4) {
+        KEYBIT_GOLD++;
+        CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " a gold key bit!";
+      } else if (CHEST_LUCK == 5) {
+        RELSHR_SILVER++;
+        CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " a silver relic shard!";
+      }
+      window.alert(CHEST_REWARD_TEXT);
+    }
+      
+    }
+    function OPENCHEST_GOLD() {
+    if (KEY_GOLD > 0) {
+      KEY_GOLD--;
+      stains += 500000;
+      CHEST_REWARD_TEXT = "you got: 500000 stains and";
+      CHEST_LUCK = getRndInteger(0,5);
+      if (CHEST_LUCK == 1) {
+        stains += 50000;
+        CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " 50000 more stains";
+      } else if (CHEST_LUCK == 2) {
+        XP += 50000;
+        CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " 50000 XP";
+      } else if (CHEST_LUCK == 3) {
+        KEY_SILVER++;
+        CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " a silver key";
+      } else if (CHEST_LUCK == 4) {
+        RELSHR_GOLD++;;
+        CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " a gold relic shard";
+      } else if (CHEST_LUCK == 5) {
+        RELSHR_SILVER++;
+        RELSHR_SILVER++;
+        CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " 2 silver relic shards";
+      }
+      CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " and";
+      CHEST_LUCK = getRndInteger(0,5);
+      if (CHEST_LUCK == 1) {
+        stains += 50000;
+        CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " 50000 more stains";
+      } else if (CHEST_LUCK == 2) {
+        XP += 50000;
+        CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " 50000 XP";
+      } else if (CHEST_LUCK == 3) {
+        KEY_SILVER++;
+        CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " a silver key";
+      } else if (CHEST_LUCK == 4) {
+        RELSHR_GOLD++;;
+        CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " a gold relic shard";
+      } else if (CHEST_LUCK == 5) {
+        RELSHR_SILVER++;
+        RELSHR_SILVER++;
+        CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " 2 silver relic shards";
+      }
+      window.alert(CHEST_REWARD_TEXT);
+    }
+      
+    }
+  }
   //----------------------------------------------------------------------------------------------ACHIEVEMENTS----------------------------------------------
 function achieve() {
   if (ACHID_FLR50 < 1) {
@@ -1037,6 +1195,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-<p>version: beta 99</p>
+<p>version: beta 100</p>
 </body>
 </html>
