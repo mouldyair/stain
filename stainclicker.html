@@ -946,7 +946,7 @@ function updateui() {
       KEY_BRONZE--;
       stains += 5000;
       CHEST_REWARD_TEXT = "you got: 5000 stains and";
-      CHEST_LUCK = getRndInteger(0,5);
+      CHEST_LUCK = getRndInteger(1,6);
       if (CHEST_LUCK == 1) {
         stains += 1000;
         CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " 1000 more stains";
@@ -972,7 +972,7 @@ function updateui() {
       KEY_SILVER--;
       stains += 150000;
       CHEST_REWARD_TEXT = "you got: 150000 stains and";
-      CHEST_LUCK = getRndInteger(0,5);
+      CHEST_LUCK = getRndInteger(1,6);
       if (CHEST_LUCK == 1) {
         stains += 15000;
         CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " 15000 more stains";
@@ -990,7 +990,7 @@ function updateui() {
         CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " a silver relic shard";
       }
       CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " and";
-      CHEST_LUCK = getRndInteger(0,5);
+      CHEST_LUCK = getRndInteger(1,6);
       if (CHEST_LUCK == 1) {
         stains += 15000;
         CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " 15000 more stains";
@@ -1016,7 +1016,7 @@ function updateui() {
       KEY_GOLD--;
       stains += 500000;
       CHEST_REWARD_TEXT = "you got: 500000 stains and";
-      CHEST_LUCK = getRndInteger(0,5);
+      CHEST_LUCK = getRndInteger(1,6);
       if (CHEST_LUCK == 1) {
         stains += 50000;
         CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " 50000 more stains";
@@ -1035,7 +1035,7 @@ function updateui() {
         CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " 2 silver relic shards";
       }
       CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " and";
-      CHEST_LUCK = getRndInteger(0,5);
+      CHEST_LUCK = getRndInteger(1,6);
       if (CHEST_LUCK == 1) {
         stains += 50000;
         CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " 50000 more stains";
@@ -1074,7 +1074,7 @@ function achieve() {
     document.getElementById("ach_asc").innerHTML = "Unlocked";
   }
   if (ACHID_LUCK < 1) {
-    luck = getRndInteger(1,1000000);
+    luck = getRndInteger(2,1000001);
     if (luck > 999999){
       ACHID_LUCK = 1;
     }
@@ -1148,7 +1148,7 @@ function achieve_reward() {
     XP++;
   }
   if (ACHID_LUCK > 0) {
-    luck = getRndInteger(1,10000);
+    luck = getRndInteger(2,10001);
     if (luck > 9999) {
       stains += ((SPC * 777) + 777);
       XP += ((SPC * 777) + 777);
@@ -1194,6 +1194,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-<p>version: beta 101</p>
+<p>version: beta 102</p>
 </body>
 </html>
