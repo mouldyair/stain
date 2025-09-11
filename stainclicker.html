@@ -235,9 +235,6 @@
       </tr>
     </table>
     
-
-
-    <p>comming soon</p>
   </div>
 </div>
 </div>
@@ -300,6 +297,52 @@
         </tr>
       </table>
     </div>
+  <button type="button" class="collapsible">achievements</button>
+    <div class="content">
+      <table>
+        <tr>
+          <th>Relic</th>
+          <th>status</th>
+          <th>upgrade cost</th>
+          <th>upgrade</th>
+          <th>toggle</th>
+          <th>effect</th>
+        </tr>
+        <tr>
+          <th>Gift of wealth</th>
+          <th id="reldis_stat_wealth">status</th>
+          <th id="reldis_cost_wealth">upgrade cost</th>
+          <th><button onclick="CRAFTREL_WEALTH()">upgrade</button></th>
+          <th><button onclick="TOGREL_WEALTH()">toggle</button></th>
+          <th>gives extra stains</th>
+        </tr>
+        <tr>
+          <th>Gift of knowledge</th>
+          <th id="reldis_stat_know">status</th>
+          <th id="reldis_cost_know">upgrade cost</th>
+          <th><button onclick="CRAFTREL_KNOW()">upgrade</button></th>
+          <th><button onclick="TOGREL_KNOW()">toggle</button></th>
+          <th>gives extra XP</th>
+        </tr>
+        <tr>
+          <th>heart of hunger</th>
+          <th id="reldis_stat_feed">status</th>
+          <th id="reldis_cost_feed">upgrade cost</th>
+          <th><button onclick="CRAFTREL_FEED()">upgrade</button></th>
+          <th><button onclick="TOGREL_FEED()">toggle</button></th>
+          <th>feed it for rewards</th>
+        </tr>
+        <tr>
+          <th>heart of decay</th>
+          <th id="reldis_stat_decay">status</th>
+          <th id="reldis_cost_decay">upgrade cost</th>
+          <th><button onclick="CRAFTREL_DECAY()">upgrade</button></th>
+          <th><button onclick="TOGREL_DECAY()">toggle</button></th>
+          <th>WARNING: may have dire consequences</th>
+        </tr>
+        </table>
+      
+  
 <button onclick="save()">SAVE</button> 
 
 
@@ -1202,6 +1245,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-<p>version: beta 105</p>
+<p>version: beta 106</p>
 </body>
 </html>
