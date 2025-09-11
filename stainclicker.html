@@ -453,6 +453,8 @@ let RELSHR_SILVER = getNumberFromCookie("RELSHR_SILVER", 0);
 let RELSHR_GOLD = getNumberFromCookie("RELSHR_GOLD", 0);
 let CHEST_REWARD_TEXT = "You got: "
 let CHEST_LUCK = 0;
+let asc_calc = 0;
+let asc_calcb = 1;
 function getRndInteger(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
@@ -512,8 +514,13 @@ if (XP - ((LV*LV*LV*15) +100) >= 0) {
 }
 function ascend() {
   if (LV >= 100) {
-    if (stains >= (15000000 * asc * asc) + 15000000) {
-      if (XP >= (10000000 * asc * asc) + 10000000) {
+    asc_calc = asc;
+    asc_calcb = 1;
+    while (asc_calc > 0) {
+      asc_calcb = asc_calcb * 2;
+      asc_calc --;
+    if (stains >= (15000000 * asc_calcb) {
+      if (XP >= (10000000 * asc_calcb) {
         stains = 0;
         XP = 0;
         LV = 0;
@@ -1194,6 +1201,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-<p>version: beta 102</p>
+<p>version: beta 103</p>
 </body>
 </html>
