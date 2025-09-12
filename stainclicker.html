@@ -932,7 +932,7 @@ function updateui() {
           if (stains >= ___decay) {
             stains -= ___decay;
             ___progress++;
-            ___decay = ___decay * 2;
+            ___decay ++;
             if (___progress > 9) {
               ___progress = 0;
               ___void ++;
@@ -1426,6 +1426,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-<p>version: beta 117</p>
+<p>version: beta 118</p>
 </body>
 </html>
