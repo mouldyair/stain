@@ -498,13 +498,13 @@ let CHEST_REWARD_TEXT = "You got: ";
 let CHEST_LUCK = 0;
 let asc_calc = 0;
 let asc_calcb = 1;
-let rel_teir_wealth =  getNumberFromCookie("rel_teir_wealth", "broken");  
+let rel_teir_wealth =  getNumberFromCookie("rel_teir_wealth", "broken");
 let rel_stat_wealth =  getNumberFromCookie("rel_stat_wealth", "off");
-let rel_teir_know =  getNumberFromCookie("rel_teir_know", "broken");  
+let rel_teir_know =  getNumberFromCookie("rel_teir_know", "broken");
 let rel_stat_know =  getNumberFromCookie("rel_stat_know", "off");
-let rel_teir_feed =  getNumberFromCookie("rel_teir_feed", "broken");  
+let rel_teir_feed =  getNumberFromCookie("rel_teir_feed", "broken");
 let rel_stat_feed =  getNumberFromCookie("rel_stat_feed", "off");
-let rel_teir_decay =  getNumberFromCookie("rel_teir_decay", "broken");  
+let rel_teir_decay =  getNumberFromCookie("rel_teir_decay", "broken");
 let rel_stat_decay =  getNumberFromCookie("rel_stat_decay", "off");
 
 function getRndInteger(min, max) {
@@ -803,25 +803,27 @@ function updateui() {
     }
   }
   function CRAFTREL_WEALTH() {
-    if (rel_teir_wealth == "broken") {
-      if (RELSHR_BRONZE > 49) {
-        RELSHR_BRONZE -= 50;
-        rel_teir_wealth = "bronze";
-      }
-    } else if (rel_teir_wealth == "bronze") {
-      if (RELSHR_SILVER > 49) {
-        RELSHR_SILVER -= 50;
-        rel_teir_wealth = "silver";
-      }
-    } else if (rel_teir_wealth == "silver") {
-      if (RELSHR_GOLD > 49) {
-        RELSHR_GOLD -= 50;
-        rel_teir_wealth = "gold";
+    if (asc > 2) {
+      if (rel_teir_wealth == "broken") {
+        if (RELSHR_BRONZE > 49) {
+          RELSHR_BRONZE -= 50;
+          rel_teir_wealth = "bronze";
+        }
+      } else if (rel_teir_wealth == "bronze") {
+        if (RELSHR_SILVER > 49) {
+          RELSHR_SILVER -= 50;
+          rel_teir_wealth = "silver";
+        }
+      } else if (rel_teir_wealth == "silver") {
+        if (RELSHR_GOLD > 49) {
+          RELSHR_GOLD -= 50;
+          rel_teir_wealth = "gold";
+        }
       }
     }
+  }
     function REL_WEALTH_PRIZE() {
       if (rel_stat_wealth == "ON") {
-        
         if (rel_teir_wealth == "bronze") {
           stains += 10;
         } else if (rel_teir_wealth == "silver") {
@@ -831,8 +833,6 @@ function updateui() {
         }
       }
     }
-      
-      
 //-------------------------------------------------------------------------RPG MINIGAME SCRIPT_______________________________--------------
   function RPG_UPDATE() {
     if (RPG_FLOOR > RPG_FLOORBEST) {
@@ -1311,6 +1311,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-<p>version: beta 109</p>
+<p>version: beta 110</p>
 </body>
 </html>
