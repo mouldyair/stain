@@ -795,7 +795,7 @@ function updateui() {
 }
 //-------------------------------------------------------------------------RELIC SCRIPTS---------------------------------------------------
   function TOGREL_WEALTH() {
-    if (rel_teir_wealth != 0) {
+    if (rel_teir_wealth != NaN) {
       if (rel_stat_wealth == "ON") {
         rel_stat_wealth = "OFF";
       } else {
@@ -805,7 +805,7 @@ function updateui() {
   }
   function CRAFTREL_WEALTH() {
     if (asc > 2) {
-      if (rel_teir_wealth == 0) {
+      if (rel_teir_wealth == NaN) {
         if (RELSHR_BRONZE > 49) {
           RELSHR_BRONZE -= 50;
           rel_teir_wealth = "bronze";
@@ -1312,6 +1312,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-<p>version: beta 112</p>
+<p>version: beta 113</p>
 </body>
 </html>
