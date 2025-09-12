@@ -304,7 +304,6 @@
           <th>Relic</th>
           <th>teir</th>
           <th>status</th>
-          <th>upgrade cost</th>
           <th>upgrade</th>
           <th>toggle</th>
           <th>effect</th>
@@ -313,7 +312,6 @@
           <th>Gift of wealth</th>
           <th id="reldis_teir_wealth">broken</th>
           <th id="reldis_stat_wealth">status</th>
-          <th id="reldis_cost_wealth">upgrade cost</th>
           <th><button onclick="CRAFTREL_WEALTH()">upgrade</button></th>
           <th><button onclick="TOGREL_WEALTH()">toggle</button></th>
           <th>gives extra stains</th>
@@ -322,7 +320,6 @@
           <th>Gift of knowledge</th>
           <th id="reldis_teir_know">broken</th>
           <th id="reldis_stat_know">status</th>
-          <th id="reldis_cost_know">upgrade cost</th>
           <th><button onclick="CRAFTREL_KNOW()">upgrade</button></th>
           <th><button onclick="TOGREL_KNOW()">toggle</button></th>
           <th>gives extra XP</th>
@@ -331,7 +328,6 @@
           <th>heart of hunger</th>
           <th id="reldis_teir_feed">broken</th>
           <th id="reldis_stat_feed">status</th>
-          <th id="reldis_cost_feed">upgrade cost</th>
           <th><button onclick="CRAFTREL_FEED()">upgrade</button></th>
           <th><button onclick="TOGREL_FEED()">toggle</button></th>
           <th>feed it for rewards</th>
@@ -340,7 +336,6 @@
           <th>heart of decay</th>
           <th id="reldis_teir_decay">broken</th>
           <th id="reldis_stat_decay">status</th>
-          <th id="reldis_cost_decay">upgrade cost</th>
           <th><button onclick="CRAFTREL_DECAY()">upgrade</button></th>
           <th><button onclick="TOGREL_DECAY()">toggle</button></th>
           <th>WARNING: may have dire consequences</th>
@@ -795,7 +790,49 @@ function updateui() {
   done_crstl_prod();
   RPG_UPDATE();
   achieve();
+  REL_WEALTH_PRIZE();
 }
+//-------------------------------------------------------------------------RELIC SCRIPTS---------------------------------------------------
+  function TOGREL_WEALTH() {
+    if (rel_teir_wealth != "broken") {
+      if (rel_stat_wealth == "ON") {
+        rel_stat_wealth = "OFF";
+      } else {
+        rel_stat_wealth = "ON";
+      }
+    }
+  }
+  function CRAFTREL_WEALTH() {
+    if (rel_teir_wealth == "broken") {
+      if (RELSHR_BRONZE > 49) {
+        RELSHR_BRONZE -= 50;
+        rel_teir_wealth = "bronze";
+      }
+    } else if (rel_teir_wealth == "bronze") {
+      if (RELSHR_SILVER > 49) {
+        RELSHR_SILVER -= 50;
+        rel_teir_wealth = "silver";
+      }
+    } else if (rel_teir_wealth == "silver") {
+      if (RELSHR_GOLD > 49) {
+        RELSHR_GOLD -= 50;
+        rel_teir_wealth = "gold";
+      }
+    }
+    function REL_WEALTH_PRIZE() {
+      if (rel_stat_wealth == "ON") {
+        
+        if (rel_teir_wealth == "bronze") {
+          stains += 10;
+        } else if (rel_teir_wealth == "silver") {
+          stains += 20;
+        } else if (rel_teir_wealth == "gold") {
+          stains += 40;
+        }
+      }
+    }
+      
+      
 //-------------------------------------------------------------------------RPG MINIGAME SCRIPT_______________________________--------------
   function RPG_UPDATE() {
     if (RPG_FLOOR > RPG_FLOORBEST) {
@@ -1274,6 +1311,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-<p>version: beta 107</p>
+<p>version: beta 108</p>
 </body>
 </html>
