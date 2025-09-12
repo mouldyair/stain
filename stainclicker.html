@@ -297,11 +297,12 @@
         </tr>
       </table>
     </div>
-  <button type="button" class="collapsible">achievements</button>
+  <button type="button" class="collapsible">relics</button>
     <div class="content">
       <table>
         <tr>
           <th>Relic</th>
+          <th>teir</th>
           <th>status</th>
           <th>upgrade cost</th>
           <th>upgrade</th>
@@ -310,6 +311,7 @@
         </tr>
         <tr>
           <th>Gift of wealth</th>
+          <th id="reldis_teir_wealth">broken</th>
           <th id="reldis_stat_wealth">status</th>
           <th id="reldis_cost_wealth">upgrade cost</th>
           <th><button onclick="CRAFTREL_WEALTH()">upgrade</button></th>
@@ -318,6 +320,7 @@
         </tr>
         <tr>
           <th>Gift of knowledge</th>
+          <th id="reldis_teir_know">broken</th>
           <th id="reldis_stat_know">status</th>
           <th id="reldis_cost_know">upgrade cost</th>
           <th><button onclick="CRAFTREL_KNOW()">upgrade</button></th>
@@ -326,6 +329,7 @@
         </tr>
         <tr>
           <th>heart of hunger</th>
+          <th id="reldis_teir_feed">broken</th>
           <th id="reldis_stat_feed">status</th>
           <th id="reldis_cost_feed">upgrade cost</th>
           <th><button onclick="CRAFTREL_FEED()">upgrade</button></th>
@@ -334,6 +338,7 @@
         </tr>
         <tr>
           <th>heart of decay</th>
+          <th id="reldis_teir_decay">broken</th>
           <th id="reldis_stat_decay">status</th>
           <th id="reldis_cost_decay">upgrade cost</th>
           <th><button onclick="CRAFTREL_DECAY()">upgrade</button></th>
@@ -498,6 +503,15 @@ let CHEST_REWARD_TEXT = "You got: "
 let CHEST_LUCK = 0;
 let asc_calc = 0;
 let asc_calcb = 1;
+let rel_teir_wealth =  getNumberFromCookie("rel_teir_wealth", "broken");  
+let rel_stat_wealth =  getNumberFromCookie("rel_stat_wealth", "off");
+let rel_teir_know =  getNumberFromCookie("rel_teir_know", "broken");  
+let rel_stat_know =  getNumberFromCookie("rel_stat_know", "off");
+let rel_teir_feed =  getNumberFromCookie("rel_teir_feed", "broken");  
+let rel_stat_feed =  getNumberFromCookie("rel_stat_feed", "off");
+let rel_teir_decay =  getNumberFromCookie("rel_teir_decay", "broken");  
+let rel_stat_decay =  getNumberFromCookie("rel_stat_decay", "off");
+
 function getRndInteger(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
@@ -536,6 +550,14 @@ function save() {
   document.cookie = "RELSHR_BRONZE=" + RELSHR_BRONZE + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
   document.cookie = "RELSHR_SILVER=" + RELSHR_SILVER + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
   document.cookie = "RELSHR_GOLD=" + RELSHR_GOLD + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "rel_teir_wealth=" + rel_teir_wealth + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "rel_stat_wealth=" + rel_stat_wealth + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "rel_teir_know=" + rel_teir_know + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "rel_stat_know=" + rel_stat_know + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "rel_teir_feed=" + rel_teir_feed + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "rel_stat_feed=" + rel_stat_feed + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "rel_teir_decay=" + rel_teir_decay + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "rel_stat_decay=" + rel_stat_decay + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
 }
  //building and click functions
 function LVUP() {
@@ -762,7 +784,14 @@ function updateui() {
   document.getElementById("KEYBITBRDIS").innerHTML =  KEYBIT_BRONZE;
   document.getElementById("KEYBITSLDIS").innerHTML =  KEYBIT_SILVER;
   document.getElementById("KEYBITGDDIS").innerHTML =  KEYBIT_GOLD;
-  
+  document.getElementById("reldis_stat_wealth").innerHTML =  rel_stat_wealth;
+  document.getElementById("reldis_teir_wealth").innerHTML =  rel_teir_wealth;
+  document.getElementById("reldis_stat_know").innerHTML =  rel_stat_know;
+  document.getElementById("reldis_teir_know").innerHTML =  rel_teir_know;
+  document.getElementById("reldis_stat_feed").innerHTML =  rel_stat_feed;
+  document.getElementById("reldis_teir_feed").innerHTML =  rel_teir_feed;
+  document.getElementById("reldis_stat_decay").innerHTML =  rel_stat_decay;
+  document.getElementById("reldis_teir_decay").innerHTML =  rel_teir_decay;
   done_crstl_prod();
   RPG_UPDATE();
   achieve();
@@ -1245,6 +1274,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-<p>version: beta 106</p>
+<p>version: beta 107</p>
 </body>
 </html>
