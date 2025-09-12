@@ -325,7 +325,7 @@
           <th>gives extra XP</th>
         </tr>
         <tr>
-          <th>heart of hunger</th>
+          <th>heart of hunger [incomplete]</th>
           <th id="reldis_teir_feed">broken</th>
           <th id="reldis_stat_feed">status</th>
           <th><button onclick="CRAFTREL_FEED()">upgrade</button></th>
@@ -511,7 +511,9 @@ let rel_stat_str_decay = 0;
 let rel_stat_str_feed = 0;
 let rel_stat_str_know = 0;
 let rel_stat_str_wealth = 0;
-
+let ___progress = 0;
+let ___decay = 1;
+let ___void = getNumberFromCookie("___void", 0);
 function getRndInteger(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
@@ -558,6 +560,7 @@ function save() {
   document.cookie = "rel_stat_feed=" + rel_stat_feed + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
   document.cookie = "rel_teir_decay=" + rel_teir_decay + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
   document.cookie = "rel_stat_decay=" + rel_stat_decay + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "___void=" + ___void + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
 }
  //building and click functions
 function LVUP() {
@@ -849,12 +852,97 @@ function updateui() {
   }
     function REL_WEALTH_PRIZE() {
       if (rel_stat_wealth == 1) {
-        if (rel_teir_wealth == 1) {
+        if (rel_teir_wealth > 0) {
           stains += 10;
-        } else if (rel_teir_wealth == 2) {
+        }
+        if (rel_teir_wealth > 1) {
           stains += 20;
-        } else if (rel_teir_wealth == 3) {
+        }
+        if (rel_teir_wealth > 2) {
           stains += 40;
+        }
+      }
+    }
+  function TOGREL_KNOW() {
+    if (rel_teir_know > 0) {
+      if (rel_stat_know == 1) {
+        rel_stat_know = 0;
+      } else {
+        rel_stat_know = 1;
+      }
+    }
+  }
+  function CRAFTREL_KNOW() {
+    if (asc > 2) {
+      if (rel_teir_know == 0) {
+        if (RELSHR_BRONZE > 49) {
+          RELSHR_BRONZE -= 50;
+          rel_teir_know = 1;
+        }
+      } else if (rel_teir_know == 1) {
+        if (RELSHR_SILVER > 49) {
+          RELSHR_SILVER -= 50;
+          rel_teir_know = 2;
+        }
+      } else if (rel_teir_know == 2) {
+        if (RELSHR_GOLD > 49) {
+          RELSHR_GOLD -= 50;
+          rel_teir_know = 3;
+        }
+      }
+    }
+  }
+    function REL_KNOW_PRIZE() {
+      if (rel_stat_know == 1) {
+        if (rel_teir_know > 0) {
+          XP += 10;
+        }
+        if (rel_teir_know > 1) {
+          XP += 20;
+        }
+        if (rel_teir_know > 2) {
+          XP += 40;
+        }
+      }
+    }
+  function TOGREL_DECAY() {
+    if (rel_teir_decay > 0) {
+      if (rel_stat_decay == 1) {
+        rel_stat_decay = 0;
+      } else {
+        rel_stat_decay = 1;
+      }
+    }
+  }
+  function CRAFTREL_DECAY() {
+    if (asc > 2) {
+      if (rel_teir_decay == 0) {
+        if (RELSHR_BRONZE > 49) {
+          RELSHR_BRONZE -= 50;
+          rel_teir_decay = 1;
+        }
+      }
+    }
+  }
+    function REL_DECAY_PRIZE() {
+      if (rel_stat_decay == 1) {
+        if (rel_teir_decay > 0) {
+          if (stains >= ___decay) {
+            stains -= ___decay;
+            ___progress++;
+            ___decay++;
+            if (___progress > 9) {
+              ___progress = 0;
+              ___void ++;
+            }
+          } else {
+            stains = 0;
+            XP = 0;
+            ___decay = 1;
+            ___progress = 0;
+            rel_teir_decay = 0;
+            rel_stat_decay = 0;
+          }
         }
       }
     }
@@ -1336,6 +1424,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-<p>version: beta 114</p>
+<p>version: beta 115</p>
 </body>
 </html>
