@@ -507,6 +507,10 @@ let rel_teir_feed =  getNumberFromCookie("rel_teir_feed", 0);
 let rel_stat_feed =  getNumberFromCookie("rel_stat_feed", 0);
 let rel_teir_decay =  getNumberFromCookie("rel_teir_decay", 0);
 let rel_stat_decay =  getNumberFromCookie("rel_stat_decay", 0);
+let rel_stat_str_decay = 0;
+let rel_stat_str_feed = 0;
+let rel_stat_str_know = 0;
+let rel_stat_str_wealth = 0;
 
 function getRndInteger(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
@@ -780,14 +784,34 @@ function updateui() {
   document.getElementById("KEYBITBRDIS").innerHTML =  KEYBIT_BRONZE;
   document.getElementById("KEYBITSLDIS").innerHTML =  KEYBIT_SILVER;
   document.getElementById("KEYBITGDDIS").innerHTML =  KEYBIT_GOLD;
-  document.getElementById("reldis_stat_wealth").innerHTML =  rel_stat_wealth;
+  document.getElementById("reldis_stat_wealth").innerHTML =  rel_stat_str_wealth;
   document.getElementById("reldis_teir_wealth").innerHTML =  rel_teir_wealth;
-  document.getElementById("reldis_stat_know").innerHTML =  rel_stat_know;
+  document.getElementById("reldis_stat_know").innerHTML =  rel_stat_str_know;
   document.getElementById("reldis_teir_know").innerHTML =  rel_teir_know;
-  document.getElementById("reldis_stat_feed").innerHTML =  rel_stat_feed;
+  document.getElementById("reldis_stat_feed").innerHTML =  rel_stat_str_feed;
   document.getElementById("reldis_teir_feed").innerHTML =  rel_teir_feed;
-  document.getElementById("reldis_stat_decay").innerHTML =  rel_stat_decay;
+  document.getElementById("reldis_stat_decay").innerHTML =  rel_stat_str_decay;
   document.getElementById("reldis_teir_decay").innerHTML =  rel_teir_decay;
+  if (rel_stat_wealth == 1) {
+    rel_stat_str_wealth = "ON";
+  } else {
+    rel_stat_str_wealth = "OFF";
+  }
+  if (rel_stat_know == 1) {
+    rel_stat_str_know = "ON";
+  } else {
+    rel_stat_str_know = "OFF";
+  }
+  if (rel_stat_feed == 1) {
+    rel_stat_str_feed = "ON";
+  } else {
+    rel_stat_str_feed = "OFF";
+  }
+  if (rel_stat_decay == 1) {
+    rel_stat_str_decay = "ON";
+  } else {
+    rel_stat_str_decay = "OFF";
+  }
   done_crstl_prod();
   RPG_UPDATE();
   achieve();
@@ -795,41 +819,41 @@ function updateui() {
 }
 //-------------------------------------------------------------------------RELIC SCRIPTS---------------------------------------------------
   function TOGREL_WEALTH() {
-    if (rel_teir_wealth != NaN) {
-      if (rel_stat_wealth == "ON") {
-        rel_stat_wealth = "OFF";
+    if (rel_teir_wealth > 0) {
+      if (rel_stat_wealth == 1) {
+        rel_stat_wealth = 0;
       } else {
-        rel_stat_wealth = "ON";
+        rel_stat_wealth = 1;
       }
     }
   }
   function CRAFTREL_WEALTH() {
     if (asc > 2) {
-      if (rel_teir_wealth == NaN) {
+      if (rel_teir_wealth == 0) {
         if (RELSHR_BRONZE > 49) {
           RELSHR_BRONZE -= 50;
-          rel_teir_wealth = "bronze";
+          rel_teir_wealth = 1;
         }
-      } else if (rel_teir_wealth == "bronze") {
+      } else if (rel_teir_wealth == 1) {
         if (RELSHR_SILVER > 49) {
           RELSHR_SILVER -= 50;
-          rel_teir_wealth = "silver";
+          rel_teir_wealth = 2;
         }
-      } else if (rel_teir_wealth == "silver") {
+      } else if (rel_teir_wealth == 2) {
         if (RELSHR_GOLD > 49) {
           RELSHR_GOLD -= 50;
-          rel_teir_wealth = "gold";
+          rel_teir_wealth = 3;
         }
       }
     }
   }
     function REL_WEALTH_PRIZE() {
-      if (rel_stat_wealth == "ON") {
-        if (rel_teir_wealth == "bronze") {
+      if (rel_stat_wealth == 1) {
+        if (rel_teir_wealth == 1) {
           stains += 10;
-        } else if (rel_teir_wealth == "silver") {
+        } else if (rel_teir_wealth == 2) {
           stains += 20;
-        } else if (rel_teir_wealth == "gold") {
+        } else if (rel_teir_wealth == 3) {
           stains += 40;
         }
       }
@@ -1312,6 +1336,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-<p>version: beta 113</p>
+<p>version: beta 114</p>
 </body>
 </html>
