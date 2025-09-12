@@ -499,14 +499,14 @@ let CHEST_REWARD_TEXT = "You got: ";
 let CHEST_LUCK = 0;
 let asc_calc = 0;
 let asc_calcb = 1;
-let rel_teir_wealth =  getNumberFromCookie("rel_teir_wealth", "broken");
-let rel_stat_wealth =  getNumberFromCookie("rel_stat_wealth", "off");
-let rel_teir_know =  getNumberFromCookie("rel_teir_know", "broken");
-let rel_stat_know =  getNumberFromCookie("rel_stat_know", "off");
-let rel_teir_feed =  getNumberFromCookie("rel_teir_feed", "broken");
-let rel_stat_feed =  getNumberFromCookie("rel_stat_feed", "off");
-let rel_teir_decay =  getNumberFromCookie("rel_teir_decay", "broken");
-let rel_stat_decay =  getNumberFromCookie("rel_stat_decay", "off");
+let rel_teir_wealth =  getNumberFromCookie("rel_teir_wealth", 0);
+let rel_stat_wealth =  getNumberFromCookie("rel_stat_wealth", 0);
+let rel_teir_know =  getNumberFromCookie("rel_teir_know", 0);
+let rel_stat_know =  getNumberFromCookie("rel_stat_know", 0);
+let rel_teir_feed =  getNumberFromCookie("rel_teir_feed", 0);
+let rel_stat_feed =  getNumberFromCookie("rel_stat_feed", 0);
+let rel_teir_decay =  getNumberFromCookie("rel_teir_decay", 0);
+let rel_stat_decay =  getNumberFromCookie("rel_stat_decay", 0);
 
 function getRndInteger(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
@@ -795,7 +795,7 @@ function updateui() {
 }
 //-------------------------------------------------------------------------RELIC SCRIPTS---------------------------------------------------
   function TOGREL_WEALTH() {
-    if (rel_teir_wealth != "broken") {
+    if (rel_teir_wealth != 0) {
       if (rel_stat_wealth == "ON") {
         rel_stat_wealth = "OFF";
       } else {
@@ -805,7 +805,7 @@ function updateui() {
   }
   function CRAFTREL_WEALTH() {
     if (asc > 2) {
-      if (rel_teir_wealth == "broken") {
+      if (rel_teir_wealth == 0) {
         if (RELSHR_BRONZE > 49) {
           RELSHR_BRONZE -= 50;
           rel_teir_wealth = "bronze";
@@ -1312,6 +1312,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-<p>version: beta 111</p>
+<p>version: beta 112</p>
 </body>
 </html>
