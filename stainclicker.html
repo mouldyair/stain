@@ -1104,7 +1104,7 @@ function updateui() {
         case 1 :
           RPG_FOE = "Oops!";
           RPG_FOEHP = 180;
-          RPG_FOEATK = 48;
+          RPG_FOEATK = 50;
           break;
         case 2 :
           RPG_FOE = "Licky Louse";
@@ -1117,10 +1117,50 @@ function updateui() {
           RPG_FOEATK = 40;
           break;
       }
+    } else if (FLR < 75) {
+      switch (FLRSEED) {
+        case 1 :
+          RPG_FOE = "giant desert horror";
+          RPG_FOEHP = 200;
+          RPG_FOEATK = 30;
+          break;
+        case 2 :
+          RPG_FOE = "patrol guard";
+          RPG_FOEHP = 100;
+          RPG_FOEATK = 65;
+          break;
+        case 3 :
+          RPG_FOE = "vile sludge";
+          RPG_FOEHP = 50;
+          RPG_FOEATK = 30;
+          break;
+      }
+    } else if (FLR < 100) {
+      switch (FLRSEED) {
+        case 1 :
+          RPG_FOE = "sand stalker";
+          RPG_FOEHP = 100;
+          RPG_FOEATK = 60;
+          break;
+        case 2 :
+          RPG_FOE = "patrol captain";
+          RPG_FOEHP = 120;
+          RPG_FOEATK = 65;
+          break;
+        case 3 :
+          RPG_FOE = "shadow";
+          RPG_FOEHP = 1;
+          RPG_FOEATK = 150;
+          break;
+      }
+    } else if (FLR == 100) {
+      RPG_FOE = "Gateway Sentinel";
+      RPG_FOEHP = 999;
+      RPG_FOEATK = 120;
     } else {
-      RPG_FOE = "RUN ENDER";
-      RPG_FOEHP = 99999999999999999999;
-      RPG_FOEATK = 999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999;
+      RPG_FOE = "RUNENDER";
+      RPG_FOEHP = 99999999999999999999999;
+      RPG_FOEATK = 99999999999999999999999999999120;
     }
   }
   function RPG_LV_ATK() {
@@ -1426,6 +1466,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-<p>version: beta 118</p>
+<p>version: beta 119</p>
 </body>
 </html>
