@@ -997,6 +997,7 @@ function updateui() {
               RPG_MANA -= 30;
               RPG_HP += (20 + (RPG_MAG * 6));
               turn = 1;
+              RPG_FOEHP += RPG_FOEDEF;
               RPG_FOE_ACT();
             }
             break;
@@ -1013,6 +1014,7 @@ function updateui() {
           case "focus" :
             RPG_MANA += (5 + RPG_MAG);
             turn = 1;
+            RPG_FOEHP += RPG_FOEDEF;
             RPG_FOE_ACT();
             break;
         }
@@ -1208,7 +1210,11 @@ function updateui() {
       RPG_FOEHP = RPG_HP;
       RPG_FOEATK = RPG_ATK;
       RPG_FOEDEF = RPG_DEF;
-    }
+    } else {
+      RPG_FOE = "runender";
+      RPG_FOEHP = RPG_HP+99999999999999;
+      RPG_FOEATK = RPG_ATK+999999999999999;
+      RPG_FOEDEF = RPG_DEF+99999999999999999;
   }
   function RPG_LV_ATK() {
     if (Crystals > 0) {
@@ -1513,6 +1519,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-<p>version: beta 120</p>
+<p>version: beta 121</p>
 </body>
 </html>
