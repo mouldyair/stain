@@ -1215,32 +1215,32 @@ function updateui() {
         case 1 :
           RPG_FOE = "pirate";
           RPG_FOEHP = 330;
-          RPG_FOEATK = 75;
+          RPG_FOEATK = 140;
           RPG_FOEDEF = 4;
           break;
         case 2 :
           RPG_FOE = "pirate captain";
           RPG_FOEHP = 380;
-          RPG_FOEATK = 90;
+          RPG_FOEATK = 155;
           RPG_FOEDEF = 12;
           break;
         case 3 :
           RPG_FOE = "lake lurker";
           RPG_FOEHP = 800;
-          RPG_FOEATK = 120;
+          RPG_FOEATK = 145;
           RPG_FOEDEF = 8;
           break;
       }
     } else if (FLR == 200) {
-        RPG_FOE = "L";
-        RPG_FOEHP = 1500;
-        RPG_FOEATK = (180 + Math.round(RPG_DEF / 5));
-        RPG_FOEDEF = 10;
+        RPG_FOE = "Lophii";
+        RPG_FOEHP = 1555;
+        RPG_FOEATK = (185 + Math.round(RPG_DEF / 5));
+        RPG_FOEDEF = 12;
     } else {
       RPG_FOE = "runender";
-      RPG_FOEHP = RPG_HP+99999999999999;
-      RPG_FOEATK = RPG_ATK+999999999999999;
-      RPG_FOEDEF = RPG_DEF+99999999999999999;
+      RPG_FOEHP = RPG_HP+RPG_ATK+RPG_DEF+8000;
+      RPG_FOEATK = RPG_HP + RPG_DEF + 1;
+      RPG_FOEDEF = RPG_ATK + 10;
     }
         }
   function RPG_LV_ATK() {
@@ -1546,6 +1546,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-<p>version: beta 125</p>
+<p>version: beta 126</p>
 </body>
 </html>
