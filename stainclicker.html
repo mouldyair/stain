@@ -1175,7 +1175,7 @@ function updateui() {
         case 3 :
           RPG_FOE = "shadow";
           RPG_FOEHP = 1;
-          RPG_FOEATK = 150;
+          RPG_FOEATK = (150 + Math.round(RPG_DEF / 20));
           RPG_FOEDEF = 0;
           break;
       }
@@ -1201,7 +1201,7 @@ function updateui() {
         case 3 :
           RPG_FOE = "shadow";
           RPG_FOEHP = 1;
-          RPG_FOEATK = (150 + (RPG_DEF / 10));
+          RPG_FOEATK = (150 + Math.round(RPG_DEF / 10));
           RPG_FOEDEF = 0;
           break;
       }
@@ -1520,6 +1520,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-<p>version: beta 123</p>
+<p>version: beta 124</p>
 </body>
 </html>
