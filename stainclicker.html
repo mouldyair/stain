@@ -1,1 +1,1551 @@
-beta 128
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>stain clicker</title>
+  <style>
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    .grid-container {
+      display: grid;
+      grid-template-columns: 33% 33% 33%;
+    }
+    //colapsible
+    .collapsible {
+      background-color: #777;
+      color: white;
+      cursor: pointer;
+      padding: 18px;
+      width: 100%;
+      border: none;
+      text-align: left;
+      outline: none;
+      font-size: 15px;
+    }
+
+    .active, .collapsible:hover {
+      background-color: #555;
+    }
+
+    .content {
+      padding: 0 18px;
+      display: none;
+      overflow: hidden;
+      background-color: #f1f1f1;
+    }
+    //table
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+  </style>
+</head>
+<body>
+
+<p id="staincount" style="margin: 0; display: inline;">0</p>
+<p id="crstldisplay" style="margin: 0; display: inline;">0</p>
+<p id="sps">0</p> 
+<p id="spc">0</p>
+<img src="images/grugland/goor stain.png" width="200" height="200" onclick="goorclick()">
+<p id=clkdis><p>
+<p id=XPBAR>0</p>
+<p id=LVDISPLAY style="margin: 0; display: inline;">0</p>
+<p id=ascdis style="margin: 0; display: inline;">0</p>
+  <!----- START OF PAGE ONE ----->
+<div>
+<table style="width:100%">
+<tr>
+<td><button onclick="LVUP()">level up </button></td>
+<td id="LVCOST">1000 stains</td>
+<td id="LVXPCOST">100 XP</td>
+</tr>
+<tr>
+<th>building</th>
+<th>cost</th>
+<th>owned</th>
+</tr>
+<tr>
+<td><button onclick="buyA()">autoclicker</button></td>
+<td>100</td>
+<td ID=BAnum>0</td>
+</tr>
+<tr>
+<td><button onclick="buyB()">stain shop</button></td>
+<td>1,000</td>
+<td ID=BBnum>0</td>
+</tr>
+<tr>
+<td><button onclick="buyC()">propaganda</button></td>
+<td>10,000</td>
+<td ID=BCnum>0</td>
+</tr>
+<tr>
+<td><button onclick="buyD()">chemichal waste</button></td>
+<td>100,000</td>
+<td ID=BDnum>0</td>
+</tr>
+<tr>
+<td><button onclick="buyE()">mini goor</button></td>
+<td>1,000,000</td>
+<td ID=BEnum>0</td>
+</tr>
+<tr>
+<td><button onclick="buyF()">PLACEHOLDER</button></td>
+<td>10,000,000</td>
+<td ID=BFnum>0</td>
+</tr>
+<tr>
+<td><button onclick="buyG()">PLACEHOLDER</button></td>
+<td>100,000,000</td>
+<td ID=BGnum>0</td>
+<tr>
+<td><button onclick="buyH()">PLACEHOLDER</button></td>
+<td>1,000,000,000</td>
+<td ID=BHnum>0</td>
+</tr>
+</tr>
+</table>
+</div>
+<div class="grid-container">
+<div>
+<button onclick="ascend()">ASCEND</button>
+<table>
+<tr>
+<th>ascension</th>
+<th>cost</th>
+<th>XP cost</th>
+<th>unlocks</th>
+</tr>
+<tr>
+<td>1</td>
+<td>15000000 stains</td>
+<td>10000000 XP</td>
+<td>crystalisation device</td>
+</tr>
+<tr>
+<td>2</td>
+<td>30000000 stains</td>
+<td>20000000 XP</td>
+<td>RPG minigame</td>
+</tr>
+<tr>
+<td>3</td>
+<td>60000000 stains</td>
+<td>40000000 XP</td>
+<td>relics [incomplete]</td>
+</tr>
+<tr>
+<td>4</td>
+<td>120000000 stains</td>
+<td>80000000 XP</td>
+<td>coming soon</td>
+</tr>
+<tr>
+<td>5</td>
+<td>240000000 stains</td>
+<td>160000000 XP</td>
+<td>coming soon</td>
+</tr>
+</table>
+</div>
+<div>
+<p>crystalisation device</p>
+<p ID=crdevicecost>0</p>
+<button onclick="start_crstl_prod()">start device</button>
+</div>
+<div>
+<div>
+<p id='RPG_FLOOR_DIS'> </p>
+<p id='RPG_FOE_DIS'>ENEMY</p>
+<p id=RPG_FOEHP_DIS> X HP</p>
+<p id='HP_DIS'>your HP</p>
+<p id='MANA_DIS'>your mana</p>
+<button onclick='RPG_ACT_FIGHT()'>ATTACK</button><br>
+<p>SPELLS</p>
+<button onclick='RPG_ACT_MAGIC("heal")'>heal</button>
+<button onclick='RPG_ACT_MAGIC("fire")'>fire</button>
+<button onclick='RPG_ACT_MAGIC("focus")'>focus</button><br>
+</div>
+<button onclick='RPG_LV_ATK()'>upgrade atack</button>
+<button onclick='RPG_LV_DEF()'>upgrade defence</button>
+<button onclick='RPG_LV_HP()'>upgrade max health</button>
+<button onclick='RPG_LV_MAG()'>upgrade magic</button>
+<p id=RPG_STATDIS>your stats: HP ATK DEF MAG</p>
+</div>
+<div>
+<button type="button" class="collapsible">Chests</button>
+  <div class="content">
+    <table>
+      <tr>
+       <th>Key</th>
+       <th>count</th>
+       <th>craft</th>
+      </tr>
+      <tr>
+        <td>Bronze keys</td>
+        <td id=KEYBRDIS>0</td>
+        <td><button onclick="CRAFTKEY_BRONZE()">CRAFT</button></td>
+      </tr>
+      <tr>
+        <td>Silver keys</td>
+        <td id=KEYSLDIS>0</td>
+        <td><button onclick="CRAFTKEY_SILVER()">CRAFT</button></td>
+      </tr>
+      <tr>
+        <td>Gold keys</td>
+        <td id=KEYGDDIS>0</td>
+        <td><button onclick="CRAFTKEY_GOLD()">CRAFT</button></td>
+      </tr>
+    </table>
+    <button onclick="OPENCHEST_BRONZE()">open bronze chest</button>
+    <button onclick="OPENCHEST_SILVER()">open silver chest</button>
+    <button onclick="OPENCHEST_GOLD()">open gold chest</button>
+  </div>
+<button type="button" class="collapsible">Inventory</button>
+  <div class="content">
+    <table>
+      <tr>
+        <th>item</th>
+        <th>count</th>
+      </tr>
+      <tr>
+        <td>Bronze key bits</td>
+        <td id=KEYBITBRDIS>0</td>
+      </tr>
+      <tr>
+        <td>Silver key bits</td>
+        <td id=KEYBITSLDIS>0</td>
+      </tr>
+      <tr>
+        <td>Gold key bits</td>
+        <td id=KEYBITGDDIS>0</td>
+      </tr>
+      <tr>
+        <td>Bronze Relic shard</td>
+        <td id=RELSHRDIS_BR>0</td>
+      </tr>
+      <tr>
+        <td>Silver Relic shard</td>
+        <td id=RELSHRDIS_SL>0</td>
+      </tr>
+      <tr>
+        <td>Gold Relic shard</td>
+        <td id=RELSHRDIS_GD>0</td>
+      </tr>
+    </table>
+    
+  </div>
+</div>
+</div>
+<button type="button" class="collapsible">achievements</button>
+    <div class="content">
+      <table>
+        <tr>
+          <th>achievment</th>
+          <th>obtained</th>
+          <th>how to unlock</th>
+          <th>reward</th>
+        </tr>
+        <tr>
+          <td>ascension</td>
+          <td id="ach_asc">unobtained</td>
+          <td>ascend once</td>
+          <td>1XP per sec</td>
+        </tr>
+        <tr>
+          <td>explorer</td>
+          <td id="ach_flr50">unobtained</td>
+          <td>beat floor 50</td>
+          <td>1 stain per sec</td>
+        </tr>
+        <tr>
+          <td>AFK'd</td>
+          <td id="ach_ovrlvl">unobtained</td>
+          <td>level up with 10* required XP</td>
+          <td>1XP per sec</td>
+        </tr>
+        <tr>
+          <td>Lucky</td>
+          <td id="ach_luck">unobtained</td>
+          <td>stay up all night</td>
+          <td>Gamble</td>
+        </tr>
+        <tr>
+          <td>stainer</td>
+          <td id="ach_click10k">unobtained</td>
+          <td>click 10K times</td>
+          <td>1 stain per sec</td>
+        </tr>
+        <tr>
+          <td>addict</td>
+          <td id="ach_click100k">unobtained</td>
+          <td>click 100K times</td>
+          <td>2 stains per sec</td>
+        </tr>
+        <tr>
+          <td>stop playing</td>
+          <td id="ach_click1M">unobtained</td>
+          <td>click 1M times</td>
+          <td>4 stain per sec</td>
+        </tr>
+        <tr>
+          <td>does it hurt?</td>
+          <td id="ach_click10M">unobtained</td>
+          <td>click 10M times</td>
+          <td>8 stain per sec</td>
+        </tr>
+      </table>
+    </div>
+  <button type="button" class="collapsible">relics</button>
+    <div class="content">
+      <table>
+        <tr>
+          <th>Relic</th>
+          <th>teir</th>
+          <th>status</th>
+          <th>upgrade</th>
+          <th>toggle</th>
+          <th>effect</th>
+        </tr>
+        <tr>
+          <th>Gift of wealth</th>
+          <th id="reldis_teir_wealth">broken</th>
+          <th id="reldis_stat_wealth">status</th>
+          <th><button onclick="CRAFTREL_WEALTH()">upgrade</button></th>
+          <th><button onclick="TOGREL_WEALTH()">toggle</button></th>
+          <th>gives extra stains</th>
+        </tr>
+        <tr>
+          <th>Gift of knowledge</th>
+          <th id="reldis_teir_know">broken</th>
+          <th id="reldis_stat_know">status</th>
+          <th><button onclick="CRAFTREL_KNOW()">upgrade</button></th>
+          <th><button onclick="TOGREL_KNOW()">toggle</button></th>
+          <th>gives extra XP</th>
+        </tr>
+        <tr>
+          <th>heart of hunger [incomplete]</th>
+          <th id="reldis_teir_feed">broken</th>
+          <th id="reldis_stat_feed">status</th>
+          <th><button onclick="CRAFTREL_FEED()">upgrade</button></th>
+          <th><button onclick="TOGREL_FEED()">toggle</button></th>
+          <th>feed it for rewards</th>
+        </tr>
+        <tr>
+          <th>heart of decay</th>
+          <th id="reldis_teir_decay">broken</th>
+          <th id="reldis_stat_decay">status</th>
+          <th><button onclick="CRAFTREL_DECAY()">upgrade</button></th>
+          <th><button onclick="TOGREL_DECAY()">toggle</button></th>
+          <th>WARNING: may have dire consequences</th>
+        </tr>
+        </table>
+    </div>
+      
+  
+<button onclick="save()">SAVE</button> 
+
+
+<!----------------SCRIPTS BELLOW----------------- -->
+  
+
+
+<script type="text/javascript" src="https://cookieconsent.popupsmart.com/src/js/popper.js"></script>
+<script> window.start.init({Palette:"palette1",Mode:"banner bottom",Theme:"block",Message:"this website uses cookies to store save data for the game",LinkText:" Learn More!",Time:"0",})</script>
+<script> //UI setup
+document.addEventListener('keyup', function(event) {
+  if (event.key === '/') {
+    goorclick();
+  }
+});
+document.addEventListener('keyup', function(event) {
+  if (event.key === 'q') {
+    goorclick();
+  }
+});
+document.addEventListener('keyup', function(event) {
+  if (event.key === '1') {
+    buyA();
+  }
+});
+document.addEventListener('keyup', function(event) {
+  if (event.key === '2') {
+    buyB();
+  }
+});
+document.addEventListener('keyup', function(event) {
+  if (event.key === '3') {
+    buyC();
+  }
+});
+document.addEventListener('keyup', function(event) {
+  if (event.key === '4') {
+    buyD();
+  }
+});
+
+document.addEventListener('keyup', function(event) {
+  if (event.key === '5') {
+    buyE();
+  }
+});
+document.addEventListener('keyup', function(event) {
+  if (event.key === '6') {
+    buyF();
+  }
+});
+document.addEventListener('keyup', function(event) {
+  if (event.key === '7') {
+    buyG();
+  }
+});
+document.addEventListener('keyup', function(event) {
+  if (event.key === '8') {
+    buyH();
+  }
+});
+document.addEventListener('keyup', function(event) {
+  if (event.key === 'l') {
+    LVUP();
+  }
+});
+document.addEventListener('keyup', function(event) {
+  if (event.key === 'a') {
+    ascend();
+  }
+});
+document.addEventListener('keyup', function(event) {
+  if (event.key === 'u') {
+    RPG_ACT_FIGHT();
+  }
+});
+document.addEventListener('keyup', function(event) {
+  if (event.key === 'i') {
+    RPG_ACT_MAGIC("heal");
+  }
+});
+document.addEventListener('keyup', function(event) {
+  if (event.key === 'o') {
+    RPG_ACT_MAGIC("fire");
+  }
+});
+document.addEventListener('keyup', function(event) {
+  if (event.key === 'p') {
+    RPG_ACT_MAGIC("focus");
+  }
+});
+let stains = getNumberFromCookie("stains", 0);
+let buildA = getNumberFromCookie("buildA", 0);
+let buildB = getNumberFromCookie("buildB", 0);
+let buildC = getNumberFromCookie("buildC", 0);
+let buildD = getNumberFromCookie("buildD", 0);
+let buildE = getNumberFromCookie("buildE", 0);
+let buildF = getNumberFromCookie("buildF", 0);
+let buildG = getNumberFromCookie("buildG", 0);
+let buildH = getNumberFromCookie("buildH", 0);
+let XP = getNumberFromCookie("XP", 0);
+let LV = getNumberFromCookie("LV", 0);
+let asc = getNumberFromCookie("asc", 0);
+let Crystals = getNumberFromCookie("crstl", 0);
+let SPC = Math.round(LV*LV*0.9)+1;
+let crstl_prod = 0;
+let crstl_device_act = 0;
+document.getElementById("BAnum").innerHTML = buildA;
+document.getElementById("BBnum").innerHTML = buildB;
+document.getElementById("BCnum").innerHTML = buildC;
+document.getElementById("BDnum").innerHTML = buildD;
+document.getElementById("BEnum").innerHTML = buildE;
+document.getElementById("BFnum").innerHTML = buildF;
+document.getElementById("BGnum").innerHTML = buildG;
+document.getElementById("BHnum").innerHTML = buildH;
+document.getElementById("crdevicecost").innerHTML = "Cost:" + (100000 + (SPC*100)) + "stains";
+document.getElementById("crstldisplay").innerHTML = Crystals + " crystalized stains";
+let SPS = (buildA * 0.016666)+(buildB * 0.166694)+(buildC * 1.672240)+(buildD * 16.949152)+(buildE * 169.49152)+(buildF * 1694.9152)+(buildG * 16949.152)+(buildH * 169491.52);
+//RPG SETUP
+let turn = 0;
+let RPG_HPMAX = getNumberFromCookie("RPG_HPMAX", 10);
+let RPG_HP = getNumberFromCookie("RPG_HPMAX", 10);
+let RPG_ATK = getNumberFromCookie("RPG_ATK", 1);
+let RPG_DEF = getNumberFromCookie("RPG_DEF", 0);
+let RPG_MAG = getNumberFromCookie("RPG_MAG", 0);
+let RPG_FLOOR = 0;
+let RPG_FOE = "JIM";
+let RPG_FOEHP = 1;
+let RPG_FOEATK = 0;
+let RPG_FOEDEF = 0;
+let RPG_DMG = 0;
+let RPG_MANA = 100;
+let RPG_FLOORBEST = getNumberFromCookie("RPG_FLOORBEST", 0);
+let FLRSEED = 0;
+let Clickcount = getNumberFromCookie("Clickcount", 0);
+let ACHID_TEST = 0;
+let ACHID_ASC = getNumberFromCookie("ACHID_ASC", 0);
+let ACHID_FLR50 = getNumberFromCookie("ACHID_ASC", 0);
+let ACHID_OVRLV = getNumberFromCookie("ACHID_OVRLV", 0);
+let ACHID_LUCK = getNumberFromCookie("ACHID_LUCK", 0);
+let ACHID_CLICK10K = 0;
+let ACHID_CLICK100K = 0;
+let ACHID_CLICK1M = 0;
+let ACHID_CLICK10M = 0;
+let KEY_BRONZE = getNumberFromCookie("KEY_BRONZE", 0);
+let KEY_SILVER = getNumberFromCookie("KEY_SILVER", 0);
+let KEY_GOLD = getNumberFromCookie("KEY_GOLD", 0);
+let KEYBIT_BRONZE = getNumberFromCookie("KEYBIT_BRONZE", 0);
+let KEYBIT_SILVER = getNumberFromCookie("KEYBIT_SILVER", 0);
+let KEYBIT_GOLD = getNumberFromCookie("KEYBIT_GOLD", 0);
+let RELSHR_BRONZE = getNumberFromCookie("RELSHR_BRONZE", 0);
+let RELSHR_SILVER = getNumberFromCookie("RELSHR_SILVER", 0);
+let RELSHR_GOLD = getNumberFromCookie("RELSHR_GOLD", 0);
+let CHEST_REWARD_TEXT = "You got: ";
+let CHEST_LUCK = 0;
+let asc_calc = 0;
+let asc_calcb = 1;
+let rel_teir_wealth =  getNumberFromCookie("rel_teir_wealth", 0);
+let rel_stat_wealth =  getNumberFromCookie("rel_stat_wealth", 0);
+let rel_teir_know =  getNumberFromCookie("rel_teir_know", 0);
+let rel_stat_know =  getNumberFromCookie("rel_stat_know", 0);
+let rel_teir_feed =  getNumberFromCookie("rel_teir_feed", 0);
+let rel_stat_feed =  getNumberFromCookie("rel_stat_feed", 0);
+let rel_teir_decay =  getNumberFromCookie("rel_teir_decay", 0);
+let rel_stat_decay =  getNumberFromCookie("rel_stat_decay", 0);
+let rel_stat_str_decay = 0;
+let rel_stat_str_feed = 0;
+let rel_stat_str_know = 0;
+let rel_stat_str_wealth = 0;
+let ___progress = 0;
+let ___decay = 1;
+let ___void = getNumberFromCookie("___void", 0);
+function getRndInteger(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+ //save
+setInterval(save, 60000);
+function save() {
+  document.cookie = "stains=" + stains + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "buildA=" + buildA + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "buildB=" + buildB + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "buildC=" + buildC + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "buildD=" + buildD + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "buildE=" + buildE + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "buildF=" + buildF + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "buildG=" + buildG + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "buildH=" + buildH + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "XP=" + XP + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "LV=" + LV + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "asc=" + asc + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "crstl=" + Crystals + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "RPG_ATK=" + RPG_ATK + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "RPG_HPMAX=" + RPG_HPMAX + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "RPG_DEF=" + RPG_DEF + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "RPG_MAG=" + RPG_MAG + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "RPG_FLOORBEST=" + RPG_FLOORBEST + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "Clickcount=" + Clickcount + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "ACHID_LUCK=" + ACHID_LUCK + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "ACHID_ASC=" + ACHID_ASC + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "ACHID_OVRLV=" + ACHID_OVRLV + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "ACHID_FLR50=" + ACHID_FLR50 + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "KEY_BRONZE=" + KEY_BRONZE + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "KEY_SILVER=" + KEY_SILVER + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "KEY_GOLD=" + KEY_GOLD + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "KEYBIT_BRONZE=" + KEYBIT_BRONZE + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "KEYBIT_SILVER=" + KEYBIT_SILVER + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "KEYBIT_GOLD=" + KEYBIT_GOLD + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "RELSHR_BRONZE=" + RELSHR_BRONZE + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "RELSHR_SILVER=" + RELSHR_SILVER + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "RELSHR_GOLD=" + RELSHR_GOLD + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "rel_teir_wealth=" + rel_teir_wealth + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "rel_stat_wealth=" + rel_stat_wealth + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "rel_teir_know=" + rel_teir_know + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "rel_stat_know=" + rel_stat_know + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "rel_teir_feed=" + rel_teir_feed + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "rel_stat_feed=" + rel_stat_feed + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "rel_teir_decay=" + rel_teir_decay + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "rel_stat_decay=" + rel_stat_decay + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "___void=" + ___void + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+}
+ //building and click functions
+function LVUP() {
+if (XP - ((LV*LV*LV*15) +100) >= 0) {
+  if (XP - (((LV*LV*LV*15) +100)*10) >= 0) {
+    ACHID_OVRLV = 1;
+  }
+  if (stains - ((LV*LV*LV*15) +1500) >= 0) {
+    if (LV < 100 ) {
+      stains -= ((LV*LV*LV*15) +1500);
+      XP = 0;
+      LV++;
+      SPC = Math.round(LV*LV*0.9)+1;
+    } else {
+      window.alert("Your already max level");
+    }
+  }
+}
+}
+function ascend() {
+  if (LV >= 100) {
+    asc_calc = asc;
+    asc_calcb = 1;
+    while (asc_calc > 0) {
+      asc_calcb = asc_calcb * 2;
+      asc_calc --;
+    }
+    if (stains >= 15000000 * asc_calcb) {
+      if (XP >= 10000000 * asc_calcb) {
+        stains = 0;
+        XP = 0;
+        LV = 0;
+        buildA = 0;
+        buildB = 0;
+        buildC = 0;
+        buildD = 0;
+        buildE = 0;
+        buildF = 0;
+        buildG = 0;
+        buildH = 0;
+        crstl_prod = 0;
+        asc++;
+        save();
+      }
+    }
+  } else {
+    window.alert("you need to be level 100");
+  }
+}
+function goorclick() {
+  stains += Math.round(LV*LV*0.9)+1;
+  Clickcount ++;
+  if (XP - (LV*2) >= 0) {
+    XP -= (LV*2);
+  } else {
+    XP = 0;
+  }
+  document.getElementById("staincount").innerHTML = stains + " stains";
+  document.getElementById("clkdis").innerHTML = Clickcount + " Clicks";
+  if (crstl_device_act > 0) {
+    crstl_prod ++;
+  }
+} //^get stains on click
+function buyA() {
+  if (stains-100 >= 0) {
+    stains -= 100;
+    buildA += 1;
+    SPS = (buildA * 0.016666)+(buildB * 0.166694)+(buildC * 1.672240)+(buildD * 16.949152)+(buildE * 169.49152)+(buildF * 1694.9152)+(buildG * 16949.152)+(buildH * 169491.52);
+  }
+} //^buy building
+setInterval(prodA, 60000);
+function prodA() {
+  for (let a = buildA; a > 0; a--) {
+    stains += (1);
+    XP += (1);
+  }
+} //^building production
+
+function buyB() {
+  if (stains-1000 >= 0) {
+    stains -= 1000;
+    buildB += 1;
+    SPS = (buildA * 0.016666)+(buildB * 0.166694)+(buildC * 1.672240)+(buildD * 16.949152)+(buildE * 169.49152)+(buildF * 1694.9152)+(buildG * 16949.152)+(buildH * 169491.52);
+  }
+} //^buy building
+setInterval(prodB, 5999);
+function prodB() {
+  for (let b = buildB; b > 0; b--) {
+    stains += (1);
+    XP += (1);
+  }
+}
+function buyC() {
+  if (stains-10000 >= 0) {
+    stains -= 10000;
+    buildC += 1;
+    SPS = (buildA * 0.016666)+(buildB * 0.166694)+(buildC * 1.672240)+(buildD * 16.949152)+(buildE * 169.49152)+(buildF * 1694.9152)+(buildG * 16949.152)+(buildH * 169491.52);
+  }
+}
+setInterval(prodC, 598);
+function prodC() {
+  for (let C = buildC; C > 0; C--) {
+    stains += (1);
+    XP += (1);
+  }
+} //^building production
+function buyD() {
+  if (stains-100000 >= 0) {
+    stains -= 100000;
+    buildD += 1;
+    SPS = (buildA * 0.016666)+(buildB * 0.166694)+(buildC * 1.672240)+(buildD * 16.949152)+(buildE * 169.49152)+(buildF * 1694.9152)+(buildG * 16949.152)+(buildH * 169491.52);
+  }
+} //^buy building
+setInterval(prodD, 59);
+function prodD() {
+  for (let d = buildD; d > 0; d--) {
+    stains += (1);
+    XP += (1);
+  }
+} //^building production
+function buyE() {
+  if (stains-1000000 >= 0) {
+    stains -= 1000000;
+    buildE += 1;
+    SPS = (buildA * 0.016666)+(buildB * 0.166694)+(buildC * 1.672240)+(buildD * 16.949152)+(buildE * 169.49152)+(buildF * 1694.9152)+(buildG * 16949.152)+(buildH * 169491.52);
+  }
+} //^buy building
+setInterval(prodE, 58);
+function prodE() {
+  for (let e = buildE; e > 0; e--) {
+    stains += (10);
+    XP += (10);
+  }
+}
+function buyF() {
+  if (stains-10000000 >= 0) {
+    stains -= 10000000;
+    buildF += 1;
+    SPS = (buildA * 0.016666)+(buildB * 0.166694)+(buildC * 1.672240)+(buildD * 16.949152)+(buildE * 169.49152)+(buildF * 1694.9152)+(buildG * 16949.152)+(buildH * 169491.52);
+  }
+} //^buy building
+setInterval(prodF, 57);
+function prodF() {
+  for (let f = buildF; f > 0; f--) {
+    stains += (100);
+    XP += (100);
+  }
+}
+function buyG() {
+  if (stains-100000000 >= 0) {
+    stains -= 100000000;
+    buildG += 1;
+    SPS = (buildA * 0.016666)+(buildB * 0.166694)+(buildC * 1.672240)+(buildD * 16.949152)+(buildE * 169.49152)+(buildF * 1694.9152)+(buildG * 16949.152)+(buildH * 169491.52);
+  }
+} //^buy building
+setInterval(prodG, 56);
+function prodG() {
+  for (let g = buildG; g > 0; g--) {
+    stains += (1000);
+    XP += (1000);
+  }
+}
+function buyH() {
+  if (stains-1000000000 >= 0) {
+    stains -= 1000000000;
+    buildH += 1;
+    SPS = (buildA * 0.016666)+(buildB * 0.166694)+(buildC * 1.672240)+(buildD * 16.949152)+(buildE * 169.49152)+(buildF * 1694.9152)+(buildG * 16949.152)+(buildH * 169491.52);
+  }
+} //^buy building
+setInterval(prodH, 55);
+function prodH() {
+  for (let h = buildH; h > 0; h--) {
+    stains += (10000);
+    XP += (10000);
+  }
+}
+function done_crstl_prod() {
+  if (crstl_prod > (500 - asc)) {
+    crstl_prod = 0;
+    crstl_device_act = 0;
+    Crystals++;
+  }
+}
+function start_crstl_prod() {
+  if (stains >= (100000 + (SPC*100))) {
+    if (asc > 0) {
+      if (crstl_device_act < 1) {
+        // 
+        stains -= (100000 + (SPC*100));
+        crstl_device_act = 1;
+        crstl_prod = 0;
+      }
+    }
+  }
+}
+setInterval(updateui, 50);
+function updateui() {
+  document.getElementById("staincount").innerHTML = stains + " stains";
+  SPS = (buildA * 0.016666)+(buildB * 0.166694)+(buildC * 1.672240)+(buildD * 16.949152)+(buildE * 169.49152)+(buildF * 1694.9152)+(buildG * 16949.152)+(buildH * 169491.52);
+  document.getElementById("sps").innerHTML = "sps≈" + SPS;
+  SPC = Math.round(LV*LV*0.9)+1;
+  document.getElementById("BAnum").innerHTML = buildA;
+  document.getElementById("BBnum").innerHTML = buildB;
+  document.getElementById("BCnum").innerHTML = buildC;
+  document.getElementById("BDnum").innerHTML = buildD;
+  document.getElementById("LVCOST").innerHTML = ((LV*LV*LV*15) +1500) + " stains";
+  document.getElementById("LVXPCOST").innerHTML = ((LV*LV*LV*15) +100) + " XP";
+  document.getElementById("XPBAR").innerHTML =  XP + " XP";
+  document.getElementById("LVDISPLAY").innerHTML = "LV" + LV;
+  document.getElementById("spc").innerHTML = "SPC = " + SPC;
+  document.getElementById("BEnum").innerHTML = buildE;
+  document.getElementById("BFnum").innerHTML = buildF;
+  document.getElementById("BGnum").innerHTML = buildG;
+  document.getElementById("BHnum").innerHTML = buildH;
+  document.getElementById("ascdis").innerHTML = "ASC= " + asc;
+  document.getElementById("crdevicecost").innerHTML = "Cost:" + (100000 + (SPC*100)) + "stains";
+  document.getElementById("crstldisplay").innerHTML = Crystals + " crystalized stains";
+  document.getElementById("KEYBRDIS").innerHTML = "Bronze keys: " + KEY_BRONZE;
+  document.getElementById("KEYSLDIS").innerHTML = "Silver keys: " + KEY_SILVER;
+  document.getElementById("KEYGDDIS").innerHTML = "Gold keys: " + KEY_GOLD;
+  document.getElementById("RELSHRDIS_GD").innerHTML =  RELSHR_GOLD;
+  document.getElementById("RELSHRDIS_SL").innerHTML =  RELSHR_SILVER;
+  document.getElementById("RELSHRDIS_BR").innerHTML =  RELSHR_BRONZE;
+  document.getElementById("KEYBITBRDIS").innerHTML =  KEYBIT_BRONZE;
+  document.getElementById("KEYBITSLDIS").innerHTML =  KEYBIT_SILVER;
+  document.getElementById("KEYBITGDDIS").innerHTML =  KEYBIT_GOLD;
+  document.getElementById("reldis_stat_wealth").innerHTML =  rel_stat_str_wealth;
+  document.getElementById("reldis_teir_wealth").innerHTML =  rel_teir_wealth;
+  document.getElementById("reldis_stat_know").innerHTML =  rel_stat_str_know;
+  document.getElementById("reldis_teir_know").innerHTML =  rel_teir_know;
+  document.getElementById("reldis_stat_feed").innerHTML =  rel_stat_str_feed;
+  document.getElementById("reldis_teir_feed").innerHTML =  rel_teir_feed;
+  document.getElementById("reldis_stat_decay").innerHTML =  rel_stat_str_decay;
+  document.getElementById("reldis_teir_decay").innerHTML =  rel_teir_decay;
+  if (rel_stat_wealth == 1) {
+    rel_stat_str_wealth = "ON";
+  } else {
+    rel_stat_str_wealth = "OFF";
+  }
+  if (rel_stat_know == 1) {
+    rel_stat_str_know = "ON";
+  } else {
+    rel_stat_str_know = "OFF";
+  }
+  if (rel_stat_feed == 1) {
+    rel_stat_str_feed = "ON";
+  } else {
+    rel_stat_str_feed = "OFF";
+  }
+  if (rel_stat_decay == 1) {
+    rel_stat_str_decay = "ON";
+  } else {
+    rel_stat_str_decay = "OFF";
+  }
+  done_crstl_prod();
+  RPG_UPDATE();
+  achieve();
+  REL_WEALTH_PRIZE();
+  REL_KNOW_PRIZE();
+  REL_DECAY_PRIZE();
+}
+//-------------------------------------------------------------------------RELIC SCRIPTS---------------------------------------------------
+  function TOGREL_WEALTH() {
+    if (rel_teir_wealth > 0) {
+      if (rel_stat_wealth == 1) {
+        rel_stat_wealth = 0;
+      } else {
+        rel_stat_wealth = 1;
+      }
+    }
+  }
+  function CRAFTREL_WEALTH() {
+    if (asc > 2) {
+      if (rel_teir_wealth == 0) {
+        if (RELSHR_BRONZE > 49) {
+          RELSHR_BRONZE -= 50;
+          rel_teir_wealth = 1;
+        }
+      } else if (rel_teir_wealth == 1) {
+        if (RELSHR_SILVER > 49) {
+          RELSHR_SILVER -= 50;
+          rel_teir_wealth = 2;
+        }
+      } else if (rel_teir_wealth == 2) {
+        if (RELSHR_GOLD > 49) {
+          RELSHR_GOLD -= 50;
+          rel_teir_wealth = 3;
+        }
+      }
+    }
+  }
+    function REL_WEALTH_PRIZE() {
+      if (rel_stat_wealth == 1) {
+        if (rel_teir_wealth > 0) {
+          stains += 10;
+        }
+        if (rel_teir_wealth > 1) {
+          stains += 20;
+        }
+        if (rel_teir_wealth > 2) {
+          stains += 40;
+        }
+      }
+    }
+  function TOGREL_KNOW() {
+    if (rel_teir_know > 0) {
+      if (rel_stat_know == 1) {
+        rel_stat_know = 0;
+      } else {
+        rel_stat_know = 1;
+      }
+    }
+  }
+  function CRAFTREL_KNOW() {
+    if (asc > 2) {
+      if (rel_teir_know == 0) {
+        if (RELSHR_BRONZE > 49) {
+          RELSHR_BRONZE -= 50;
+          rel_teir_know = 1;
+        }
+      } else if (rel_teir_know == 1) {
+        if (RELSHR_SILVER > 49) {
+          RELSHR_SILVER -= 50;
+          rel_teir_know = 2;
+        }
+      } else if (rel_teir_know == 2) {
+        if (RELSHR_GOLD > 49) {
+          RELSHR_GOLD -= 50;
+          rel_teir_know = 3;
+        }
+      }
+    }
+  }
+    function REL_KNOW_PRIZE() {
+      if (rel_stat_know == 1) {
+        if (rel_teir_know > 0) {
+          XP += 10;
+        }
+        if (rel_teir_know > 1) {
+          XP += 20;
+        }
+        if (rel_teir_know > 2) {
+          XP += 40;
+        }
+      }
+    }
+  function TOGREL_DECAY() {
+    if (rel_teir_decay > 0) {
+      if (rel_stat_decay == 1) {
+        rel_stat_decay = 0;
+      } else {
+        rel_stat_decay = 1;
+      }
+    }
+  }
+  function CRAFTREL_DECAY() {
+    if (asc > 2) {
+      if (rel_teir_decay == 0) {
+        if (RELSHR_BRONZE > 49) {
+          RELSHR_BRONZE -= 50;
+          rel_teir_decay = 1;
+        }
+      }
+    }
+  }
+    function REL_DECAY_PRIZE() {
+      if (rel_stat_decay == 1) {
+        if (rel_teir_decay > 0) {
+          if (stains >= ___decay) {
+            stains -= ___decay;
+            ___progress++;
+            ___decay ++;
+            if (___progress > 9) {
+              ___progress = 0;
+              ___void ++;
+            }
+          } else {
+            stains = 0;
+            XP = 0;
+            ___decay = 1;
+            ___progress = 0;
+            rel_teir_decay = 0;
+            rel_stat_decay = 0;
+          }
+        }
+      }
+    }
+//-------------------------------------------------------------------------RPG MINIGAME SCRIPT_______________________________--------------
+  function RPG_UPDATE() {
+    if (RPG_FLOOR > RPG_FLOORBEST) {
+      RPG_FLOORBEST = RPG_FLOOR;
+    }
+    if (RPG_HP > RPG_HPMAX) {
+      RPG_HP = RPG_HPMAX;
+    } else if (RPG_HP < 1){
+      RPG_GAMEOVER();
+    } else if (RPG_FOEHP < 1){
+      RPG_NEWFLOOR();
+    }
+    document.getElementById("RPG_FLOOR_DIS").innerHTML = "FLOOR " + RPG_FLOOR;
+    document.getElementById("RPG_FOE_DIS").innerHTML = RPG_FOE;
+    document.getElementById("RPG_FOEHP_DIS").innerHTML = RPG_FOEHP + "HP";
+    document.getElementById("HP_DIS").innerHTML = "HP: " + RPG_HP + "/" + RPG_HPMAX;
+    document.getElementById("RPG_STATDIS").innerHTML = "your stats: " + RPG_HPMAX + "HP " + RPG_ATK + "ATK " + RPG_DEF + "DEF " + RPG_MAG + "MAG";
+    document.getElementById("MANA_DIS").innerHTML = "MANA: " + RPG_MANA + "/" + 100;
+  }
+  function RPG_FOE_ACT() {
+    RPG_HP -= (RPG_FOEATK - RPG_DEF);
+    turn = 0;
+    RPG_MANA += 5;
+    if (RPG_MANA > 100) {
+      RPG_MANA = 100;
+    }
+  }
+  function RPG_ACT_FIGHT() {
+    if (turn < 1) {
+      if (asc > 1) {
+      RPG_DMG = RPG_ATK;
+      RPG_DMG -= RPG_FOEDEF;
+      RPG_FOEHP -= RPG_DMG;
+      turn = 1;
+      RPG_FOE_ACT();
+      }
+    }
+  }
+  function RPG_ACT_MAGIC(spell) {
+    if (turn < 1) {
+      if (asc > 1) {
+        switch (spell) {
+          case "heal" :
+            if (RPG_MANA > 29) {
+              RPG_MANA -= 30;
+              RPG_HP += (20 + (RPG_MAG * 6));
+              turn = 1;
+              RPG_FOEHP += RPG_FOEDEF;
+              RPG_FOE_ACT();
+            }
+            break;
+          case "fire" :
+            if (RPG_MANA > 34) {
+              RPG_MANA -= 35;
+              RPG_DMG = (10 + (RPG_MAG * 3));
+              RPG_DMG -= RPG_FOEDEF;
+              RPG_FOEHP -= RPG_DMG;
+              turn = 1;
+              RPG_FOE_ACT();
+            }
+            break;
+          case "focus" :
+            RPG_MANA += (5 + RPG_MAG);
+            turn = 1;
+            RPG_FOEHP += RPG_FOEDEF;
+            RPG_FOE_ACT();
+            break;
+        }
+      }
+    }
+  }
+  function RPG_GAMEOVER() {
+    window.alert("you died");
+    RPG_HP = RPG_HPMAX;
+    RPG_FLOOR = 0;
+    RPG_NEWFLOOR();
+  }
+  function RPG_NEWFLOOR() {
+    stains += (10 * RPG_FLOOR);
+    if (RPG_FLOOR == 50) {
+      KEY_BRONZE ++;
+    } else if (RPG_FLOOR == 100) {
+      KEY_BRONZE ++;
+    } else if (RPG_FLOOR == 150) {
+      KEY_BRONZE ++;
+    } else if (RPG_FLOOR == 200) {
+      KEY_SILVER ++;
+    } else if (RPG_FLOOR == 250) {
+      KEY_SILVER ++;
+    } else if (RPG_FLOOR == 300) {
+      KEY_SILVER ++;
+    } else if (RPG_FLOOR == 350) {
+      KEY_GOLD ++;
+    } else if (RPG_FLOOR == 400) {
+      KEY_GOLD ++;
+    } else if (RPG_FLOOR == 450) {
+      KEY_GOLD ++;
+    }
+    RPG_FLOOR ++;
+    RPG_NEWFOE(RPG_FLOOR);
+  }
+  function RPG_NEWFOE(FLR) {
+    FLRSEED = getRndInteger(1,4);
+    if (FLR < 15) {
+      switch (FLRSEED) {
+        case 1 :
+          RPG_FOE = "gremlin";
+          RPG_FOEHP = 5;
+          RPG_FOEATK = 1;
+          RPG_FOEDEF = 0;
+          break;
+        case 2 :
+          RPG_FOE = "worm";
+          RPG_FOEHP = 4;
+          RPG_FOEATK = 3;
+          RPG_FOEDEF = 0;
+          break;
+        case 3 :
+          RPG_FOE = "sludge";
+          RPG_FOEHP = 6;
+          RPG_FOEATK = 2;
+          RPG_FOEDEF = 0;
+          break;
+      }
+    } else if (FLR <30){
+      switch (FLRSEED) {
+        case 1 :
+          RPG_FOE = "thief";
+          RPG_FOEHP = 20;
+          RPG_FOEATK = 14;
+          RPG_FOEDEF = 0;
+          break;
+        case 2 :
+          RPG_FOE = "large worm";
+          RPG_FOEHP = 16;
+          RPG_FOEATK = 16;
+          RPG_FOEDEF = 0;
+          break;
+        case 3 :
+          RPG_FOE = "large sludge";
+          RPG_FOEHP = 24;
+          RPG_FOEATK = 10;
+          RPG_FOEDEF = 0;
+          break;
+      }
+    } else if (FLR < 50){
+      switch (FLRSEED) {
+        case 1 :
+          RPG_FOE = "desert horror";
+          RPG_FOEHP = 60;
+          RPG_FOEATK = 20;
+          RPG_FOEDEF = 1;
+          break;
+        case 2 :
+          RPG_FOE = "Glob";
+          RPG_FOEHP = 41;
+          RPG_FOEATK = 54;
+          RPG_FOEDEF = 0;
+          break;
+        case 3 :
+          RPG_FOE = "vile sludge";
+          RPG_FOEHP = 50;
+          RPG_FOEATK = 30;
+          RPG_FOEDEF = 0;
+          break;
+      }
+    } else if (FLR == 50) {
+      switch (FLRSEED) {
+        case 1 :
+          RPG_FOE = "Oops!";
+          RPG_FOEHP = 180;
+          RPG_FOEATK = 50;
+          RPG_FOEDEF = 1;
+          break;
+        case 2 :
+          RPG_FOE = "Licky Louse";
+          RPG_FOEHP = 140;
+          RPG_FOEATK = 73;
+          RPG_FOEDEF = 0;
+          break;
+        case 3 :
+          RPG_FOE = "rock";
+          RPG_FOEHP = 999;
+          RPG_FOEATK = 40;
+          RPG_FOEDEF = 1;
+          break;
+      }
+    } else if (FLR < 75) {
+      switch (FLRSEED) {
+        case 1 :
+          RPG_FOE = "giant desert horror";
+          RPG_FOEHP = 200;
+          RPG_FOEATK = 30;
+          RPG_FOEDEF = 3;
+          break;
+        case 2 :
+          RPG_FOE = "patrol guard";
+          RPG_FOEHP = 100;
+          RPG_FOEATK = 65;
+          RPG_FOEDEF = 1;
+          break;
+        case 3 :
+          RPG_FOE = "vile sludge";
+          RPG_FOEHP = 50;
+          RPG_FOEATK = 30;
+          RPG_FOEDEF = 0;
+          break;
+      }
+    } else if (FLR < 100) {
+      switch (FLRSEED) {
+        case 1 :
+          RPG_FOE = "sand stalker";
+          RPG_FOEHP = 100;
+          RPG_FOEATK = 60;
+          RPG_FOEDEF = 0;
+          break;
+        case 2 :
+          RPG_FOE = "patrol captain";
+          RPG_FOEHP = 120;
+          RPG_FOEATK = 65;
+          RPG_FOEDEF = 2;
+          break;
+        case 3 :
+          RPG_FOE = "shadow";
+          RPG_FOEHP = 1;
+          RPG_FOEATK = (150 + Math.round(RPG_DEF / 20));
+          RPG_FOEDEF = 0;
+          break;
+      }
+    } else if (FLR == 100) {
+      RPG_FOE = "Gateway Sentinel";
+      RPG_FOEHP = 999;
+      RPG_FOEATK = 120;
+      RPG_FOEDEF = 5;
+    } else if (FLR < 150) {
+      switch (FLRSEED) {
+        case 1 :
+          RPG_FOE = "city guard";
+          RPG_FOEHP = 100;
+          RPG_FOEATK = 65;
+          RPG_FOEDEF = 1;
+          break;
+        case 2 :
+          RPG_FOE = "guard captain";
+          RPG_FOEHP = 125;
+          RPG_FOEATK = 75;
+          RPG_FOEDEF = 2;
+          break;
+        case 3 :
+          RPG_FOE = "shadow";
+          RPG_FOEHP = 1;
+          RPG_FOEATK = (150 + Math.round(RPG_DEF / 10));
+          RPG_FOEDEF = 0;
+          break;
+      }
+    } else if (FLR == 150) {
+      RPG_FOE = "You?";
+      RPG_FOEHP = RPG_HP;
+      RPG_FOEATK = RPG_ATK;
+      RPG_FOEDEF = RPG_DEF;
+    } else if (FLR < 200) {
+      switch (FLRSEED) {
+        case 1 :
+          RPG_FOE = "pirate";
+          RPG_FOEHP = 330;
+          RPG_FOEATK = 140;
+          RPG_FOEDEF = 4;
+          break;
+        case 2 :
+          RPG_FOE = "pirate captain";
+          RPG_FOEHP = 380;
+          RPG_FOEATK = 155;
+          RPG_FOEDEF = 12;
+          break;
+        case 3 :
+          RPG_FOE = "lake lurker";
+          RPG_FOEHP = 800;
+          RPG_FOEATK = 145;
+          RPG_FOEDEF = 8;
+          break;
+      }
+    } else if (FLR == 200) {
+        RPG_FOE = "Lophii";
+        RPG_FOEHP = 1555;
+        RPG_FOEATK = (185 + Math.round(RPG_DEF / 5));
+        RPG_FOEDEF = 12;
+    } else {
+      RPG_FOE = "runender";
+      RPG_FOEHP = RPG_HP+RPG_ATK+RPG_DEF+80000;
+      RPG_FOEATK = RPG_HP + RPG_DEF + 1000;
+      RPG_FOEDEF = RPG_ATK + 100;
+    }
+        }
+  function RPG_LV_ATK() {
+    if (Crystals > 0) {
+      if (asc > 1) {
+        Crystals --;
+        RPG_ATK ++;
+      }
+    }
+  }
+  function RPG_LV_DEF() {
+    if (Crystals > 0) {
+      if (asc > 1) {
+        Crystals --;
+        RPG_DEF ++;
+      }
+    }
+  }
+  function RPG_LV_MAG() {
+    if (Crystals > 0) {
+      if (asc > 1) {
+        Crystals --;
+        RPG_MAG ++;
+      }
+    }
+  }
+  function RPG_LV_HP() {
+    if (Crystals > 0) {
+      if (asc > 1) {
+        Crystals --;
+        RPG_HPMAX += 5;
+      }
+    }
+  }
+  function CRAFTKEY_GOLD() {
+    if (KEYBIT_GOLD > 9) {
+      KEYBIT_GOLD = KEYBIT_GOLD - 10;
+      KEY_GOLD ++;
+    }
+  }
+  function CRAFTKEY_SILVER() {
+    if (KEYBIT_SILVER > 9) {
+      KEYBIT_SILVER = KEYBIT_SILVER - 10;
+      KEY_SILVER ++;
+    }
+  }
+  function CRAFTKEY_BRONZE() {
+    if (KEYBIT_BRONZE > 9) {
+      KEYBIT_BRONZE = KEYBIT_BRONZE - 10;
+      KEY_BRONZE ++;
+    }
+  }
+  function OPENCHEST_BRONZE() {
+    if (KEY_BRONZE > 0) {
+      KEY_BRONZE--;
+      stains += 5000;
+      CHEST_REWARD_TEXT = "you got: 5000 stains and";
+      CHEST_LUCK = getRndInteger(1,6);
+      if (CHEST_LUCK == 1) {
+        stains += 1000;
+        CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " 1000 more stains";
+      } else if (CHEST_LUCK == 2) {
+        XP += 1000;
+        CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " 1000 XP";
+      } else if (CHEST_LUCK == 3) {
+        KEYBIT_BRONZE++;
+        CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " a bronze key bit!";
+      } else if (CHEST_LUCK == 4) {
+        KEYBIT_SILVER++;
+        CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " a silver key bit!";
+      } else if (CHEST_LUCK == 5) {
+        RELSHR_BRONZE++;
+        CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " a bronze relic shard!";
+      }
+      window.alert(CHEST_REWARD_TEXT);
+    }
+      
+    }
+    function OPENCHEST_SILVER() {
+    if (KEY_SILVER > 0) {
+      KEY_SILVER--;
+      stains += 150000;
+      CHEST_REWARD_TEXT = "you got: 150000 stains and";
+      CHEST_LUCK = getRndInteger(1,6);
+      if (CHEST_LUCK == 1) {
+        stains += 15000;
+        CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " 15000 more stains";
+      } else if (CHEST_LUCK == 2) {
+        XP += 15000;
+        CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " 15000 XP";
+      } else if (CHEST_LUCK == 3) {
+        KEY_BRONZE++;
+        CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " a bronze key";
+      } else if (CHEST_LUCK == 4) {
+        KEYBIT_GOLD++;
+        CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " a gold key bit";
+      } else if (CHEST_LUCK == 5) {
+        RELSHR_SILVER++;
+        CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " a silver relic shard";
+      }
+      CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " and";
+      CHEST_LUCK = getRndInteger(1,6);
+      if (CHEST_LUCK == 1) {
+        stains += 15000;
+        CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " 15000 more stains";
+      } else if (CHEST_LUCK == 2) {
+        XP += 15000;
+        CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " 15000 XP";
+      } else if (CHEST_LUCK == 3) {
+        KEY_BRONZE++;
+        CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " a bronze key!";
+      } else if (CHEST_LUCK == 4) {
+        KEYBIT_GOLD++;
+        CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " a gold key bit!";
+      } else if (CHEST_LUCK == 5) {
+        RELSHR_SILVER++;
+        CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " a silver relic shard!";
+      }
+      window.alert(CHEST_REWARD_TEXT);
+    }
+      
+    }
+    function OPENCHEST_GOLD() {
+    if (KEY_GOLD > 0) {
+      KEY_GOLD--;
+      stains += 500000;
+      CHEST_REWARD_TEXT = "you got: 500000 stains and";
+      CHEST_LUCK = getRndInteger(1,6);
+      if (CHEST_LUCK == 1) {
+        stains += 50000;
+        CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " 50000 more stains";
+      } else if (CHEST_LUCK == 2) {
+        XP += 50000;
+        CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " 50000 XP";
+      } else if (CHEST_LUCK == 3) {
+        KEY_SILVER++;
+        CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " a silver key";
+      } else if (CHEST_LUCK == 4) {
+        RELSHR_GOLD++;;
+        CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " a gold relic shard";
+      } else if (CHEST_LUCK == 5) {
+        RELSHR_SILVER++;
+        RELSHR_SILVER++;
+        CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " 2 silver relic shards";
+      }
+      CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " and";
+      CHEST_LUCK = getRndInteger(1,6);
+      if (CHEST_LUCK == 1) {
+        stains += 50000;
+        CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " 50000 more stains";
+      } else if (CHEST_LUCK == 2) {
+        XP += 50000;
+        CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " 50000 XP";
+      } else if (CHEST_LUCK == 3) {
+        KEY_SILVER++;
+        CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " a silver key";
+      } else if (CHEST_LUCK == 4) {
+        RELSHR_GOLD++;;
+        CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " a gold relic shard";
+      } else if (CHEST_LUCK == 5) {
+        RELSHR_SILVER++;
+        RELSHR_SILVER++;
+        CHEST_REWARD_TEXT = CHEST_REWARD_TEXT + " 2 silver relic shards";
+      }
+      window.alert(CHEST_REWARD_TEXT);
+    }
+      
+    }
+  //----------------------------------------------------------------------------------------------ACHIEVEMENTS----------------------------------------------
+function achieve() {
+  if (ACHID_FLR50 < 1) {
+    if (RPG_FLOORBEST > 50) {
+      ACHID_FLR50 = 1;
+    }
+  } else {
+    document.getElementById("ach_flr50").innerHTML = "Unlocked";
+  }
+  if (ACHID_ASC < 1) {
+    if (asc > 0) {
+      ACHID_ASC = 1;
+    }
+  } else {
+    document.getElementById("ach_asc").innerHTML = "Unlocked";
+  }
+  if (ACHID_LUCK < 1) {
+    luck = getRndInteger(2,1000001);
+    if (luck > 999999){
+      ACHID_LUCK = 1;
+    }
+  } else {
+    document.getElementById("ach_luck").innerHTML = "Unlocked";
+  }
+  if (ACHID_OVRLV > 0) {
+    document.getElementById("ach_ovrlvl").innerHTML = "Unlocked";
+  }
+  if (ACHID_CLICK10K < 1) {
+    if (Clickcount > 9999) {
+      ACHID_CLICK10K = 1;
+    }
+  } else {
+    document.getElementById("ach_click10k").innerHTML = "Unlocked";
+  }
+  if (ACHID_CLICK100K < 1) {
+    if (Clickcount > 99999) {
+      ACHID_CLICK100K = 1;
+    }
+  } else {
+    document.getElementById("ach_click100k").innerHTML = "Unlocked";
+  }
+  if (ACHID_CLICK1M < 1) {
+    if (Clickcount > 999999) {
+      ACHID_CLICK1M = 1;
+    }
+  } else {
+    document.getElementById("ach_click1M").innerHTML = "Unlocked";
+  }
+  if (ACHID_CLICK10M < 1) {
+    if (Clickcount > 9999999) {
+      ACHID_CLICK10M = 1;
+    }
+  } else {
+    document.getElementById("ach_click10M").innerHTML = "Unlocked";
+  }
+}
+setInterval(achieve_reward, 1000);
+function achieve_reward() {
+  if (ACHID_ASC > 0) {
+    XP++;
+  }
+  if (ACHID_FLR50 > 0) {
+    stains++;
+  }
+  if (ACHID_CLICK10K > 0) {
+    stains++;
+  }
+  if (ACHID_CLICK100K > 0) {
+    stains++;
+    stains++;
+  }
+  if (ACHID_CLICK1M > 0) {
+    stains++;
+    stains++;
+    stains++;
+    stains++;
+  }
+  if (ACHID_CLICK10M > 0) {
+    stains++;
+    stains++;
+    stains++;
+    stains++;
+    stains++;
+    stains++;
+    stains++;
+    stains++;
+  }
+  if (ACHID_OVRLV > 0) {
+    XP++;
+  }
+  if (ACHID_LUCK > 0) {
+    luck = getRndInteger(2,10001);
+    if (luck > 9999) {
+      stains += ((SPC * 777) + 777);
+      XP += ((SPC * 777) + 777);
+    }
+  }
+}
+ //cookies
+function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i <ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+function getNumberFromCookie(cookieName, defaultValue) {
+  const cookieValue = getCookie(cookieName);
+    if (cookieValue) {
+        return parseInt(cookieValue);
+    } else {
+        return defaultValue
+    }
+}
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+</script>
+<p>version: beta 127</p>
+</body>
+</html>
