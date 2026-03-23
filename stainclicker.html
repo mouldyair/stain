@@ -52,6 +52,11 @@
 <p id=XPBAR>0</p>
 <p id=LVDISPLAY style="margin: 0; display: inline;">0</p>
 <p id=ascdis style="margin: 0; display: inline;">0</p>
+<div>
+  <p>secret codes</p>
+  <textarea id="codeinput" rows="1" cols="50"></textarea>
+  <button onclick="submitcode()">submit</button>
+</div>
   <!----- START OF PAGE ONE ----->
 <div>
 <table style="width:100%">
@@ -1409,6 +1414,14 @@ function updateui() {
     }
       
     }
+function submitcode() {
+  code = document.getElementById("codeinput").innerHTML;
+  switch (generateHash(code)) {
+  case 3556498:
+      stains++;
+      window.alert("test sucsessful");
+      break;
+}
   //----------------------------------------------------------------------------------------------ACHIEVEMENTS----------------------------------------------
 function achieve() {
   if (ACHID_FLR50 < 1) {
@@ -1546,6 +1559,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-<p>version: beta 127</p>
+<p>version: beta 128</p>
 </body>
 </html>
