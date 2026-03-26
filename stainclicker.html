@@ -300,6 +300,12 @@
           <td>click 10M times</td>
           <td>8 stain per sec</td>
         </tr>
+        <tr>
+          <td>SECRET 1</td>
+          <td id="ach_SEC1">unobtained</td>
+          <td>a secret code must be found</td>
+          <td>5 XP and stains per sec</td>
+        </tr>
       </table>
     </div>
   <button type="button" class="collapsible">relics</button>
@@ -489,6 +495,7 @@ let ACHID_ASC = getNumberFromCookie("ACHID_ASC", 0);
 let ACHID_FLR50 = getNumberFromCookie("ACHID_ASC", 0);
 let ACHID_OVRLV = getNumberFromCookie("ACHID_OVRLV", 0);
 let ACHID_LUCK = getNumberFromCookie("ACHID_LUCK", 0);
+let ACHID_SECRET1 = getNumberFromCookie("ACHID_SECRET1", 0);
 let ACHID_CLICK10K = 0;
 let ACHID_CLICK100K = 0;
 let ACHID_CLICK1M = 0;
@@ -568,6 +575,7 @@ function save() {
   document.cookie = "rel_teir_decay=" + rel_teir_decay + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
   document.cookie = "rel_stat_decay=" + rel_stat_decay + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
   document.cookie = "___void=" + ___void + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  document.cookie = "ACHID_SECRET1=" + ACHID_SECRET1 + "; expires=Fri, 31 Dec 9999 23:59:59 GMT";
 }
  //building and click functions
 function LVUP() {
@@ -1429,10 +1437,18 @@ function submitcode() {
       stains++;
       window.alert("test sucsessful");
       break;
+    case 904240927:
+      if (ACHID_SECRET1 < 1) {
+        ACHID_SECRET1 = 1;
+        break;
+      }
   }
 }
   //----------------------------------------------------------------------------------------------ACHIEVEMENTS----------------------------------------------
 function achieve() {
+  if (ACHID_SECRET1 == 1) {
+    document.getElementById("ach_SEC1").innerHTML = "Unlocked";
+  }
   if (ACHID_FLR50 < 1) {
     if (RPG_FLOORBEST > 50) {
       ACHID_FLR50 = 1;
@@ -1489,6 +1505,18 @@ function achieve() {
 }
 setInterval(achieve_reward, 1000);
 function achieve_reward() {
+  if (ACHID_SECRET1 > 0) {
+    XP++;
+    XP++;
+    XP++;
+    XP++;
+    XP++;
+    stains++;
+    stains++;
+    stains++;
+    stains++;
+    stains++;
+  }
   if (ACHID_ASC > 0) {
     XP++;
   }
@@ -1568,6 +1596,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-<p>version: beta 134</p>
+<p>version: beta 136</p>
 </body>
 </html>
