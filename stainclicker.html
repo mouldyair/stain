@@ -1433,15 +1433,16 @@ const generateHash = (string) => {
 function submitcode() {
   code = document.getElementById("codeinput").innerHTML;
   switch (generateHash(code)) {
-  case 3556498:
+    case 3556498:
       stains++;
       window.alert("test sucsessful");
       break;
     case 904240927:
       if (ACHID_SECRET1 < 1) {
         ACHID_SECRET1 = 1;
-        break;
       }
+      break;
+      
   }
 }
   //----------------------------------------------------------------------------------------------ACHIEVEMENTS----------------------------------------------
@@ -1596,6 +1597,6 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-<p>version: beta 136</p>
+<p>version: beta 137</p>
 </body>
 </html>
